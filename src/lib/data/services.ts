@@ -1,0 +1,93 @@
+import type { Service } from '@/types';
+
+export const SERVICES: Service[] = [
+  {
+    n: '01',
+    title: 'Custom Software Development',
+    body: 'End-to-end engineering for products that don\'t fit off-the-shelf tools — internal platforms, vertical SaaS, marketplaces.',
+    deliverables: ['Architecture spec', 'Production codebase', 'CI/CD pipeline', 'Runbooks & SLOs'],
+    stack: ['TypeScript', 'Go', 'PostgreSQL', 'AWS'],
+    visual: 'code',
+  },
+  {
+    n: '02',
+    title: 'SaaS Development',
+    body: 'Multi-tenant SaaS with role-aware access, metered billing, audit logs and admin tooling shipped from day one.',
+    deliverables: ['Multi-tenant data model', 'Stripe / metered billing', 'Admin console', 'Customer-facing API'],
+    stack: ['Next.js', 'NestJS', 'Postgres', 'Stripe'],
+    visual: 'saas',
+  },
+  {
+    n: '03',
+    title: 'Enterprise Systems',
+    body: 'Replace legacy estates with modern, observable systems. SSO, RBAC, audit trails and compliance baked in.',
+    deliverables: ['Migration plan', 'Strangler fig integration', 'RBAC + SSO', 'SOC 2 evidence'],
+    stack: ['Laravel', 'React', 'Kong', 'PostgreSQL'],
+    visual: 'enterprise',
+  },
+  {
+    n: '04',
+    title: 'Mobile Applications',
+    body: 'Cross-platform mobile with offline-first sync, native modules where they matter, and instrumented release pipelines.',
+    deliverables: ['iOS + Android builds', 'Offline sync engine', 'OTA updates', 'Crash & analytics'],
+    stack: ['Flutter', 'Kotlin', 'Swift'],
+    visual: 'mobile',
+  },
+  {
+    n: '05',
+    title: 'AI & Automation',
+    body: 'Production AI — RAG pipelines, agent loops, fine-tuning and local LLM inference behind your security perimeter.',
+    deliverables: ['RAG pipeline', 'Agent runtime', 'Eval harness', 'Local-LLM deployment'],
+    stack: ['Ollama', 'pgvector', 'LangGraph', 'Python'],
+    visual: 'ai',
+  },
+  {
+    n: '06',
+    title: 'Cloud Infrastructure',
+    body: 'Multi-region, cost-aware Kubernetes platforms with progressive delivery and disaster recovery rehearsed quarterly.',
+    deliverables: ['IaC (Terraform)', 'Cluster blueprint', 'DR runbook', 'FinOps dashboard'],
+    stack: ['Kubernetes', 'Terraform', 'AWS', 'GCP'],
+    visual: 'cloud',
+  },
+  {
+    n: '07',
+    title: 'DevOps & CI/CD',
+    body: 'Trunk-based delivery with feature flags, canaries and blue/green. We close the loop with SLOs and error budgets.',
+    deliverables: ['GitHub Actions / GitLab CI', 'ArgoCD', 'Feature-flag setup', 'SLO definitions'],
+    stack: ['ArgoCD', 'GitHub Actions', 'Helm'],
+    visual: 'devops',
+  },
+  {
+    n: '08',
+    title: 'System Architecture Consulting',
+    body: 'A senior architect reviews your system, identifies risk and delivers a remediation plan with real timelines.',
+    deliverables: ['Design review report', 'Risk register', 'Refactor roadmap', 'ADR template'],
+    stack: ['Whiteboard', 'ADR', 'C4 model'],
+    visual: 'consult',
+  },
+  {
+    n: '09',
+    title: 'Real-time Streaming Systems',
+    body: 'WebSocket, RTMP, WebRTC and pixel-streaming infrastructure. Backpressure, fan-out, idempotency — handled.',
+    deliverables: ['Stream orchestrator', 'Capacity model', 'Observability dashboards', 'Load test harness'],
+    stack: ['Go', 'RabbitMQ', 'Kong', 'Redis'],
+    visual: 'stream',
+  },
+  {
+    n: '10',
+    title: 'Maintenance & Scaling',
+    body: 'Long-term ownership engagements. We carry the pager, raise the SLOs and right-size cost as you grow.',
+    deliverables: ['24/7 on-call', 'Capacity planning', 'Performance audits', 'Quarterly reviews'],
+    stack: ['Grafana', 'Prometheus', 'PagerDuty'],
+    visual: 'scale',
+  },
+];
+
+export const SERVICES_PREVIEW = [
+  { title: 'Enterprise Web Apps', body: 'Production-grade B2B platforms with role-based access, audit trails and dashboard-class UI.', mono: 'next.js · laravel · postgres', span: 2, visual: 'web' },
+  { title: 'Real-time Streaming', body: 'Sub-100ms event flows over WebSocket and WebRTC.', mono: 'go · rabbitmq · kong', visual: 'stream' },
+  { title: 'AI Solutions', body: 'RAG pipelines, agent loops and local LLM inference for sensitive data.', mono: 'ollama · pgvector', visual: 'ai' },
+  { title: 'Cloud Architecture', body: 'Multi-region Kubernetes, blue/green and progressive delivery.', mono: 'k8s · argo · terraform', visual: 'cloud' },
+  { title: 'Mobile Development', body: 'Cross-platform apps with offline-first sync and battery-conscious sessions.', mono: 'flutter · kotlin · swift', visual: 'mobile' },
+  { title: 'DevOps & Automation', body: 'Observability, SLOs and automated rollouts from day one.', mono: 'grafana · prometheus · loki', span: 2, visual: 'devops' },
+];

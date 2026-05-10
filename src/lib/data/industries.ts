@@ -1,0 +1,88 @@
+import type { Industry } from '@/types';
+
+export const INDUSTRIES: Industry[] = [
+  {
+    n: '01',
+    title: 'Healthcare',
+    glyph: 'dna',
+    color: '#fda4af',
+    challenge: 'HIPAA, BAAs, audit trails, and 99.99% uptime when a single failed request can affect patient care.',
+    solution: 'Encrypted-at-rest data flows, immutable audit logs, signed BAAs with every cloud vendor, and PHI scrubbed from every log line by Fluent Bit filters.',
+    stack: ['FHIR', 'HL7', 'PostgreSQL', 'AWS HIPAA'],
+    kpis: [
+      { l: 'Uptime SLA', v: '99.99%' },
+      { l: 'Mean failover', v: '1.4s' },
+      { l: 'Audit retention', v: '10y' },
+    ],
+  },
+  {
+    n: '02',
+    title: 'Fintech',
+    glyph: 'shield',
+    color: '#86efac',
+    challenge: 'Idempotent money movement, PCI scope minimization, and explainable risk decisions for regulators.',
+    solution: 'Event-sourced ledgers, idempotency keys at every gateway, double-entry accounting tables, and a feature store that records every input to a risk model.',
+    stack: ['Stripe', 'Plaid', 'PostgreSQL', 'Kafka'],
+    kpis: [
+      { l: 'PCI scope', v: '−72%' },
+      { l: 'Decision audit', v: '100%' },
+      { l: 'Reconciliation drift', v: '$0.00' },
+    ],
+  },
+  {
+    n: '03',
+    title: 'Logistics',
+    glyph: 'flow',
+    color: '#7dd3fc',
+    challenge: 'Real-time fleet visibility, route optimization at scale, and integrations with dozens of legacy carrier APIs.',
+    solution: 'Event-driven backbone with RabbitMQ, geospatial Postgres for live tracking, and a normalized carrier-API gateway with graceful degradation per partner.',
+    stack: ['Go', 'PostGIS', 'RabbitMQ', 'Mapbox'],
+    kpis: [
+      { l: 'Vehicles tracked', v: '92k' },
+      { l: 'Carrier APIs', v: '37' },
+      { l: 'Route savings', v: '11%' },
+    ],
+  },
+  {
+    n: '04',
+    title: 'Education',
+    glyph: 'tree',
+    color: '#c4b5fd',
+    challenge: 'Tens of thousands of concurrent learners, content delivery on flaky networks, and FERPA-compliant data sharing.',
+    solution: 'Edge-cached static content, offline-first mobile, and a learner-data API with consent-driven access and SSO into district identity providers.',
+    stack: ['Next.js', 'CDN', 'Flutter', 'OneRoster'],
+    kpis: [
+      { l: 'Peak concurrency', v: '84k' },
+      { l: 'Offline sessions', v: '31%' },
+      { l: 'Latency P95', v: '180ms' },
+    ],
+  },
+  {
+    n: '05',
+    title: 'SaaS',
+    glyph: 'cube',
+    color: '#93c5fd',
+    challenge: 'Multi-tenant data models, usage-metered billing, and the operational cost of supporting hundreds of self-serve workspaces.',
+    solution: 'Tenant-aware query layer, usage events fed into Stripe metered billing, and admin tooling that resolves 80% of support tickets without human hands.',
+    stack: ['NestJS', 'Postgres', 'Stripe', 'Inngest'],
+    kpis: [
+      { l: 'Tenants', v: '1,820' },
+      { l: 'Self-serve resolution', v: '78%' },
+      { l: 'Time-to-value', v: '8min' },
+    ],
+  },
+  {
+    n: '06',
+    title: 'Media & Streaming',
+    glyph: 'pulse',
+    color: '#fb923c',
+    challenge: 'Real-time pixel-perfect streaming, dynamic GPU allocation, and DRM workflows that don\'t add visible latency.',
+    solution: 'Multi-instance UE pixel streaming with a Go orchestrator, Kong gateway, RabbitMQ event fabric and Fluent Bit log fan-out — see the case study.',
+    stack: ['Go', 'Kong', 'RabbitMQ', 'WebRTC'],
+    kpis: [
+      { l: 'P99 control', v: '84ms' },
+      { l: 'Concurrent sessions', v: '8.4k' },
+      { l: 'Streams launched', v: '11.4M' },
+    ],
+  },
+];
