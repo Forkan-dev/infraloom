@@ -58,9 +58,6 @@ export const TECH_CATEGORIES: TechCategory[] = [
     items: [
       { n: 'Fluent Bit', g: 'pulse', c: '#67e8f9', note: 'High-throughput log shipping' },
       { n: 'Grafana', g: 'grid', c: '#fb923c', note: 'Dashboards & alerting' },
-      { n: 'Prometheus', g: 'ring', c: '#f87171', note: 'Metrics + recording rules' },
-      { n: 'Loki', g: 'layers', c: '#fbbf24', note: 'Log aggregation' },
-      { n: 'Tempo', g: 'flow', c: '#c4b5fd', note: 'Distributed tracing' },
     ],
   },
   {

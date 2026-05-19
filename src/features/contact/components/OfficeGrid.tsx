@@ -1,4 +1,5 @@
 import { Reveal } from '@/components/shared/Reveal';
+import { SectionHead } from '@/components/shared/SectionHead';
 
 const OFFICES = [
   { city: 'New York', region: 'NY · USA', tz: 'EST', focus: 'HQ, Engineering' },
@@ -12,10 +13,7 @@ export function OfficeGrid() {
     <section className="section-tight">
       <div className="container">
         <Reveal>
-          <div style={{ marginBottom: 28 }}>
-            <span className="eyebrow">Offices</span>
-            <h2 className="gradient-text" style={{ marginTop: 16 }}>Four time zones. One team.</h2>
-          </div>
+          <SectionHead eyebrow="Offices" title="Four time zones. One team." />
         </Reveal>
         <Reveal>
           <div className="off-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 1, background: 'var(--border)', border: '1px solid var(--border)', borderRadius: 16, overflow: 'hidden' }}>

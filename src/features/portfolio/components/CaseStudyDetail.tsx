@@ -3,6 +3,7 @@ import { Reveal } from '@/components/shared/Reveal';
 import { Tags } from '@/components/ui/Tags';
 import { CodeBlock } from '@/components/ui/CodeBlock';
 import { BigCTA } from '@/components/shared/BigCTA';
+import { SectionHead } from '@/components/shared/SectionHead';
 import { PixelStreamingDiagram } from '@/components/diagrams/PixelStreamingDiagram';
 import { CASE_STUDIES } from '@/lib/data/portfolio';
 
@@ -101,10 +102,7 @@ export function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
         <section className="section-tight">
           <div className="container">
             <Reveal>
-              <div style={{ marginBottom: 28 }}>
-                <span className="eyebrow">Architecture</span>
-                <h2 className="gradient-text" style={{ marginTop: 16 }}>The full topology, at a glance.</h2>
-              </div>
+              <SectionHead eyebrow="Architecture" title="The full topology, at a glance." />
             </Reveal>
             <Reveal>
               <div style={{ background: 'var(--bg-2)', border: '1px solid var(--border)', borderRadius: 22, padding: 28, position: 'relative', overflow: 'hidden' }}>
@@ -162,10 +160,7 @@ export function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
       <section className="section-tight">
         <div className="container">
           <Reveal>
-            <div style={{ marginBottom: 28 }}>
-              <span className="eyebrow">Microservices</span>
-              <h2 className="gradient-text" style={{ marginTop: 16 }}>The services we shipped.</h2>
-            </div>
+            <SectionHead eyebrow="Microservices" title="The services we shipped." />
           </Reveal>
           <Reveal stagger>
             <div className="ms-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
@@ -191,10 +186,7 @@ export function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
       <section className="section-tight">
         <div className="container">
           <Reveal>
-            <div style={{ marginBottom: 28 }}>
-              <span className="eyebrow">Hard problems</span>
-              <h2 className="gradient-text" style={{ marginTop: 16 }}>What broke. What we did about it.</h2>
-            </div>
+            <SectionHead eyebrow="Hard problems" title="What broke. What we did about it." />
           </Reveal>
           <div className="challenge-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
             {study.challenges.map((c, i) => (
@@ -221,10 +213,7 @@ export function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
       <section className="section-tight">
         <div className="container">
           <Reveal>
-            <div style={{ marginBottom: 28 }}>
-              <span className="eyebrow">Results</span>
-              <h2 className="gradient-text" style={{ marginTop: 16 }}>What changed, measured.</h2>
-            </div>
+            <SectionHead eyebrow="Results" title="What changed, measured." />
           </Reveal>
           <div className="results-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${study.results.length}, 1fr)`, gap: 16 }}>
             {study.results.map((r, i) => (

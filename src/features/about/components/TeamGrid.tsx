@@ -1,4 +1,5 @@
 import { Reveal } from '@/components/shared/Reveal';
+import { SectionHead } from '@/components/shared/SectionHead';
 
 const TEAM = [
   { n: 'Engineering', c: 28, lead: 'Principal-led pods' },
@@ -12,10 +13,7 @@ export function TeamGrid() {
     <section className="section-tight">
       <div className="container">
         <Reveal>
-          <div style={{ marginBottom: 28 }}>
-            <span className="eyebrow">Team</span>
-            <h2 className="gradient-text" style={{ marginTop: 16 }}>The shape of the team.</h2>
-          </div>
+          <SectionHead eyebrow="Team" title="The shape of the team." />
         </Reveal>
         <Reveal>
           <div className="team-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>

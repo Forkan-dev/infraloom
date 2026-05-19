@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Reveal } from '@/components/shared/Reveal';
+import { SectionHead } from '@/components/shared/SectionHead';
 import { Tags } from '@/components/ui/Tags';
 import { ArrowRight } from '@/components/ui/ArrowRight';
 import { CaseVisualGeo, CaseVisualHRM, CaseVisualPixel } from '@/components/diagrams/CaseVisuals';
@@ -39,11 +40,8 @@ export function CaseStudiesPreview() {
     <section className="section">
       <div className="container">
         <Reveal>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', marginBottom: 40, gap: 24, flexWrap: 'wrap' }}>
-            <div style={{ maxWidth: 620 }}>
-              <span className="eyebrow" style={{ marginBottom: 16 }}>Selected work</span>
-              <h2 className="gradient-text" style={{ marginTop: 18 }}>Systems we&apos;re proud to be on call for.</h2>
-            </div>
+          <SectionHead eyebrow="Selected work" title="Systems we're proud to be on call for." />
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: -24, marginBottom: 40 }}>
             <Link href="/portfolio" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'var(--fg-2)', fontSize: 14 }}>
               All case studies <ArrowRight />
             </Link>

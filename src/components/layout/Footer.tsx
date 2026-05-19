@@ -28,7 +28,7 @@ const GROUPS = [
     items: [
       { label: 'About', href: '/about' },
       { label: 'Process', href: '/process' },
-      { label: 'Industries', href: '/industries' },
+      // { label: 'Industries', href: '/industries' },
       { label: 'Case Studies', href: '/portfolio' },
       { label: 'Contact', href: '/contact' },
     ],
@@ -36,7 +36,7 @@ const GROUPS = [
   {
     title: 'Resources',
     items: [
-      { label: 'Engineering blog', href: '/about' },
+      // { label: 'Engineering blog', href: '/about' },
       { label: 'Architecture library', href: '/portfolio' },
       { label: 'Status & SLAs', href: '/contact' },
       { label: 'Security', href: '/about' },

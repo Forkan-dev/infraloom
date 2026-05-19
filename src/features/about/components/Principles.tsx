@@ -1,4 +1,5 @@
 import { Reveal } from '@/components/shared/Reveal';
+import { SectionHead } from '@/components/shared/SectionHead';
 
 const PRINCIPLES = [
   { t: 'Production is the spec.', b: 'If it doesn\'t survive 3am, it doesn\'t exist. We design for failure modes first and happy paths second.' },
@@ -14,10 +15,7 @@ export function Principles() {
     <section className="section-tight">
       <div className="container">
         <Reveal>
-          <div style={{ marginBottom: 28 }}>
-            <span className="eyebrow">Engineering principles</span>
-            <h2 className="gradient-text" style={{ marginTop: 16 }}>Six things we won&apos;t compromise on.</h2>
-          </div>
+          <SectionHead eyebrow="Engineering principles" title="Six things we won't compromise on." />
         </Reveal>
         <div className="prin-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: 'var(--border)', border: '1px solid var(--border)', borderRadius: 18, overflow: 'hidden' }}>
           {PRINCIPLES.map((p, i) => (

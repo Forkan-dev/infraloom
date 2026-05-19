@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { PageHero } from '@/components/layout/PageHero';
 import { MissionCard } from '@/features/about/components/MissionCard';
-import { Timeline } from '@/features/about/components/Timeline';
 import { Principles } from '@/features/about/components/Principles';
 import { TeamGrid } from '@/features/about/components/TeamGrid';
 import { HowWeWork } from '@/features/about/components/HowWeWork';
@@ -21,7 +20,6 @@ export default function AboutPage() {
         body="We were founded by infrastructure engineers who got tired of inheriting other people's slideware. Today we build, ship and operate production systems for companies who can't afford to be wrong."
       />
       <MissionCard />
-      <Timeline />
       <Principles />
       <TeamGrid />
       <HowWeWork />
