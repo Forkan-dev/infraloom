@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Reveal } from '@/components/shared/Reveal';
-import { HRM_FEATURES } from '@/lib/data/projects';
 
 const CHECK_IN_METHODS = [
   { name: 'Face Recognition', color: '#8b5cf6' },
@@ -23,48 +22,6 @@ const HERO_STATS = [
 
 const TECH = ['Laravel', 'Vue.js', 'Firebase Firestore', 'MySQL', 'Redis', 'Stripe', 'ZKTeco API', 'REST API', 'Push Notifications'];
 
-const FEATURE_ICONS: Record<number, React.ReactNode> = {
-  0: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" />
-    </svg>
-  ),
-  1: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" /><rect x="14" y="14" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" />
-    </svg>
-  ),
-  2: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" />
-    </svg>
-  ),
-  3: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
-    </svg>
-  ),
-  4: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="5" y="2" width="14" height="20" rx="2" ry="2" /><line x1="12" y1="18" x2="12.01" y2="18" />
-    </svg>
-  ),
-  5: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-    </svg>
-  ),
-  6: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
-    </svg>
-  ),
-  7: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    </svg>
-  ),
-};
 
 export function HRMDetail() {
   return (
@@ -242,43 +199,6 @@ export function HRMDetail() {
         </div>
       </section>
 
-      {/* Features */}
-      <section className="section-tight">
-        <div className="container">
-          <Reveal>
-            <div style={{ marginBottom: 36 }}>
-              <span className="eyebrow" style={{ marginBottom: 12 }}>Core Features</span>
-              <h2 style={{ marginTop: 16, marginBottom: 12 }}>Everything HR needs, nothing it doesn&apos;t.</h2>
-              <p style={{ color: 'var(--fg-2)', fontSize: 16, maxWidth: '52ch' }}>
-                Eight focused modules covering every part of the employee lifecycle.
-              </p>
-            </div>
-          </Reveal>
-          <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
-            {HRM_FEATURES.map((f, i) => (
-              <Reveal key={i} delay={i * 50}>
-                <div className="card has-glow" style={{ padding: 28 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-                    <span style={{
-                      width: 38, height: 38, borderRadius: 10, flexShrink: 0,
-                      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                      background: 'rgba(139,92,246,0.1)', border: '1px solid rgba(139,92,246,0.2)',
-                      color: '#c4b5fd',
-                    }}>
-                      {FEATURE_ICONS[i]}
-                    </span>
-                    <h4 style={{ margin: 0, fontSize: 15, fontWeight: 500, color: '#fff' }}>{f.title}</h4>
-                  </div>
-                  <p style={{ margin: 0, fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.65 }}>{f.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <style>{`
-            @media (max-width: 880px) { .features-grid { grid-template-columns: 1fr !important; } }
-          `}</style>
-        </div>
-      </section>
 
       {/* Attendance Methods */}
       <section className="section-tight">

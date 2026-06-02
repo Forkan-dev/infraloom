@@ -76,33 +76,24 @@ export function Hero() {
           </div>
 
           <Reveal delay={340}>
-            <div style={{
-              padding: '8px 0',
-              background: 'linear-gradient(180deg, rgba(20,21,24,0.6), rgba(15,16,19,0.3))',
-              border: '1px solid var(--border)',
-              borderRadius: 22,
-              backdropFilter: 'blur(10px)',
-              overflow: 'hidden',
-            }}>
-              <div style={{ padding: '16px 20px 12px', borderBottom: '1px solid var(--border)' }}>
+            <div className="caps-card" style={{ padding: '8px 0', borderRadius: 22, overflow: 'hidden' }}>
+              <div className="caps-header" style={{ padding: '16px 20px 12px', borderBottom: '1px solid var(--border)' }}>
                 <span className="mono" style={{ fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.14em' }}>CORE CAPABILITIES</span>
               </div>
               {CAPABILITIES.map((cap, i) => (
                 <div
                   key={i}
+                  className="caps-row"
                   style={{
                     display: 'flex', alignItems: 'flex-start', gap: 14,
                     padding: '14px 20px',
                     borderBottom: i < CAPABILITIES.length - 1 ? '1px solid var(--border)' : 'none',
                   }}
                 >
-                  <div style={{
+                  <div className="caps-icon" style={{
                     flexShrink: 0, width: 36, height: 36,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     borderRadius: 10,
-                    background: 'rgba(139,92,246,0.1)',
-                    border: '1px solid rgba(139,92,246,0.2)',
-                    color: '#c4b5fd',
                   }}>
                     {cap.icon}
                   </div>
@@ -118,6 +109,39 @@ export function Hero() {
       </div>
 
       <style>{`
+        .caps-card {
+          background: linear-gradient(180deg, rgba(20,21,24,0.65) 0%, rgba(13,14,17,0.35) 100%);
+          border: 1px solid var(--border);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+        }
+        .caps-icon {
+          background: rgba(139,92,246,0.1);
+          border: 1px solid rgba(139,92,246,0.22);
+          color: #c4b5fd;
+        }
+        .caps-row { transition: background 0.18s; }
+
+        [data-theme="light"] .caps-card {
+          background: linear-gradient(160deg, #ffffff 0%, #eff2ff 100%);
+          border: 1px solid rgba(99,102,241,0.18);
+          box-shadow: 0 6px 40px rgba(99,102,241,0.1), 0 1px 6px rgba(0,0,0,0.06);
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+        [data-theme="light"] .caps-header {
+          border-bottom-color: rgba(99,102,241,0.12) !important;
+        }
+        [data-theme="light"] .caps-row {
+          border-bottom-color: rgba(99,102,241,0.1) !important;
+        }
+        [data-theme="light"] .caps-row:hover { background: rgba(99,102,241,0.04); }
+        [data-theme="light"] .caps-icon {
+          background: linear-gradient(135deg, rgba(79,70,229,0.1) 0%, rgba(139,92,246,0.08) 100%);
+          border: 1px solid rgba(79,70,229,0.22);
+          color: #4f46e5;
+        }
+
         @media (max-width: 980px) {
           .hero-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
         }

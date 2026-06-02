@@ -7,11 +7,46 @@ export interface ProjectItem {
   coverImage: string;
   status: string;
   demoUrl?: string;
+  detailHref?: string;
   stats: { l: string; v: string }[];
   tech: string[];
 }
 
 export const PROJECTS_LIST: ProjectItem[] = [
+  {
+    slug: 'geo-tracking',
+    category: 'Real-time · Multi-tenant',
+    name: 'Geo-tracking Platform',
+    tagline: 'Multi-tenant fleet operations at 92k vehicles',
+    excerpt:
+      'Re-platformed a legacy single-tenant fleet ops product into a real-time, multi-tenant system serving 92,000 vehicles across 240 fleets — with sub-200ms map renders and onboarding cut from 11 days to 47 minutes.',
+    coverImage: '/projects/geo_tracker/image1.png',
+    status: 'Live',
+    detailHref: '/portfolio/geo-tracking',
+    stats: [
+      { l: 'Vehicles', v: '92k' },
+      { l: 'Updates/min', v: '1.4M' },
+      { l: 'Tenants', v: '240' },
+    ],
+    tech: ['Laravel', 'Vue', 'PostgreSQL', 'Redis', 'WebSocket', 'Go'],
+  },
+  {
+    slug: 'pixel-streaming',
+    category: 'Real-time · Distributed · GPU',
+    name: 'Pixel Streaming Platform',
+    tagline: 'Multi-instance Unreal Engine streaming, behind one URL',
+    excerpt:
+      'A browser-delivered Unreal Engine 3D configurator with sub-second time-to-pixel, dynamic GPU allocation, Kong gateway, RabbitMQ events and Fluent Bit log fan-out — 8,420 concurrent sessions at 84ms P99.',
+    coverImage: '',
+    status: 'Live',
+    detailHref: '/portfolio/pixel-streaming',
+    stats: [
+      { l: 'Concurrent sessions', v: '8,420' },
+      { l: 'P99 latency', v: '84ms' },
+      { l: 'GPU pool', v: '54 nodes' },
+    ],
+    tech: ['Golang', 'Laravel', 'NestJS', 'Kong', 'RabbitMQ', 'Kubernetes'],
+  },
   {
     slug: 'hrm',
     category: 'SaaS · Enterprise',

@@ -61,8 +61,7 @@ export function OurStory() {
           {/* Section label */}
           <Reveal>
             <div style={{ marginBottom: 48 }}>
-              <span className="eyebrow" style={{ marginBottom: 12 }}>Our Story</span>
-              <h2 style={{ marginTop: 16, marginBottom: 0, maxWidth: '20ch' }}>
+              <h2 style={{ margin: 0, maxWidth: '20ch' }}>
                 Built by engineers, for engineers.
               </h2>
             </div>
@@ -83,16 +82,11 @@ export function OurStory() {
                   Today we design, build, and operate production-grade platforms for companies that can't afford to be
                   wrong — from seed-stage startups to enterprise teams scaling globally.
                 </p>
-                <div style={{ display: 'flex', gap: 32, marginTop: 12, flexWrap: 'wrap' }}>
+                <div className="story-stats">
                   {STATS.map((s, i) => (
-                    <div key={i}>
-                      <div style={{
-                        fontSize: 32, fontWeight: 600, fontFamily: 'var(--font-mono)',
-                        background: 'linear-gradient(135deg, #fff, #93c5fd)',
-                        WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent',
-                        letterSpacing: '-0.04em',
-                      }}>{s.value}</div>
-                      <div style={{ fontSize: 13, color: 'var(--fg-3)', marginTop: 2 }}>{s.label}</div>
+                    <div key={i} className="story-stat">
+                      <div className="story-stat-value">{s.value}</div>
+                      <div className="story-stat-label">{s.label}</div>
                     </div>
                   ))}
                 </div>
@@ -165,21 +159,53 @@ export function OurStory() {
             gap: 56px;
             align-items: center;
           }
+          .story-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+          }
+          .story-stat-value {
+            font-size: clamp(32px, 3.4vw, 44px);
+            font-weight: 600;
+            font-family: var(--font-mono);
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff 20%, #93c5fd 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+          }
+          [data-theme="light"] .story-stat-value {
+            background: linear-gradient(135deg, #1e40af 0%, #6d28d9 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+          }
+          .story-stat-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--fg-2);
+            margin-top: 6px;
+            letter-spacing: 0.01em;
+          }
           @media (max-width: 880px) {
             .story-split { grid-template-columns: 1fr !important; gap: 32px !important; }
             .story-split-rev > div:first-child { order: 2; }
             .story-split-rev > div:last-child { order: 1; }
+            .story-stats { gap: 28px; }
           }
         `}</style>
       </section>
 
-{/* ── Leadership ── */}
+      {/* ── Leadership ── */}
       <section className="section-tight">
         <div className="container">
           <Reveal>
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
-              <span className="eyebrow" style={{ marginBottom: 12 }}>Leadership</span>
-              <h2 style={{ marginTop: 16, marginBottom: 14 }}>The people behind the work</h2>
+              <h2 style={{ margin: '0 0 14px' }}>The people behind the work</h2>
               <p style={{ color: 'var(--fg-2)', fontSize: 16, maxWidth: '48ch', margin: '0 auto' }}>
                 A small, senior team. No layers of management between you and the engineers building your system.
               </p>
@@ -212,7 +238,6 @@ export function OurStory() {
                         background: `linear-gradient(135deg, ${l.color}15 0%, ${l.color}30 100%)`,
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                       }}>
-                        {/* subtle dot pattern */}
                         <div style={{
                           position: 'absolute', inset: 0, opacity: 0.3,
                           backgroundImage: `radial-gradient(${l.color}44 1px, transparent 1px)`,
@@ -231,7 +256,6 @@ export function OurStory() {
                             {l.initials}
                           </div>
                         </div>
-                        {/* corner glow */}
                         <div style={{
                           position: 'absolute', bottom: -30, right: -30,
                           width: 120, height: 120, borderRadius: '50%',

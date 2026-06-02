@@ -28,11 +28,12 @@ export function Navbar() {
       style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         padding: '16px 0',
-        transition: 'background 0.3s, border-color 0.3s, backdrop-filter 0.3s',
-        background: scrolled ? 'rgba(10,10,11,0.72)' : 'transparent',
-        borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
-        backdropFilter: scrolled ? 'saturate(140%) blur(14px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'saturate(140%) blur(14px)' : 'none',
+        transition: 'background 0.3s, border-color 0.3s, backdrop-filter 0.3s, box-shadow 0.3s',
+        background: scrolled ? 'var(--navbar-bg-scrolled)' : 'transparent',
+        borderBottom: scrolled ? '1px solid var(--navbar-border-scrolled, var(--border))' : '1px solid transparent',
+        boxShadow: scrolled ? 'var(--navbar-shadow-scrolled)' : 'none',
+        backdropFilter: scrolled ? 'saturate(160%) blur(16px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'saturate(160%) blur(16px)' : 'none',
       }}
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24 }}>
@@ -86,6 +87,12 @@ export function Navbar() {
         .nav-link.active::after {
           content: ""; position: absolute; left: 14px; right: 14px; bottom: 2px;
           height: 1.5px; background: linear-gradient(90deg, var(--blue), var(--violet)); border-radius: 2px;
+        }
+        [data-theme="light"] .nav-link:hover { background: rgba(99,102,241,0.07); color: #1e1b4b; }
+        [data-theme="light"] .nav-link { color: #4b5563; }
+        [data-theme="light"] .nav-link.active { color: #3730a3; }
+        [data-theme="light"] .nav-link.active::after {
+          background: linear-gradient(90deg, #2563eb, #7c3aed);
         }
         @media (max-width: 980px) {
           .nav-links { display: none !important; }

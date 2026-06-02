@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { Reveal } from '@/components/shared/Reveal';
-import { Tags } from '@/components/ui/Tags';
 import { CodeBlock } from '@/components/ui/CodeBlock';
 import { SectionHead } from '@/components/shared/SectionHead';
 import { PixelStreamingDiagram } from '@/components/diagrams/PixelStreamingDiagram';
@@ -166,8 +165,8 @@ export function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
               {study.microservices.map((m, i) => (
                 <div key={i} className="card" style={{ padding: 22 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
-                    <span className="mono" style={{ fontSize: 14, color: '#fff', fontWeight: 500 }}>{m.n}</span>
-                    <span className="chip" style={{ color: '#c4b5fd' }}>{m.lang}</span>
+                    <span className="mono ms-name" style={{ fontSize: 14, fontWeight: 500 }}>{m.n}</span>
+                    <span className="chip ms-chip">{m.lang}</span>
                   </div>
                   <p style={{ margin: 0, fontSize: 13, color: 'var(--fg-3)', lineHeight: 1.5 }}>{m.role}</p>
                 </div>
@@ -175,79 +174,19 @@ export function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
             </div>
           </Reveal>
           <style>{`
+            .ms-name { color: #fff; }
+            .ms-chip { color: #c4b5fd; }
+            [data-theme="light"] .ms-name { color: #1e1b4b; }
+            [data-theme="light"] .ms-chip { color: #4f46e5; }
             @media (max-width: 880px) { .ms-grid { grid-template-columns: 1fr 1fr !important; } }
             @media (max-width: 600px) { .ms-grid { grid-template-columns: 1fr !important; } }
           `}</style>
         </div>
       </section>
 
-      {/* Challenges */}
-      <section className="section-tight">
-        <div className="container">
-          <Reveal>
-            <SectionHead eyebrow="Hard problems" title="What broke. What we did about it." />
-          </Reveal>
-          <div className="challenge-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
-            {study.challenges.map((c, i) => (
-              <Reveal key={i} delay={i * 60}>
-                <div className="card has-glow" style={{ padding: 28 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-                    <span className="mono" style={{
-                      width: 32, height: 32, display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                      borderRadius: 8, background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.3)',
-                      color: '#fcd34d', fontSize: 12,
-                    }}>{`0${i + 1}`}</span>
-                    <h4 style={{ margin: 0 }}>{c.t}</h4>
-                  </div>
-                  <p style={{ margin: 0, fontSize: 14.5, color: 'var(--fg-2)', lineHeight: 1.6 }}>{c.b}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <style>{`@media (max-width: 700px) { .challenge-grid { grid-template-columns: 1fr !important; } }`}</style>
-        </div>
-      </section>
 
-      {/* Results */}
-      <section className="section-tight">
-        <div className="container">
-          <Reveal>
-            <SectionHead eyebrow="Results" title="What changed, measured." />
-          </Reveal>
-          <div className="results-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${study.results.length}, 1fr)`, gap: 16 }}>
-            {study.results.map((r, i) => (
-              <Reveal key={i} delay={i * 60}>
-                <div className="card" style={{ padding: 28 }}>
-                  <div className="mono" style={{ fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.14em', marginBottom: 12 }}>{r.l.toUpperCase()}</div>
-                  <div style={{
-                    fontSize: 38, fontWeight: 500, fontFamily: 'var(--font-mono)', letterSpacing: '-0.03em', marginBottom: 8,
-                    background: 'linear-gradient(120deg, #fff, #93c5fd)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent',
-                  }}>{r.v}</div>
-                  <div style={{ fontSize: 11, color: 'var(--fg-3)', fontFamily: 'var(--font-mono)' }}>was {r.was}</div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <style>{`@media (max-width: 880px) { .results-grid { grid-template-columns: repeat(2, 1fr) !important; } }`}</style>
-        </div>
-      </section>
 
-      {/* Stack */}
-      <section className="section-tight">
-        <div className="container">
-          <Reveal>
-            <div className="card" style={{ padding: 32, textAlign: 'center' }}>
-              <span className="eyebrow" style={{ marginBottom: 16 }}>Stack</span>
-              <h3 style={{ margin: '16px 0 24px' }}>The full toolkit on this engagement.</h3>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center' }}>
-                {study.stack.map((t, i) => (
-                  <span key={i} className="chip" style={{ fontSize: 13, padding: '6px 14px' }}>{t}</span>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+
 
     </div>
   );

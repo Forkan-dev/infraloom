@@ -15,8 +15,7 @@ export function HowWeWork() {
         <Reveal>
           <div className="howwework-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 32, alignItems: 'start' }}>
             <div>
-              <span className="eyebrow">How we work</span>
-              <h2 className="gradient-text" style={{ marginTop: 16, marginBottom: 22 }}>Embedded teams. Async-first. Documented to a fault.</h2>
+              <h2 className="gradient-text" style={{ margin: '0 0 22px' }}>Embedded teams. Async-first. Documented to a fault.</h2>
               <p style={{ color: 'var(--fg-2)', lineHeight: 1.65, fontSize: 15 }}>
                 We embed senior pods directly into your Slack, your Linear, your repos. Standups are async.
                 Decisions are RFCs. The engineer writing the code is the one in the design review.

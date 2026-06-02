@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { PageHero } from '@/components/layout/PageHero';
 import { ContactForm } from '@/features/contact/components/ContactForm';
 import { ContactSidebar } from '@/features/contact/components/ContactSidebar';
-import { OfficeGrid } from '@/features/contact/components/OfficeGrid';
 import { FAQAccordion } from '@/features/contact/components/FAQAccordion';
 import { Reveal } from '@/components/shared/Reveal';
 
@@ -32,7 +31,6 @@ export default function ContactPage() {
         <style>{`@media (max-width: 980px) { .contact-grid { grid-template-columns: 1fr !important; } }`}</style>
       </section>
 
-      <OfficeGrid />
       <FAQAccordion />
     </div>
   );

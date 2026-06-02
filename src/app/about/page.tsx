@@ -14,7 +14,6 @@ export default function AboutPage() {
   return (
     <div className="page-enter">
       <PageHero
-        eyebrow="About"
         title="An engineering company. Not an agency."
         body="We were founded by infrastructure engineers who got tired of inheriting other people's slideware. Today we build, ship and operate production systems for companies who can't afford to be wrong."
       />

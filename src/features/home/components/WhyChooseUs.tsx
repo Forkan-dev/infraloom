@@ -1,7 +1,5 @@
-import Link from 'next/link';
 import { Reveal } from '@/components/shared/Reveal';
 import { GlyphMap } from '@/components/shared/Glyphs';
-import { ArrowRight } from '@/components/ui/ArrowRight';
 
 const ITEMS = [
   { title: 'Production-grade engineering', body: 'No prototypes deployed to prod. Every system ships with monitoring, alerting and a rollback plan.', glyph: 'shield' },
@@ -28,7 +26,6 @@ export function WhyChooseUs() {
                 We work with founders and CTOs who would rather hire a small, embedded
                 team of principal engineers than spin up a 30-person agency engagement.
               </p>
-              <Link href="/about" className="btn btn-secondary">Read our engineering principles <ArrowRight /></Link>
             </Reveal>
           </div>
           <Reveal stagger>

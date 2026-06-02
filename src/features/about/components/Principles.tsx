@@ -15,7 +15,7 @@ export function Principles() {
     <section className="section-tight">
       <div className="container">
         <Reveal>
-          <SectionHead eyebrow="Engineering principles" title="Six things we won't compromise on." />
+          <SectionHead title="Six things we won't compromise on." />
         </Reveal>
         <div className="prin-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: 'var(--border)', border: '1px solid var(--border)', borderRadius: 18, overflow: 'hidden' }}>
           {PRINCIPLES.map((p, i) => (
