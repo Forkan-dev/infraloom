@@ -18,14 +18,6 @@ export const SERVICES: Service[] = [
     visual: 'saas',
   },
   {
-    n: '03',
-    title: 'Enterprise Systems',
-    body: 'Replace legacy estates with modern, observable systems. SSO, RBAC, audit trails and compliance baked in.',
-    deliverables: ['Migration plan', 'Strangler fig integration', 'RBAC + SSO', 'SOC 2 evidence'],
-    stack: ['Laravel', 'React', 'Kong', 'PostgreSQL'],
-    visual: 'enterprise',
-  },
-  {
     n: '04',
     title: 'Mobile Applications',
     body: 'Cross-platform mobile with offline-first sync, native modules where they matter, and instrumented release pipelines.',

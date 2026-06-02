@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { Reveal } from '@/components/shared/Reveal';
 
 interface PageHeroProps {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   body: string;
   children?: ReactNode;
@@ -24,11 +24,13 @@ export function PageHero({ eyebrow, title, body, children }: PageHeroProps) {
         style={{ top: -300, left: '50%', transform: 'translateX(-50%)' }}
       />
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <Reveal>
-          <span className="eyebrow" style={{ marginBottom: 24 }}>
-            {eyebrow}
-          </span>
-        </Reveal>
+        {eyebrow && (
+          <Reveal>
+            <span className="eyebrow" style={{ marginBottom: 24 }}>
+              {eyebrow}
+            </span>
+          </Reveal>
+        )}
         <Reveal delay={80}>
           <h1 className="gradient-text" style={{ marginTop: 20, marginBottom: 24 }}>
             {title}

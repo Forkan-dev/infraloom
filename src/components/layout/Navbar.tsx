@@ -43,9 +43,8 @@ export function Navbar() {
         <nav className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
           <NavLink href="/" label="Home" />
           <NavLink href="/services" label="Services" />
-          <NavLink href="/technologies" label="Technologies" />
           <NavLink href="/process" label="Process" />
-          <NavLink href="/portfolio" label="Case Studies" />
+          <NavLink href="/projects" label="Projects" />
           {/* <NavLink href="/industries" label="Industries" /> */}
           <NavLink href="/about" label="About" />
         </nav>
@@ -113,9 +112,8 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   const NAV_LINKS = [
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
-    { href: '/technologies', label: 'Technologies' },
     { href: '/process', label: 'Process' },
-    { href: '/portfolio', label: 'Case Studies' },
+    { href: '/projects', label: 'Projects' },
     { href: '/industries', label: 'Industries' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },

@@ -14,16 +14,6 @@ const GROUPS = [
     ],
   },
   {
-    title: 'Technology',
-    items: [
-      { label: 'Backend stack', href: '/technologies' },
-      { label: 'Frontend stack', href: '/technologies' },
-      { label: 'Infrastructure', href: '/technologies' },
-      { label: 'Observability', href: '/technologies' },
-      { label: 'Databases', href: '/technologies' },
-    ],
-  },
-  {
     title: 'Company',
     items: [
       { label: 'About', href: '/about' },

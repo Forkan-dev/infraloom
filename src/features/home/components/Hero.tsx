@@ -1,7 +1,4 @@
-import Link from 'next/link';
 import { Reveal } from '@/components/shared/Reveal';
-import { Stat } from '@/components/ui/Stat';
-import { ArrowRight } from '@/components/ui/ArrowRight';
 
 const CAPABILITIES = [
   {
@@ -62,13 +59,6 @@ export function Hero() {
       <div className="bg-glow blue" style={{ top: -200, left: -300 }} />
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <Reveal>
-          <span className="chip dot" style={{ marginBottom: 28 }}>
-            <span style={{ color: 'var(--success)' }}>● </span>
-            <span style={{ color: 'var(--fg-2)' }}>Now booking Q3 engagements · 4 slots remaining</span>
-          </span>
-        </Reveal>
-
         <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr', gap: 60, alignItems: 'center' }}>
           <div>
             <Reveal delay={80}>
@@ -82,21 +72,6 @@ export function Hero() {
                 platforms — distributed backends, real-time streaming, and AI-native
                 products for ambitious companies.
               </p>
-            </Reveal>
-            <Reveal delay={220}>
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 56 }}>
-                <Link href="/contact" className="btn btn-primary">Book a discovery call <ArrowRight /></Link>
-                <Link href="/portfolio" className="btn btn-secondary">View case studies</Link>
-              </div>
-            </Reveal>
-            <Reveal delay={300}>
-              <div style={{ display: 'flex', gap: 32, alignItems: 'center', flexWrap: 'wrap' }}>
-                <Stat value="180+" label="Systems shipped" />
-                <div style={{ width: 1, height: 32, background: 'var(--border)' }} />
-                <Stat value="99.98%" label="Avg. uptime" />
-                <div style={{ width: 1, height: 32, background: 'var(--border)' }} />
-                <Stat value="< 80ms" label="P99 latency" />
-              </div>
             </Reveal>
           </div>
 

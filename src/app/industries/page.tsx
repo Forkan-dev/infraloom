@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { PageHero } from '@/components/layout/PageHero';
 import { IndustryRow } from '@/features/industries/components/IndustryRow';
-import { BigCTA } from '@/components/shared/BigCTA';
 
 export const metadata: Metadata = {
   title: 'Industries — Infraloom Engineering',
@@ -17,7 +16,6 @@ export default function IndustriesPage() {
         body="The shape of a platform is decided by what it has to comply with, who pays the bills and who gets paged. We design for those constraints."
       />
       <IndustryRow />
-      <BigCTA />
     </div>
   );
 }

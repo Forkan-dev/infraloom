@@ -164,5 +164,16 @@ export const PORTFOLIO_LIST = [
     stack: ['Next.js', 'NestJS', 'Postgres', 'Redis', 'Stripe'],
     stats: [{ l: 'Headcount', v: '14k' }, { l: 'Countries', v: '28' }, { l: 'Tools replaced', v: '6' }],
     featured: false,
+    href: '/projects/hrm',
+  },
+  {
+    slug: 'newsportal',
+    tag: 'Media · Publishing',
+    title: 'Online Newspaper',
+    excerpt: 'A production-ready news publishing platform — full editorial workflow, multilingual support, 50+ REST API endpoints, and a mobile app companion.',
+    stack: ['Laravel', 'TailwindCSS', 'Redis', 'AWS S3', 'Stripe', 'OpenAI'],
+    stats: [{ l: 'API endpoints', v: '50+' }, { l: 'DB tables', v: '108+' }, { l: 'News formats', v: '5' }],
+    featured: false,
+    href: '/projects/newsportal',
   },
 ];

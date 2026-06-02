@@ -2,13 +2,36 @@ import Link from 'next/link';
 import { Reveal } from '@/components/shared/Reveal';
 import { Tags } from '@/components/ui/Tags';
 import { ArrowRight } from '@/components/ui/ArrowRight';
-import { CaseVisualGeo, CaseVisualHRM, CaseVisualPixel } from '@/components/diagrams/CaseVisuals';
+import Image from 'next/image';
+import { CaseVisualPixel } from '@/components/diagrams/CaseVisuals';
 import { PORTFOLIO_LIST } from '@/lib/data/portfolio';
 
 const VISUALS: Record<string, React.ReactNode> = {
   'pixel-streaming': <CaseVisualPixel />,
-  'geo-tracking': <CaseVisualGeo />,
-  hrm: <CaseVisualHRM />,
+  'geo-tracking': (
+    <Image
+      src="/projects/geo_tracker/image1.png"
+      alt="Enterprise geo-tracking platform"
+      fill
+      style={{ objectFit: 'cover', objectPosition: 'center' }}
+    />
+  ),
+  hrm: (
+    <Image
+      src="/projects/hrm/image.png"
+      alt="HRM platform"
+      fill
+      style={{ objectFit: 'cover', objectPosition: 'center' }}
+    />
+  ),
+  newsportal: (
+    <Image
+      src="/projects/newspaper/frontpage.png"
+      alt="Online Newspaper"
+      fill
+      style={{ objectFit: 'cover', objectPosition: 'top' }}
+    />
+  ),
 };
 
 export function PortfolioGrid() {
@@ -18,7 +41,7 @@ export function PortfolioGrid() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           {PORTFOLIO_LIST.map((c, i) => (
             <Reveal key={i} delay={i * 60}>
-              <Link href={`/portfolio/${c.slug}`} className="card has-glow case-card-lg" style={{
+              <Link href={c.href ?? `/portfolio/${c.slug}`} className="card has-glow case-card-lg" style={{
                 display: 'grid',
                 gridTemplateColumns: c.featured ? '1.05fr 1fr' : '1fr 1fr',
                 minHeight: c.featured ? 440 : 360,

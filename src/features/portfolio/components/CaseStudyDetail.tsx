@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { Reveal } from '@/components/shared/Reveal';
 import { Tags } from '@/components/ui/Tags';
 import { CodeBlock } from '@/components/ui/CodeBlock';
-import { BigCTA } from '@/components/shared/BigCTA';
 import { SectionHead } from '@/components/shared/SectionHead';
 import { PixelStreamingDiagram } from '@/components/diagrams/PixelStreamingDiagram';
 import { CASE_STUDIES } from '@/lib/data/portfolio';
@@ -250,7 +249,6 @@ export function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
         </div>
       </section>
 
-      <BigCTA />
     </div>
   );
 }

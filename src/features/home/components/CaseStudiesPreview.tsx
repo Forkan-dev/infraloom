@@ -1,9 +1,10 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Reveal } from '@/components/shared/Reveal';
 import { SectionHead } from '@/components/shared/SectionHead';
 import { Tags } from '@/components/ui/Tags';
 import { ArrowRight } from '@/components/ui/ArrowRight';
-import { CaseVisualGeo, CaseVisualHRM, CaseVisualPixel } from '@/components/diagrams/CaseVisuals';
+import { CaseVisualPixel } from '@/components/diagrams/CaseVisuals';
 
 const CASES = [
   {
@@ -12,7 +13,14 @@ const CASES = [
     body: 'Re-platformed a fleet operations product to a multi-tenant, real-time architecture serving 92k vehicles.',
     tech: ['Laravel', 'Vue', 'PostgreSQL', 'Redis', 'WebSocket'],
     href: '/portfolio/geo-tracking',
-    visual: <CaseVisualGeo />,
+    visual: (
+      <Image
+        src="/projects/geo_tracker/image1.png"
+        alt="Enterprise geo-tracking platform"
+        fill
+        style={{ objectFit: 'cover', objectPosition: 'center' }}
+      />
+    ),
     featured: false,
   },
   {
@@ -20,8 +28,31 @@ const CASES = [
     title: 'HRM platform for 14,000 employees',
     body: 'Replaced 6 internal tools with one role-aware HRM platform covering payroll, attendance and analytics.',
     tech: ['Next.js', 'NestJS', 'Postgres', 'Redis'],
-    href: '/portfolio/hrm',
-    visual: <CaseVisualHRM />,
+    href: '/projects/hrm',
+    visual: (
+      <Image
+        src="/projects/hrm/image.png"
+        alt="HRM platform"
+        fill
+        style={{ objectFit: 'cover', objectPosition: 'center' }}
+      />
+    ),
+    featured: false,
+  },
+  {
+    tag: 'Media · Publishing',
+    title: 'Online Newspaper',
+    body: 'A full-stack news publishing platform — editorial workflow, multilingual support, mobile app, and multiple revenue streams.',
+    tech: ['Laravel', 'TailwindCSS', 'Redis', 'AWS S3', 'Stripe', 'OpenAI'],
+    href: '/projects/newsportal',
+    visual: (
+      <Image
+        src="/projects/newspaper/frontpage.png"
+        alt="Online Newspaper"
+        fill
+        style={{ objectFit: 'cover', objectPosition: 'top' }}
+      />
+    ),
     featured: false,
   },
   {
