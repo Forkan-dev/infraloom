@@ -89,15 +89,6 @@ export function Hero() {
                 <Link href="/portfolio" className="btn btn-secondary">View case studies</Link>
               </div>
             </Reveal>
-            <Reveal delay={300}>
-              <div style={{ display: 'flex', gap: 32, alignItems: 'center', flexWrap: 'wrap' }}>
-                <Stat value="180+" label="Systems shipped" />
-                <div style={{ width: 1, height: 32, background: 'var(--border)' }} />
-                <Stat value="99.98%" label="Avg. uptime" />
-                <div style={{ width: 1, height: 32, background: 'var(--border)' }} />
-                <Stat value="< 80ms" label="P99 latency" />
-              </div>
-            </Reveal>
           </div>
 
           <Reveal delay={340}>

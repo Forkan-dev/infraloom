@@ -29,7 +29,7 @@ export function Navbar() {
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         padding: '16px 0',
         transition: 'background 0.3s, border-color 0.3s, backdrop-filter 0.3s',
-        background: scrolled ? 'rgba(10,10,11,0.72)' : 'transparent',
+        background: scrolled ? 'var(--nav-bg)' : 'transparent',
         borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
         backdropFilter: scrolled ? 'saturate(140%) blur(14px)' : 'none',
         WebkitBackdropFilter: scrolled ? 'saturate(140%) blur(14px)' : 'none',
@@ -82,7 +82,7 @@ export function Navbar() {
           color: var(--fg-2); border-radius: 8px;
           transition: color 0.2s, background 0.2s;
         }
-        .nav-link:hover { color: var(--fg-1); background: rgba(255,255,255,0.04); }
+        .nav-link:hover { color: var(--fg-1); background: var(--nav-link-hover); }
         .nav-link.active { color: var(--fg-1); }
         .nav-link.active::after {
           content: ""; position: absolute; left: 14px; right: 14px; bottom: 2px;
