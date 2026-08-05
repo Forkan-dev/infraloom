@@ -18,9 +18,9 @@ export function WhyChooseUs() {
         <div className="why-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 80, alignItems: 'start' }}>
           <div style={{ position: 'sticky', top: 120 }}>
             <Reveal>
-              <span className="eyebrow" style={{ marginBottom: 24 }}>Why teams pick Infraloom</span>
+              <span className="eyebrow" style={{ marginBottom: 24 }}>Why Infraloom</span>
               <h2 className="gradient-text" style={{ marginBottom: 24, marginTop: 16 }}>
-                A senior team that ships like an in-house platform group.
+                A senior team that works like your own.
               </h2>
               <p className="lede" style={{ marginBottom: 28 }}>
                 We work with founders and CTOs who would rather hire a small, embedded

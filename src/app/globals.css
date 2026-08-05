@@ -46,6 +46,11 @@ html { scroll-behavior: smooth; }
   --container: 1240px;
 
   --grad-primary: linear-gradient(120deg, #3b82f6 0%, #8b5cf6 100%);
+
+  /* navbar surface once the page is scrolled */
+  --nav-bg: rgba(10, 10, 11, 0.72);
+  --nav-link-hover: rgba(255, 255, 255, 0.06);
+  --watermark-ink: rgba(255, 255, 255, 0.07);
 }
 
 [data-theme="light"] {
@@ -62,12 +67,12 @@ html { scroll-behavior: smooth; }
   --bg: #f5f7ff;
   --fg: #09090b;
   --surface: #ffffff;
-  --surface-2: #eef1f8;
-  --border-2: #c7cfea;
+  --surface-2: #f4f4f5;
+  --border-2: #d4d4d8;
 
-  --navbar-bg-scrolled: rgba(248,250,255,0.92);
-  --navbar-border-scrolled: #c7d2fe;
-  --navbar-shadow-scrolled: 0 4px 24px rgba(99,102,241,0.08), 0 1px 4px rgba(0,0,0,0.06);
+  --nav-bg: rgba(250, 250, 250, 0.78);
+  --nav-link-hover: rgba(0, 0, 0, 0.05);
+  --watermark-ink: rgba(0, 0, 0, 0.08);
 }
 
 body {
@@ -132,6 +137,12 @@ p { margin: 0; color: var(--fg-2); text-wrap: pretty; }
 }
 
 /* Backgrounds */
+/* logo — swap the artwork with the theme, no JS so there is no swap on hydration */
+.logo-img { display: block; object-fit: contain; }
+.logo-img--light { display: none; }
+[data-theme="light"] .logo-img--dark { display: none; }
+[data-theme="light"] .logo-img--light { display: block; }
+
 .bg-grid {
   position: absolute; inset: 0;
   background-image:

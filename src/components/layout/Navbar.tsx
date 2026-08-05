@@ -28,12 +28,11 @@ export function Navbar() {
       style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         padding: '16px 0',
-        transition: 'background 0.3s, border-color 0.3s, backdrop-filter 0.3s, box-shadow 0.3s',
-        background: scrolled ? 'var(--navbar-bg-scrolled)' : 'transparent',
-        borderBottom: scrolled ? '1px solid var(--navbar-border-scrolled, var(--border))' : '1px solid transparent',
-        boxShadow: scrolled ? 'var(--navbar-shadow-scrolled)' : 'none',
-        backdropFilter: scrolled ? 'saturate(160%) blur(16px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'saturate(160%) blur(16px)' : 'none',
+        transition: 'background 0.3s, border-color 0.3s, backdrop-filter 0.3s',
+        background: scrolled ? 'var(--nav-bg)' : 'transparent',
+        borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
+        backdropFilter: scrolled ? 'saturate(140%) blur(14px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'saturate(140%) blur(14px)' : 'none',
       }}
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24 }}>
@@ -82,7 +81,7 @@ export function Navbar() {
           color: var(--fg-2); border-radius: 8px;
           transition: color 0.2s, background 0.2s;
         }
-        .nav-link:hover { color: var(--fg-1); background: rgba(255,255,255,0.04); }
+        .nav-link:hover { color: var(--fg-1); background: var(--nav-link-hover); }
         .nav-link.active { color: var(--fg-1); }
         .nav-link.active::after {
           content: ""; position: absolute; left: 14px; right: 14px; bottom: 2px;
