@@ -62,12 +62,6 @@ export function Hero() {
       <div className="bg-glow blue" style={{ top: -200, left: -300 }} />
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <Reveal>
-          <span className="chip dot" style={{ marginBottom: 28 }}>
-            <span style={{ color: 'var(--success)' }}>● </span>
-            <span style={{ color: 'var(--fg-2)' }}>Now booking Q3 engagements · 4 slots remaining</span>
-          </span>
-        </Reveal>
 
         <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr', gap: 60, alignItems: 'center' }}>
           <div>

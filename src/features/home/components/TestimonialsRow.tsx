@@ -24,7 +24,7 @@ export function TestimonialsRow() {
     <section className="section">
       <div className="container">
         <Reveal>
-          <SectionHead eyebrow="Trusted by" title="Senior teams who don't outsource lightly." />
+          <SectionHead eyebrow="Trusted by" title="What our clients say" />
         </Reveal>
         <Reveal stagger>
           <div className="t-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>

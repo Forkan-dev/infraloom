@@ -14,7 +14,6 @@ export default function HomePage() {
       <TrustedTechnologies />
       <ServicesPreview />
       <WhyChooseUs />
-      <ArchitectureShowcase />
       <CaseStudiesPreview />
       <TestimonialsRow />
       <BigCTA />

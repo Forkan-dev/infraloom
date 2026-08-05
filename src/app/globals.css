@@ -46,6 +46,7 @@ html { scroll-behavior: smooth; }
   /* navbar surface once the page is scrolled */
   --nav-bg: rgba(10, 10, 11, 0.72);
   --nav-link-hover: rgba(255, 255, 255, 0.06);
+  --watermark-ink: rgba(255, 255, 255, 0.07);
 }
 
 [data-theme="light"] {
@@ -67,6 +68,7 @@ html { scroll-behavior: smooth; }
 
   --nav-bg: rgba(250, 250, 250, 0.78);
   --nav-link-hover: rgba(0, 0, 0, 0.05);
+  --watermark-ink: rgba(0, 0, 0, 0.08);
 }
 
 body {
