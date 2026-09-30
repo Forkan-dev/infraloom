@@ -16,8 +16,8 @@ export function ArchitectureShowcase() {
         <Reveal>
           <SectionHead
             eyebrow="Architecture"
-            title="Designed to fail loudly. Built to scale quietly."
-            body="A snapshot of one of our reference architectures — multi-region, event-driven, observable end-to-end."
+            title="How we design systems"
+            body="One of our reference architectures: multi-region, event-driven and observable end to end."
           />
         </Reveal>
         <Reveal>

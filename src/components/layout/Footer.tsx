@@ -5,12 +5,12 @@ const GROUPS = [
   {
     title: 'Services',
     items: [
-      { label: 'Custom Software', href: '/services' },
-      { label: 'SaaS Development', href: '/services' },
-      { label: 'Cloud Architecture', href: '/services' },
-      { label: 'AI Integration', href: '/services' },
+      { label: 'Web Applications', href: '/services' },
+      { label: 'Game Streaming', href: '/services' },
+      { label: 'SaaS Platforms', href: '/services' },
+      { label: 'AI & Automation', href: '/services' },
+      { label: 'Cloud Infrastructure', href: '/services' },
       { label: 'DevOps & CI/CD', href: '/services' },
-      { label: 'Real-time Streaming', href: '/services' },
     ],
   },
   {
@@ -33,6 +33,20 @@ const GROUPS = [
     ],
   },
 ];
+
+function InfinityMark() {
+  return (
+    <svg viewBox="0 0 100 50" fill="none" focusable="false">
+      <path
+        d="M50 25C42 12 33 4 25 4 13.4 4 4 13.4 4 25s9.4 21 21 21c8 0 17-8 25-21 8-13 17-21 25-21 11.6 0 21 9.4 21 21s-9.4 21-21 21c-8 0-17-8-25-21Z"
+        stroke="currentColor"
+        strokeWidth="8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export function Footer() {
   return (
@@ -93,22 +107,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div
-          style={{
-            fontSize: 'clamp(96px, 18vw, 260px)',
-            fontWeight: 500,
-            letterSpacing: '-0.06em',
-            lineHeight: 0.85,
-            background: 'linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 100%)',
-            WebkitBackgroundClip: 'text',
-            backgroundClip: 'text',
-            color: 'transparent',
-            textAlign: 'left',
-            marginBottom: 40,
-            userSelect: 'none',
-          }}
-        >
-          Infraloom
+        <div className="footer-watermark" aria-hidden="true">
+          Infral<InfinityMark />m
         </div>
 
         <div
@@ -132,6 +132,25 @@ export function Footer() {
       </div>
 
       <style>{`
+        .footer-watermark {
+          font-size: clamp(96px, 18vw, 260px);
+          font-weight: 500;
+          letter-spacing: -0.06em;
+          line-height: 0.85;
+          margin-bottom: 40px;
+          user-select: none;
+          color: var(--watermark-ink);
+          /* one fade for the letters and the infinity mark alike */
+          -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 100%);
+          mask-image: linear-gradient(180deg, #000 0%, transparent 100%);
+        }
+        .footer-watermark svg {
+          /* sized to the x-height so it sits where the "oo" would */
+          height: 0.52em;
+          width: auto;
+          vertical-align: baseline;
+          margin: 0 -0.02em;
+        }
         @media (max-width: 880px) {
           .footer-top { grid-template-columns: 1fr !important; gap: 32px !important; }
           .footer-grid { grid-template-columns: repeat(2, 1fr) !important; }

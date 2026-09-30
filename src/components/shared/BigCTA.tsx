@@ -34,7 +34,7 @@ export function BigCTA() {
           />
           <div style={{ position: 'relative' }}>
             <span className="eyebrow" style={{ marginBottom: 24 }}>
-              Need a scalable software partner?
+              Get in touch
             </span>
             <h2
               className="gradient-text"
@@ -44,15 +44,15 @@ export function BigCTA() {
                 fontSize: 'clamp(36px, 5vw, 64px)',
               }}
             >
-              Let&apos;s ship something{' '}
+              Let&apos;s build your{' '}
               <em style={{ color: '#c4b5fd', fontStyle: 'italic' }}>
-                worth running
-              </em>{' '}
-              in production.
+                next platform
+              </em>
+              .
             </h2>
             <p className="lede" style={{ margin: '0 auto 36px' }}>
-              30 minutes, no slides. Bring an architecture problem and we&apos;ll
-              bring a senior engineer.
+              A 30 minute call with a senior engineer. Bring your architecture
+              problem and we will talk it through.
             </p>
             <div
               style={{

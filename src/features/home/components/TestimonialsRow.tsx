@@ -1,4 +1,5 @@
 import { Reveal } from '@/components/shared/Reveal';
+import { SectionHead } from '@/components/shared/SectionHead';
 
 const REVIEWS = [
   {
@@ -76,16 +77,8 @@ export function TestimonialsRow() {
 
         {/* Header */}
         <Reveal>
-          <div style={{ textAlign: 'center', marginBottom: 56 }}>
-            <h2 style={{ marginBottom: 16 }}>What our clients say</h2>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
-              <Stars count={5} />
-              <span style={{ fontSize: 22, fontWeight: 700, fontFamily: 'var(--font-mono)', color: '#f59e0b' }}>5.0</span>
-              <span style={{ fontSize: 14, color: 'var(--fg-3)' }}>· {REVIEWS.length} reviews</span>
-            </div>
-          </div>
+          <SectionHead eyebrow="Trusted by" title="What our clients say" />
         </Reveal>
-
         {/* Featured review */}
         <Reveal delay={60}>
           <div style={{

@@ -1,10 +1,10 @@
+import type { ServiceIconName } from '@/components/shared/ServiceIcon';
+
 export interface Service {
-  n: string;
+  icon: ServiceIconName;
   title: string;
   body: string;
   deliverables: string[];
-  stack: string[];
-  visual: string;
 }
 
 export interface CaseStudy {

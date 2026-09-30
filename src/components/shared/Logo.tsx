@@ -7,33 +7,30 @@ interface LogoProps {
   priority?: boolean;
 }
 
-// Source PNG sizes — used to keep the aspect ratio.
-const LIGHT = { src: '/brand/infraloom-logo-light.png', w: 1216, h: 219 };
-const DARK = { src: '/brand/infraloom-logo-dark.png', w: 1168, h: 219 };
+const LIGHT = { src: '/logo/infraloom-light.png', w: 1216, h: 219 };
+const DARK = { src: '/logo/infraloom-dark.png', w: 1168, h: 219 };
 
-function LogoImage({ logo, height, className, priority }: { logo: typeof LIGHT; height: number; className?: string; priority?: boolean }) {
+export function Logo({ height = 32 }: LogoProps) {
   return (
-    <Image
-      src={logo.src}
-      alt="Infraloom"
-      width={Math.round(height * (logo.w / logo.h))}
-      height={height}
-      priority={priority}
-      className={className}
-      style={{ height, width: 'auto' }}
-    />
-  );
-}
-
-export function Logo({ height = 30, variant = 'auto', priority }: LogoProps) {
-  if (variant === 'light') return <LogoImage logo={LIGHT} height={height} priority={priority} />;
-  if (variant === 'dark') return <LogoImage logo={DARK} height={height} priority={priority} />;
-
-  // Both variants render; CSS in globals.css shows the one matching [data-theme].
-  return (
-    <span style={{ display: 'inline-flex' }}>
-      <LogoImage logo={DARK} height={height} className="logo-on-dark" priority={priority} />
-      <LogoImage logo={LIGHT} height={height} className="logo-on-light" priority={priority} />
+    <span className="logo" style={{ display: 'inline-flex', alignItems: 'center', height }}>
+      <Image
+        className="logo-img logo-img--dark"
+        src={DARK.src}
+        alt="Infraloom"
+        width={DARK.w}
+        height={DARK.h}
+        style={{ height, width: 'auto' }}
+        priority
+      />
+      <Image
+        className="logo-img logo-img--light"
+        src={LIGHT.src}
+        alt="Infraloom"
+        width={LIGHT.w}
+        height={LIGHT.h}
+        style={{ height, width: 'auto' }}
+        priority
+      />
     </span>
   );
 }
