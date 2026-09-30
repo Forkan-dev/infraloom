@@ -4,7 +4,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   'pixel-streaming': {
     slug: 'pixel-streaming',
     eyebrow: 'Real-time · Distributed · GPU',
-    title: 'Multi-instance Unreal Engine pixel streaming, behind a single URL.',
+    title: 'Multi-instance Unreal Engine gaming platform, behind a single URL.',
     lead: 'An interactive 3D product configurator delivered through the browser — with no client install, no plugin and a control plane that handed out fresh GPU instances in under a second.',
     heroStats: [
       { l: 'Concurrent sessions', v: '8,420' },
@@ -141,8 +141,8 @@ export const PORTFOLIO_LIST = [
   {
     slug: 'pixel-streaming',
     tag: 'Real-time · Distributed · GPU',
-    title: 'Unreal Engine pixel streaming platform',
-    excerpt: 'Multi-instance UE pixel streaming with dynamic GPU allocation, Kong gateway, RabbitMQ events and Fluent Bit log fan-out. Sub-100ms control plane.',
+    title: 'Unreal Engine gaming platform',
+    excerpt: 'Multi-instance UE gaming platform with dynamic GPU allocation, Kong gateway, RabbitMQ events and Fluent Bit log fan-out. Sub-100ms control plane.',
     stack: ['Golang', 'Laravel', 'NestJS', 'Kong', 'RabbitMQ', 'Fluent Bit', 'Kubernetes'],
     stats: [{ l: 'P99 latency', v: '84ms' }, { l: 'Concurrent sessions', v: '8,420' }, { l: 'GPU pool', v: '54 nodes' }],
     featured: true,

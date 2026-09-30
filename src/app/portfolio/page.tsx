@@ -4,7 +4,7 @@ import { PortfolioGrid } from '@/features/portfolio/components/PortfolioGrid';
 
 export const metadata: Metadata = {
   title: 'Case Studies — Infraloom Engineering',
-  description: 'Real-world systems we designed and shipped — geo-tracking at 92k vehicles, pixel streaming at scale, and enterprise HRM.',
+  description: 'Real-world systems we designed and shipped — geo-tracking at 92k vehicles, a gaming platform at scale, and enterprise HRM.',
 };
 
 export default function PortfolioPage() {

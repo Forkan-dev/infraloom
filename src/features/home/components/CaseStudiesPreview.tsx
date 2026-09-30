@@ -57,8 +57,8 @@ const CASES = [
   },
   {
     tag: 'Streaming · Distributed systems',
-    title: 'Unreal Engine pixel streaming platform',
-    body: 'Multi-instance UE pixel streaming with dynamic GPU allocation, Kong gateway, RabbitMQ events and Fluent Bit log fan-out.',
+    title: 'Unreal Engine gaming platform',
+    body: 'Multi-instance UE gaming platform with dynamic GPU allocation, Kong gateway, RabbitMQ events and Fluent Bit log fan-out.',
     tech: ['Golang', 'Laravel', 'NestJS', 'Kong', 'RabbitMQ', 'Fluent Bit'],
     href: '/portfolio/pixel-streaming',
     visual: <CaseVisualPixel />,

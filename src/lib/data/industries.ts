@@ -77,7 +77,7 @@ export const INDUSTRIES: Industry[] = [
     glyph: 'pulse',
     color: '#fb923c',
     challenge: 'Real-time pixel-perfect streaming, dynamic GPU allocation, and DRM workflows that don\'t add visible latency.',
-    solution: 'Multi-instance UE pixel streaming with a Go orchestrator, Kong gateway, RabbitMQ event fabric and Fluent Bit log fan-out — see the case study.',
+    solution: 'Multi-instance UE gaming platform with a Go orchestrator, Kong gateway, RabbitMQ event fabric and Fluent Bit log fan-out — see the case study.',
     stack: ['Go', 'Kong', 'RabbitMQ', 'WebRTC'],
     kpis: [
       { l: 'P99 control', v: '84ms' },

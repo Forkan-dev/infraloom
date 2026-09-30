@@ -4,7 +4,7 @@ const EVENTS = [
   { y: '2018', t: 'Founded as a 4-person engineering studio.', b: 'We started by helping two YC startups un-stick their Rails monoliths. Word got around.' },
   { y: '2020', t: 'First enterprise contract: a real-time logistics platform for 92k vehicles.', b: 'We learned the difference between \'scales\' and \'scales under operational load at 3am\'.' },
   { y: '2022', t: 'Opened a dedicated Distributed Systems practice.', b: 'Hired three principal engineers from streaming-media and exchange backgrounds. Shipped our first Kong + RabbitMQ + Fluent Bit reference architecture.' },
-  { y: '2024', t: 'Multi-instance UE pixel streaming platform goes live.', b: '11M+ sessions launched in year one. We open-sourced parts of the orchestrator.' },
+  { y: '2024', t: 'Multi-instance UE gaming platform goes live.', b: '11M+ sessions launched in year one. We open-sourced parts of the orchestrator.' },
   { y: '2026', t: '47 engineers. 5 timezones. Zero generic agency work.', b: 'Today we run senior, embedded teams against real production systems for clients on three continents.' },
 ];
 

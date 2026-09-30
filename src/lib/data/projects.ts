@@ -33,7 +33,7 @@ export const PROJECTS_LIST: ProjectItem[] = [
   {
     slug: 'pixel-streaming',
     category: 'Real-time · Distributed · GPU',
-    name: 'Pixel Streaming Platform',
+    name: 'Gaming Platform',
     tagline: 'Multi-instance Unreal Engine streaming, behind one URL',
     excerpt:
       'A browser-delivered Unreal Engine 3D configurator with sub-second time-to-pixel, dynamic GPU allocation, Kong gateway, RabbitMQ events and Fluent Bit log fan-out — 8,420 concurrent sessions at 84ms P99.',
@@ -56,7 +56,7 @@ export const PROJECTS_LIST: ProjectItem[] = [
       'A multi-tenant SaaS HRM platform allowing multiple companies on a single hosted instance — each with full data isolation, branded environments, and a smart attendance system supporting 8 check-in methods.',
     coverImage: '/projects/hrm/image.png',
     status: 'Live',
-    demoUrl: 'http://103.174.51.180:5001/',
+    demoUrl: 'https://hrm-v2.infraloom.co/',
     stats: [
       { l: 'Check-in methods', v: '8' },
       { l: 'API endpoints', v: '80+' },

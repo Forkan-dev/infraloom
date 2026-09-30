@@ -378,3 +378,8 @@ p { margin: 0; color: var(--fg-2); text-wrap: pretty; }
   gap: 16px;
   align-items: center;
 }
+
+/* Logo — swap variant with the theme */
+.logo-on-light { display: none; }
+[data-theme="light"] .logo-on-dark { display: none; }
+[data-theme="light"] .logo-on-light { display: block; }

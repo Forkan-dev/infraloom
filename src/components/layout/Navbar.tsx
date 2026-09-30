@@ -38,14 +38,14 @@ export function Navbar() {
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24 }}>
         <Link href="/" style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <Logo />
+          <Logo priority />
         </Link>
 
         <nav className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
           <NavLink href="/" label="Home" />
           <NavLink href="/services" label="Services" />
           <NavLink href="/process" label="Process" />
-          <NavLink href="/projects" label="Projects" />
+          <NavLink href="/projects" label="Products" />
           {/* <NavLink href="/industries" label="Industries" /> */}
           <NavLink href="/about" label="About" />
         </nav>
@@ -120,7 +120,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
     { href: '/process', label: 'Process' },
-    { href: '/projects', label: 'Projects' },
+    { href: '/projects', label: 'Products' },
     { href: '/industries', label: 'Industries' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
