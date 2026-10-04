@@ -40,22 +40,6 @@ const CASES = [
     featured: false,
   },
   {
-    tag: 'Media · Publishing',
-    title: 'Online Newspaper',
-    body: 'A full-stack news publishing platform — editorial workflow, multilingual support, mobile app, and multiple revenue streams.',
-    tech: ['Laravel', 'TailwindCSS', 'Redis', 'AWS S3', 'Stripe', 'OpenAI'],
-    href: '/projects/newsportal',
-    visual: (
-      <Image
-        src="/projects/newspaper/frontpage.png"
-        alt="Online Newspaper"
-        fill
-        style={{ objectFit: 'cover', objectPosition: 'top' }}
-      />
-    ),
-    featured: false,
-  },
-  {
     tag: 'Streaming · Distributed systems',
     title: 'Unreal Engine gaming platform',
     body: 'Multi-instance UE gaming platform with dynamic GPU allocation, Kong gateway, RabbitMQ events and Fluent Bit log fan-out.',

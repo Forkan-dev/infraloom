@@ -9,45 +9,31 @@ const STATS = [
 
 const LEADERS = [
   {
-    name: 'Shareks Rahman',
-    role: 'Founder & CEO',
-    bio: 'Former infrastructure lead at a FAANG-adjacent payments company. Built his first distributed system at 19. Obsessed with systems that don\'t wake you up at 3am.',
+    name: 'Md Syeed Hasin Sharek',
+    role: 'Co-founder',
+    //bio: 'Former infrastructure lead at a FAANG-adjacent payments company. Built his first distributed system at 19. Obsessed with systems that don\'t wake you up at 3am.',
     initials: 'SR',
     color: '#8b5cf6',
     photo: '/projects/office/ower.png',
   },
   {
-    name: 'Amir Hossain',
-    role: 'Co-founder & CTO',
-    bio: 'Distributed systems engineer with 12 years shipping real-time platforms. Led engineering at two acquired startups. Kubernetes contributor.',
+    name: 'Forkan Alam',
+    role: 'Chief Technical Officer',
+    //bio: 'Distributed systems engineer with 12 years shipping real-time platforms. Led engineering at two acquired startups. Kubernetes contributor.',
     initials: 'AH',
     color: '#3b82f6',
-    photo: null,
+    photo: '/projects/office/ower.png',
   },
   {
-    name: 'Nadia Karim',
-    role: 'Head of Engineering',
+    name: 'Mamun Hossain',
+    role: 'Chief Product Officer',
     bio: 'Full-stack architect who wrote the company\'s first multi-tenant data model. Advocates for readable code and honest timelines.',
     initials: 'NK',
     color: '#06b6d4',
-    photo: null,
+    photo: '/projects/office/ower.png',
   },
-  {
-    name: 'Tariq Islam',
-    role: 'Lead DevOps Engineer',
-    bio: 'SRE background from a top-10 global bank. Built observability stacks that reduced MTTR from hours to minutes across three client environments.',
-    initials: 'TI',
-    color: '#22c55e',
-    photo: null,
-  },
-  {
-    name: 'Sara Chowdhury',
-    role: 'Head of Product & Design',
-    bio: 'Bridges the gap between engineering and business. Designed interfaces used by 100k+ daily active users across SaaS products.',
-    initials: 'SC',
-    color: '#ec4899',
-    photo: null,
-  },
+  
+  
 ];
 
 export function OurStory() {

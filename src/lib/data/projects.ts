@@ -64,57 +64,6 @@ export const PROJECTS_LIST: ProjectItem[] = [
     ],
     tech: ['Laravel', 'Vue.js', 'Firebase', 'Stripe', 'ZKTeco'],
   },
-  {
-    slug: 'newsportal',
-    category: 'Media · Publishing',
-    name: 'Online Newspaper',
-    tagline: 'Full-Stack News Portal with Admin Control & Mobile App',
-    excerpt:
-      'A production-ready news publishing platform built with Laravel — covering the full workflow from reporter submission to admin approval to public reading, with a mobile app companion, multilingual support, and multiple revenue streams.',
-    coverImage: '/projects/newspaper/frontpage.png',
-    status: 'Live',
-    stats: [
-      { l: 'API endpoints', v: '50+' },
-      { l: 'DB tables', v: '108+' },
-      { l: 'News formats', v: '5' },
-    ],
-    tech: ['Laravel', 'TailwindCSS', 'Redis', 'AWS S3', 'Stripe', 'OpenAI'],
-  },
-];
-
-export const CHANNEL1_FEATURES = [
-  {
-    title: 'Editorial Workflow',
-    body: 'Reporter submits → Editor reviews → Admin approves. Scheduled publishing with auto-publish and auto-archive, plus breaking news, trending, and featured flags for fine-grained content control.',
-  },
-  {
-    title: 'Multi-format News',
-    body: 'Text, Video, Audio, Blog, and Picture formats all in one system. Serial/threaded news for story series, and full ePaper module with a digital newspaper and coordinate-based article placement.',
-  },
-  {
-    title: 'Reader Engagement',
-    body: 'Nested comments with upvote/downvote voting, polls and surveys embedded in articles, bookmarks, follow topics, personalized feed based on category preferences, and a social sharing reward system.',
-  },
-  {
-    title: 'Multilingual & Geographic',
-    body: 'Full LTR/RTL support across English, Bangla, Arabic, and more. Every model — news, categories, tags, menus, pages — is fully translatable. Country → State → City based news filtering for area-wise discovery.',
-  },
-  {
-    title: 'Advertising & Monetization',
-    body: 'Multiple ad zones and positions across the site with scheduled campaign dates. Premium content unlocked by subscription, newsletter management, and Stripe payment integration.',
-  },
-  {
-    title: 'Mobile REST API',
-    body: '50+ public API endpoints covering breaking news, trending, search, polls, bookmarks, and social sharing. Locale-based routes for multilingual app support with infinite scroll pagination.',
-  },
-  {
-    title: 'Media & Cloud Storage',
-    body: 'Built-in File Manager with image processing (small, medium, large, original). AWS S3 for cloud storage. Video embeds: YouTube, Vimeo, Dailymotion, SoundCloud, and VDocipher.',
-  },
-  {
-    title: 'Performance & Security',
-    body: 'Redis caching for news feeds and categories, Two-Factor Authentication (Google 2FA), role-based JSON permission system, Spatie Activity Log audit trail, and soft deletes for data preservation.',
-  },
 ];
 
 export const HRM_FEATURES = [

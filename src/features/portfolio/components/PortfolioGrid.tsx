@@ -24,14 +24,6 @@ const VISUALS: Record<string, React.ReactNode> = {
       style={{ objectFit: 'cover', objectPosition: 'center' }}
     />
   ),
-  newsportal: (
-    <Image
-      src="/projects/newspaper/frontpage.png"
-      alt="Online Newspaper"
-      fill
-      style={{ objectFit: 'cover', objectPosition: 'top' }}
-    />
-  ),
 };
 
 export function PortfolioGrid() {
