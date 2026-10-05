@@ -9,8 +9,12 @@ const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Infraloom Engineering — Production-grade software systems',
-  description: 'A senior engineering studio designing and shipping production-grade platforms — distributed backends, real-time streaming, and AI-native products.',
+  title: 'Infraloom Engineering | Software systems businesses run on',
+  description: 'A small senior team behind backends, real-time products and AI tools that work on day one and still make sense in year three.',
+  icons: {
+    icon: '/logo/icon.jpeg',
+    apple: '/logo/icon.jpeg',
+  },
   openGraph: {
     title: 'Infraloom Engineering',
     description: 'Senior engineers who build distributed systems, real-time streaming, and AI-native products.',

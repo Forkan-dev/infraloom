@@ -40,9 +40,25 @@ const CASES = [
     featured: false,
   },
   {
-    tag: 'Streaming · Distributed systems',
-    title: 'Unreal Engine gaming platform',
-    body: 'Multi-instance UE gaming platform with dynamic GPU allocation, Kong gateway, RabbitMQ events and Fluent Bit log fan-out.',
+    tag: 'Media · Publishing',
+    title: 'Online Newspaper',
+    body: 'A news platform with a full editorial workflow, publishing in several languages, a companion mobile app and more than one way to earn.',
+    tech: ['Laravel', 'TailwindCSS', 'Redis', 'AWS S3', 'Stripe', 'OpenAI'],
+    href: '/projects/newsportal',
+    visual: (
+      <Image
+        src="/projects/newspaper/frontpage.png"
+        alt="Online Newspaper"
+        fill
+        style={{ objectFit: 'cover', objectPosition: 'top' }}
+      />
+    ),
+    featured: false,
+  },
+  {
+    tag: 'Cloud gaming · Distributed systems',
+    title: 'Cloud gaming platform',
+    body: 'Full 3D games that open in a browser tab. Each player gets a ready GPU in under two seconds, and a dozen people can play at once from a single link.',
     tech: ['Golang', 'Laravel', 'NestJS', 'Kong', 'RabbitMQ', 'Fluent Bit'],
     href: '/portfolio/pixel-streaming',
   },
@@ -53,7 +69,7 @@ export function CaseStudiesPreview() {
     <section className="section">
       <div className="container">
         <Reveal>
-          <SectionHead eyebrow="Selected work" title="Platforms we have delivered" />
+          <SectionHead title="Platforms we are working on" />
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: -24, marginBottom: 40 }}>
             <Link href="/portfolio" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'var(--fg-2)', fontSize: 14 }}>
               All case studies <ArrowRight />

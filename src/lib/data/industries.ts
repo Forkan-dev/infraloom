@@ -80,9 +80,9 @@ export const INDUSTRIES: Industry[] = [
     solution: 'Multi-instance UE gaming platform with a Go orchestrator, Kong gateway, RabbitMQ event fabric and Fluent Bit log fan-out — see the case study.',
     stack: ['Go', 'Kong', 'RabbitMQ', 'WebRTC'],
     kpis: [
-      { l: 'P99 control', v: '84ms' },
-      { l: 'Concurrent sessions', v: '8.4k' },
-      { l: 'Streams launched', v: '11.4M' },
+      { l: 'P99 control', v: '210ms' },
+      { l: 'Peak players', v: '12' },
+      { l: 'Sessions launched', v: '4,800' },
     ],
   },
 ];

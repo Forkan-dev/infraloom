@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { Reveal } from '@/components/shared/Reveal';
-import { CodeBlock } from '@/components/ui/CodeBlock';
 import { SectionHead } from '@/components/shared/SectionHead';
 import { PixelStreamingDiagram } from '@/components/diagrams/PixelStreamingDiagram';
 import { CASE_STUDIES } from '@/lib/data/portfolio';
@@ -119,35 +118,6 @@ export function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
                 <div style={{ marginTop: 30, position: 'relative', zIndex: 1 }}>
                   <PixelStreamingDiagram />
                 </div>
-              </div>
-            </Reveal>
-            <Reveal>
-              <div style={{ marginTop: 36 }}>
-                <div className="mono" style={{ fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.14em', marginBottom: 16 }}>SAMPLE: SESSION ALLOCATION</div>
-                <CodeBlock filename="orchestrator/lease.go" lang="go">
-                  <>
-                    <span className="tok-c">{'// LeaseInstance picks a warm GPU and hands it to a session.'}</span>{'\n'}
-                    <span className="tok-c">{'// Idempotent on (tenant, sessionID); honors per-tenant quotas.'}</span>{'\n'}
-                    <span className="tok-k">func</span> (o *<span className="tok-f">Orchestrator</span>) <span className="tok-f">LeaseInstance</span>({'\n'}
-                    {'  '}ctx context.Context, req *<span className="tok-f">LeaseReq</span>,{'\n'}
-                    {') (*'}<span className="tok-f">Lease</span>, <span className="tok-k">error</span>) {'{'}{'\n'}
-                    {'  '}span := tracer.<span className="tok-f">Start</span>(ctx, <span className="tok-s">&quot;lease.acquire&quot;</span>){'\n'}
-                    {'  '}<span className="tok-k">defer</span> span.<span className="tok-f">End</span>(){'\n\n'}
-                    {'  '}<span className="tok-k">if</span> err := o.quota.<span className="tok-f">Check</span>(req.<span className="tok-p">Tenant</span>); err != <span className="tok-k">nil</span> {'{'}{'\n'}
-                    {'    '}<span className="tok-k">return nil</span>, errs.<span className="tok-f">QuotaExceeded</span>(err){'\n'}
-                    {'  }'}{'\n\n'}
-                    {'  '}inst, err := o.pool.<span className="tok-f">PickWarm</span>(ctx, req.<span className="tok-p">Region</span>){'\n'}
-                    {'  '}<span className="tok-k">if</span> err != <span className="tok-k">nil</span> {'{'}{'\n'}
-                    {'    '}<span className="tok-k">return</span> o.<span className="tok-f">coldBoot</span>(ctx, req){'\n'}
-                    {'  }'}{'\n\n'}
-                    {'  '}lease := &<span className="tok-f">Lease</span>{'{'}{'\n'}
-                    {'    '}<span className="tok-p">ID</span>:        <span className="tok-f">uuid.NewString</span>(),{'\n'}
-                    {'    '}<span className="tok-p">ExpiresAt</span>: time.<span className="tok-f">Now</span>().<span className="tok-f">Add</span>(req.<span className="tok-p">TTL</span>),{'\n'}
-                    {'  }'}{'\n'}
-                    {'  '}<span className="tok-k">return</span> lease, o.store.<span className="tok-f">Save</span>(ctx, lease){'\n'}
-                    {'}'}
-                  </>
-                </CodeBlock>
               </div>
             </Reveal>
           </div>

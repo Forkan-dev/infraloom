@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { TechCell } from '@/components/shared/TechCell';
+import { SectionHead } from '@/components/shared/SectionHead';
 
 const TECHS: { name: string; color: string; logo: ReactNode }[] = [
   {
@@ -158,10 +159,8 @@ export function TrustedTechnologies() {
   const doubled = [...TECHS, ...TECHS];
   return (
     <section className="section-tight" style={{ position: 'relative' }}>
-      <div className="container" style={{ textAlign: 'center', marginBottom: 36 }}>
-        <span className="mono" style={{ fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.16em', textTransform: 'uppercase' }}>
-          The stack we ship in production
-        </span>
+      <div className="container">
+        <SectionHead title="Tools we work with every day" />
       </div>
       <div style={{
         position: 'relative', overflow: 'hidden',

@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import { PageHero } from '@/components/layout/PageHero';
 import { MissionCard } from '@/features/about/components/MissionCard';
 import { OurStory } from '@/features/about/components/OurStory';
-import { Principles } from '@/features/about/components/Principles';
-import { HowWeWork } from '@/features/about/components/HowWeWork';
 
 export const metadata: Metadata = {
   title: 'About — Infraloom Engineering',
@@ -19,8 +17,6 @@ export default function AboutPage() {
       />
       <MissionCard />
       <OurStory />
-      <Principles />
-      <HowWeWork />
     </div>
   );
 }

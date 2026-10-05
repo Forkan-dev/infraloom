@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { Logo } from '@/components/shared/Logo';
+import { CONTACT } from '@/lib/data/contact';
+import { PinIcon, PhoneIcon } from '@/components/shared/ContactIcons';
 
 const GROUPS = [
   {
@@ -34,6 +36,37 @@ const GROUPS = [
   },
 ];
 
+const SOCIALS = [
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/profile.php?id=61594481653663',
+    color: '#0866FF',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="11.5" fill="#fff" />
+        <path
+          fill="#0866FF"
+          d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"
+        />
+      </svg>
+    ),
+  },
+  {
+    label: 'YouTube',
+    href: 'https://youtube.com/@infraloomtech',
+    color: '#FF0000',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          fill="#FF0000"
+          d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"
+        />
+        <path fill="#fff" d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+      </svg>
+    ),
+  },
+];
+
 function InfinityMark() {
   return (
     <svg viewBox="0 0 100 50" fill="none" focusable="false">
@@ -60,28 +93,38 @@ export function Footer() {
           <div>
             <Logo />
             <p style={{ marginTop: 18, color: 'var(--fg-3)', fontSize: 14, maxWidth: 320, lineHeight: 1.55 }}>
-              Production-grade software engineering for enterprises building real-time, distributed and AI-native systems.
+              Software engineering for companies building real-time, distributed and AI products.
             </p>
             <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 8 }}>
               <span className="mono" style={{ fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
                 Headquarters
               </span>
-              <span style={{ fontSize: 14, color: 'var(--fg-2)' }}>Brooklyn, NY · Remote-first</span>
+              <div className="footer-contact">
+                <span className="footer-contact-row">
+                  <span className="footer-contact-icon"><PinIcon /></span>
+                  {CONTACT.address}
+                </span>
+                {CONTACT.phones.map((p) => (
+                  <a key={p.tel} href={`tel:${p.tel}`} className="footer-contact-row footer-contact-link">
+                    <span className="footer-contact-icon"><PhoneIcon /></span>
+                    {p.label}
+                  </a>
+                ))}
+              </div>
             </div>
-            <div style={{ marginTop: 18, display: 'flex', gap: 8 }}>
-              {['GH', 'X', 'LI', 'DR'].map((s, i) => (
+            <div style={{ marginTop: 22, display: 'flex', gap: 10 }}>
+              {SOCIALS.map((s) => (
                 <a
-                  key={i}
-                  href="#"
-                  style={{
-                    width: 34, height: 34, borderRadius: 8,
-                    border: '1px solid var(--border)',
-                    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: 11, color: 'var(--fg-3)',
-                    fontFamily: 'var(--font-mono)',
-                  }}
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  title={s.label}
+                  className="footer-social"
+                  style={{ '--brand': s.color } as React.CSSProperties}
                 >
-                  {s}
+                  {s.icon}
                 </a>
               ))}
             </div>
@@ -132,6 +175,46 @@ export function Footer() {
       </div>
 
       <style>{`
+        .footer-social {
+          width: 40px;
+          height: 40px;
+          border-radius: 10px;
+          border: 1px solid var(--border);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          transition: transform 0.2s, border-color 0.2s, background 0.2s;
+        }
+        .footer-social:hover {
+          transform: translateY(-2px);
+          border-color: color-mix(in srgb, var(--brand) 55%, transparent);
+          background: color-mix(in srgb, var(--brand) 10%, transparent);
+        }
+        .footer-contact { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+        .footer-contact-row {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 14px;
+          line-height: 1.4;
+          color: var(--fg-2);
+          width: fit-content;
+        }
+        .footer-contact-icon {
+          width: 28px;
+          height: 28px;
+          flex-shrink: 0;
+          border-radius: 8px;
+          border: 1px solid var(--border);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--fg-3);
+          transition: color 0.2s, border-color 0.2s;
+        }
+        .footer-contact-link { font-variant-numeric: tabular-nums; transition: color 0.2s; }
+        .footer-contact-link:hover { color: var(--fg-1); }
+        .footer-contact-link:hover .footer-contact-icon { color: #c4b5fd; border-color: rgba(139,92,246,0.4); }
         .footer-watermark {
           font-size: clamp(96px, 18vw, 260px);
           font-weight: 500;

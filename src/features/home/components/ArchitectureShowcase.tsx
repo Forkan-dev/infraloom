@@ -3,9 +3,9 @@ import { SectionHead } from '@/components/shared/SectionHead';
 import { PixelStreamingDiagram } from '@/components/diagrams/PixelStreamingDiagram';
 
 const STATS = [
-  { l: 'Throughput', v: '14k msg/s' },
-  { l: 'Active sessions', v: '8,420' },
-  { l: 'GPU instances', v: '54 nodes' },
+  { l: 'Throughput', v: '300 msg/s' },
+  { l: 'Active sessions', v: '12' },
+  { l: 'GPU instances', v: '6 nodes' },
   { l: 'Mean failover', v: '1.2s' },
 ];
 

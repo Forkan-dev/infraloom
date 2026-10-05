@@ -1,5 +1,7 @@
 import { Reveal } from '@/components/shared/Reveal';
 import { GlyphMap } from '@/components/shared/Glyphs';
+import { CONTACT } from '@/lib/data/contact';
+import { PinIcon, PhoneIcon } from '@/components/shared/ContactIcons';
 
 const SLA_ROWS = [
   ['First reply', '≤ 4h'],
@@ -77,6 +79,61 @@ export function ContactSidebar() {
       </Reveal>
 
       {/* Direct contact */}
+      <Reveal delay={240}>
+        <div className="card" style={{ padding: 28 }}>
+          <span style={{ fontSize: 12, fontFamily: 'var(--font-mono)', letterSpacing: '0.14em', color: 'var(--fg-3)' }}>VISIT OR CALL</span>
+          <div style={{ display: 'flex', flexDirection: 'column', marginTop: 18 }}>
+            <div className="dc-row">
+              <span className="dc-icon"><PinIcon size={18} /></span>
+              <div>
+                <div className="dc-label">Office</div>
+                <div className="dc-value">{CONTACT.address}</div>
+              </div>
+            </div>
+            {CONTACT.phones.map((p, i) => (
+              <a key={p.tel} href={`tel:${p.tel}`} className="dc-row dc-link">
+                <span className="dc-icon"><PhoneIcon size={18} /></span>
+                <div>
+                  <div className="dc-label">{i === 0 ? 'Phone' : 'Alternate'}</div>
+                  <div className="dc-value dc-num">{p.label}</div>
+                </div>
+                <span className="dc-go" aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+          <style>{`
+            .dc-row {
+              display: flex;
+              align-items: center;
+              gap: 14px;
+              padding: 12px 10px;
+              margin: 0 -10px;
+              border-radius: 12px;
+              color: inherit;
+              transition: background 0.2s;
+            }
+            .dc-row + .dc-row { border-top: 1px solid var(--border); }
+            .dc-link:hover { background: rgba(139,92,246,0.08); }
+            .dc-icon {
+              width: 40px;
+              height: 40px;
+              flex-shrink: 0;
+              border-radius: 10px;
+              background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(139,92,246,0.15));
+              border: 1px solid rgba(139,92,246,0.28);
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              color: #818cf8;
+            }
+            .dc-label { font-size: 11px; font-family: var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-3); margin-bottom: 3px; }
+            .dc-value { font-size: 15px; font-weight: 500; color: var(--fg-1); line-height: 1.4; }
+            .dc-num { font-variant-numeric: tabular-nums; }
+            .dc-go { margin-left: auto; color: var(--fg-3); opacity: 0; transform: translateX(-4px); transition: opacity 0.2s, transform 0.2s; }
+            .dc-link:hover .dc-go { opacity: 1; transform: none; color: #818cf8; }
+          `}</style>
+        </div>
+      </Reveal>
     </div>
   );
 }

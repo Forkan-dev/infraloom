@@ -9,7 +9,7 @@ const CAPABILITIES = [
       </svg>
     ),
     title: 'Custom Software',
-    body: 'End-to-end product engineering, from architecture to production.',
+    body: 'Product engineering from the first sketch to launch day and beyond.',
   },
   {
     icon: (
@@ -18,7 +18,7 @@ const CAPABILITIES = [
       </svg>
     ),
     title: 'Cloud Architecture',
-    body: 'AWS · GCP · Kubernetes — resilient, multi-region infrastructure.',
+    body: 'Infrastructure on AWS, GCP and Kubernetes that stays up across regions.',
   },
   {
     icon: (
@@ -27,7 +27,7 @@ const CAPABILITIES = [
       </svg>
     ),
     title: 'Real-time Streaming',
-    body: 'WebSocket, RTMP, WebRTC — event-driven systems at sub-100ms.',
+    body: 'WebSocket, RTMP and WebRTC systems that answer in under 100ms.',
   },
   {
     icon: (
@@ -47,7 +47,7 @@ const CAPABILITIES = [
       </svg>
     ),
     title: 'DevOps & Observability',
-    body: 'CI/CD pipelines, SLOs, Grafana, Prometheus — ship with confidence.',
+    body: 'CI/CD, SLOs, Grafana and Prometheus, so every release is a quiet one.',
   },
 ];
 
@@ -63,14 +63,13 @@ export function Hero() {
           <div>
             <Reveal delay={80}>
               <h1 className="gradient-text" style={{ marginBottom: 28 }}>
-                We build scalable <span className="serif" style={{ color: '#c4b5fd' }}>software systems</span> for modern&nbsp;businesses.
+                We build the <span className="serif" style={{ color: '#c4b5fd' }}>software systems</span> businesses run&nbsp;on.
               </h1>
             </Reveal>
             <Reveal delay={160}>
               <p className="lede" style={{ marginBottom: 36, maxWidth: '52ch' }}>
-                A senior engineering studio designing and shipping production-grade
-                platforms — distributed backends, real-time streaming, and AI-native
-                products for ambitious companies.
+                A small senior team behind backends, real-time products and AI tools
+                that work on day one and still make sense in year three.
               </p>
             </Reveal>
           </div>

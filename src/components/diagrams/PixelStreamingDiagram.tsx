@@ -33,19 +33,19 @@ export function PixelStreamingDiagram() {
         <PSNode x={900} y={200} w={140} h={70} icon="B" label="Billing" sub="stripe · webhooks" />
 
         <PSNode x={60} y={370} w={210} h={110} icon="◈" label="Stream Orchestrator" sub="golang · grpc" violet extra={['pool', 'schedule', 'lease', 'evict']} />
-        <PSNode x={300} y={355} w={170} h={70} icon="≋" label="RabbitMQ" sub="exchanges · DLQ · 14k msg/s" />
+        <PSNode x={300} y={355} w={170} h={70} icon="≋" label="RabbitMQ" sub="exchanges · DLQ · 300 msg/s" />
         <PSNode x={500} y={355} w={170} h={70} icon="◉" label="Redis Cluster" sub="sessions · backpressure" />
         <PSNode x={700} y={355} w={170} h={70} icon="∞" label="Fluent Bit" sub="log shipper · 50ms" />
         <PSNode x={900} y={355} w={140} h={70} icon="P" label="Postgres HA" sub="primary + 2 replicas" />
 
-        <PSNode x={300} y={445} w={170} h={50} icon="▣" label="UE Instance Pool A" sub="us-east · 24× g4dn.xlarge" cyan />
-        <PSNode x={500} y={445} w={170} h={50} icon="▣" label="UE Instance Pool B" sub="eu-west · 18× g4dn" cyan />
-        <PSNode x={700} y={445} w={170} h={50} icon="▣" label="UE Instance Pool C" sub="ap-south · 12× g4dn" cyan />
+        <PSNode x={300} y={445} w={170} h={50} icon="▣" label="UE Instance Pool A" sub="us-east · 3× g4dn.xlarge" cyan />
+        <PSNode x={500} y={445} w={170} h={50} icon="▣" label="UE Instance Pool B" sub="eu-west · 2× g4dn" cyan />
+        <PSNode x={700} y={445} w={170} h={50} icon="▣" label="UE Instance Pool C" sub="ap-south · 1× g4dn" cyan />
         <PSNode x={900} y={445} w={140} h={50} icon="K" label="Kubernetes" sub="HPA + custom KEDA" />
 
-        <PSNode x={60} y={550} w={210} h={36} icon="◢" label="Grafana" sub="40 dashboards" tiny />
+        <PSNode x={60} y={550} w={210} h={36} icon="◢" label="Grafana" sub="6 dashboards" tiny />
         <PSNode x={300} y={550} w={170} h={36} icon="◷" label="Prometheus" sub="15s scrape" tiny />
-        <PSNode x={500} y={550} w={170} h={36} icon="◑" label="Loki" sub="6.4M lines/day" tiny />
+        <PSNode x={500} y={550} w={170} h={36} icon="◑" label="Loki" sub="120k lines/day" tiny />
         <PSNode x={700} y={550} w={170} h={36} icon="◓" label="Tempo" sub="OTel traces" tiny />
         <PSNode x={900} y={550} w={140} h={36} icon="◔" label="PagerDuty" sub="SLO burn" tiny />
 

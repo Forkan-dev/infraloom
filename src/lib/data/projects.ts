@@ -36,14 +36,14 @@ export const PROJECTS_LIST: ProjectItem[] = [
     name: 'Gaming Platform',
     tagline: 'Multi-instance Unreal Engine streaming, behind one URL',
     excerpt:
-      'A browser-delivered Unreal Engine 3D configurator with sub-second time-to-pixel, dynamic GPU allocation, Kong gateway, RabbitMQ events and Fluent Bit log fan-out — 8,420 concurrent sessions at 84ms P99.',
+      'A browser-delivered Unreal Engine 3D configurator with under two seconds to first frame, dynamic GPU allocation, Kong gateway, RabbitMQ events and Fluent Bit log fan-out — 12 concurrent players at peak across 6 GPU nodes.',
     coverImage: '',
     status: 'Live',
     detailHref: '/portfolio/pixel-streaming',
     stats: [
-      { l: 'Concurrent sessions', v: '8,420' },
-      { l: 'P99 latency', v: '84ms' },
-      { l: 'GPU pool', v: '54 nodes' },
+      { l: 'Peak players', v: '12' },
+      { l: 'P99 control plane', v: '210ms' },
+      { l: 'GPU pool', v: '6 nodes' },
     ],
     tech: ['Golang', 'Laravel', 'NestJS', 'Kong', 'RabbitMQ', 'Kubernetes'],
   },
