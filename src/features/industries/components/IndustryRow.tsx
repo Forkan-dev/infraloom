@@ -13,13 +13,7 @@ export function IndustryRow() {
               <article className="card has-glow ind-row" style={{ padding: 0, display: 'grid', gridTemplateColumns: '1.1fr 1fr', minHeight: 280 }}>
                 <div style={{ padding: 32, display: 'flex', flexDirection: 'column', gap: 18 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                    <span style={{
-                      width: 40, height: 40, borderRadius: 10,
-                      background: 'linear-gradient(135deg, rgba(59,130,246,0.18), rgba(139,92,246,0.18))',
-                      border: '1px solid rgba(139,92,246,0.3)',
-                      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                      color: ind.color,
-                    }}>{GlyphMap[ind.glyph as keyof typeof GlyphMap] ?? GlyphMap.circle}</span>
+                    <span className="icon-chip">{GlyphMap[ind.glyph as keyof typeof GlyphMap] ?? GlyphMap.circle}</span>
                     <div>
                       <div className="mono" style={{ fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.14em' }}>{ind.n}</div>
                       <h3 style={{ marginTop: 4, fontSize: 24 }}>{ind.title}</h3>
@@ -35,19 +29,19 @@ export function IndustryRow() {
                   </div>
                   <Tags items={ind.stack} />
                 </div>
-                <div style={{
-                  borderLeft: '1px solid var(--border)',
-                  background: 'linear-gradient(135deg, rgba(15,16,19,0.7), rgba(20,21,24,0.7))',
+                <div className="ind-kpis" style={{
+                  margin: 12, borderRadius: 16,
+                  background: 'var(--ice)',
                   display: 'flex', flexDirection: 'column',
                 }}>
                   {ind.kpis.map((k, j) => (
                     <div key={j} style={{
                       flex: 1, padding: 24,
-                      borderBottom: j < ind.kpis.length - 1 ? '1px solid var(--border)' : 'none',
+                      borderBottom: j < ind.kpis.length - 1 ? '1px solid var(--periwinkle)' : 'none',
                       display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12,
                     }}>
                       <span className="mono" style={{ fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.14em' }}>{k.l.toUpperCase()}</span>
-                      <span style={{ fontSize: 26, fontWeight: 500, fontFamily: 'var(--font-mono)', letterSpacing: '-0.02em' }}>{k.v}</span>
+                      <span className="ind-kpi-v" style={{ fontSize: 26, fontWeight: 500, fontFamily: 'var(--font-display)', letterSpacing: '-0.03em', lineHeight: 1, color: 'var(--primary)' }}>{k.v}</span>
                     </div>
                   ))}
                 </div>
@@ -57,9 +51,11 @@ export function IndustryRow() {
         </div>
       </div>
       <style>{`
+        [data-theme="dark"] .ind-kpis { background: var(--paper-3) !important; }
+        [data-theme="dark"] .ind-kpi-v { color: var(--signal) !important; }
         @media (max-width: 880px) {
           .ind-row { grid-template-columns: 1fr !important; }
-          .ind-row > div:last-child { border-left: none !important; border-top: 1px solid var(--border); }
+          .ind-row > div:last-child { margin-top: 0 !important; }
         }
       `}</style>
     </section>

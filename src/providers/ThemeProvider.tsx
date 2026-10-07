@@ -10,24 +10,25 @@ interface ThemeContextValue {
 }
 
 const ThemeContext = createContext<ThemeContextValue>({
-  theme: 'dark',
+  theme: 'light',
   toggleTheme: () => {},
 });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>('light');
 
+  // The inline script in the root layout has already applied any stored theme.
   useEffect(() => {
-    const stored = localStorage.getItem('infraloom-theme') as Theme | null;
-    if (stored === 'light' || stored === 'dark') setTheme(stored);
+    if (document.documentElement.getAttribute('data-theme') === 'dark') setTheme('dark');
   }, []);
 
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('infraloom-theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
+  const toggleTheme = () =>
+    setTheme((t) => {
+      const next = t === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('infraloom-theme', next); } catch {}
+      return next;
+    });
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

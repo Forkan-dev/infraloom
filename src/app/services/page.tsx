@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { PageHero } from '@/components/layout/PageHero';
 import { ServiceIcon } from '@/components/shared/ServiceIcon';
 import { SERVICES } from '@/lib/data/services';
+import { Reveal } from '@/components/shared/Reveal';
 
 export const metadata: Metadata = {
   title: 'Services — Infraloom Engineering',
@@ -19,64 +20,64 @@ export default function ServicesPage() {
 
       <section className="section-tight">
         <div className="container">
-          <div className="services-grid">
+          <div className="svc-list">
             {SERVICES.map((s) => (
-              <div key={s.title} className="service-card card">
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16, marginBottom: 14 }}>
-                  <div style={{
-                    width: 44, height: 44, borderRadius: 12, flexShrink: 0,
-                    background: 'linear-gradient(135deg, rgba(59,130,246,0.12), rgba(139,92,246,0.12))',
-                    border: '1px solid rgba(139,92,246,0.2)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: 'var(--blue)',
-                  }}>
-                    <ServiceIcon name={s.icon} />
-                  </div>
-                  <div>
-                    <h3 style={{ fontSize: 17, fontWeight: 600, margin: 0, lineHeight: 1.3 }}>{s.title}</h3>
-                  </div>
-                </div>
-
-                <p style={{ color: 'var(--fg-2)', fontSize: 14, lineHeight: 1.65, margin: '0 0 16px' }}>
-                  {s.body}
-                </p>
-
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <Reveal key={s.title} className="svc">
+                <span className="icon-chip svc-icon"><ServiceIcon name={s.icon} /></span>
+                <h2 className="svc-title">{s.title}</h2>
+                <p className="svc-body">{s.body}</p>
+                <ul className="svc-deliverables">
                   {s.deliverables.map((d, j) => (
-                    <li key={j} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'var(--fg-3)' }}>
-                      <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--blue)', flexShrink: 0, opacity: 0.7 }} />
-                      {d}
-                    </li>
+                    <li key={j}>{d}</li>
                   ))}
                 </ul>
-              </div>
+              </Reveal>
             ))}
           </div>
-
         </div>
       </section>
 
       <style>{`
-        .services-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
+        .svc-list { display: flex; flex-direction: column; gap: 12px; }
+        .svc {
+          position: relative;
+          display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px;
+          padding: 28px 28px 32px; background: var(--surface); border-radius: var(--radius-card);
+          align-items: start;
+          transition: background 0.2s ease;
         }
-        .service-card {
-          padding: 28px;
-          display: flex;
-          flex-direction: column;
-          transition: border-color 0.2s, transform 0.2s;
+        .svc-icon { grid-column: 1 / span 1; }
+        .svc-title {
+          grid-column: 2 / span 4;
+          font-size: clamp(24px, 2.4vw, 34px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.12;
+          padding-top: 6px; color: var(--text);
+          transition: color 0.2s ease;
         }
-        .service-card:hover {
-          border-color: rgba(139,92,246,0.35);
-          transform: translateY(-2px);
+        .svc-body { grid-column: 6 / span 4; font-size: 16px; line-height: 1.6; color: var(--text-muted); padding-top: 8px; transition: color 0.2s ease; }
+        .svc-deliverables {
+          grid-column: 10 / span 3; list-style: none; padding: 8px 0 0; margin: 0;
+          display: flex; flex-direction: column; gap: 10px;
         }
-        @media (max-width: 960px) {
-          .services-grid { grid-template-columns: repeat(2, 1fr); }
+        .svc-deliverables li {
+          display: flex; align-items: center; gap: 10px;
+          font-size: 13px; font-weight: 500; color: var(--ink-2);
+          transition: color 0.2s ease;
         }
-        @media (max-width: 600px) {
-          .services-grid { grid-template-columns: 1fr; }
+        .svc-deliverables li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--primary); flex-shrink: 0; transition: background 0.2s ease; }
+        .svc:hover { background: var(--primary); }
+        .svc:hover .svc-title { color: #fff; }
+        .svc:hover .svc-body, .svc:hover .svc-deliverables li { color: var(--ice); }
+        .svc:hover .svc-deliverables li::before { background: var(--chartreuse); }
+        .svc:hover .svc-icon { background: var(--chartreuse); color: var(--ultramarine); }
+        @media (max-width: 980px) {
+          .svc { row-gap: 18px; padding: 24px; }
+          .svc-icon { grid-column: 1 / -1; }
+          .svc-title { grid-column: 1 / -1; padding-top: 0; }
+          .svc-body { grid-column: 1 / span 7; }
+          .svc-deliverables { grid-column: 9 / span 4; }
+        }
+        @media (max-width: 640px) {
+          .svc-body, .svc-deliverables { grid-column: 1 / -1; }
         }
       `}</style>
     </div>

@@ -3,6 +3,9 @@ import { Reveal } from '@/components/shared/Reveal';
 import { SectionHead } from '@/components/shared/SectionHead';
 import { PixelStreamingDiagram } from '@/components/diagrams/PixelStreamingDiagram';
 import { CASE_STUDIES } from '@/lib/data/portfolio';
+import { LoomRing } from '@/components/shared/LoomRing';
+
+const STAT_TONES = ['stat-chartreuse', 'stat-ice', 'stat-primary', 'stat-lilac'];
 
 interface CaseStudyDetailProps {
   slug: string;
@@ -15,82 +18,60 @@ export function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
   return (
     <div className="page-enter">
       {/* Hero */}
-      <section style={{ position: 'relative', padding: '180px 0 60px', overflow: 'hidden' }}>
-        <div className="bg-grid" />
-        <div className="bg-glow violet" style={{ top: -350, right: -200, opacity: 0.5 }} />
-        <div className="bg-glow cyan" style={{ top: -100, left: -200, opacity: 0.4 }} />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+      <section className="block block-dark on-dark cs-hero">
+        <LoomRing className="cs-ring" />
+        <div className="container cs-hero-inner">
           <Reveal>
-            <Link href="/portfolio" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--fg-3)', marginBottom: 28 }}>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M7 3l-3 3 3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              All case studies
-            </Link>
-          </Reveal>
-          <Reveal delay={80}>
-            <span className="mono" style={{ fontSize: 11, color: '#c4b5fd', letterSpacing: '0.14em', textTransform: 'uppercase' }}>{study.eyebrow}</span>
-          </Reveal>
-          <Reveal delay={140}>
-            <h1 className="gradient-text" style={{ marginTop: 22, marginBottom: 28, maxWidth: '20ch' }}>{study.title}</h1>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="lede" style={{ maxWidth: '60ch', marginBottom: 56 }}>{study.lead}</p>
-          </Reveal>
-          <Reveal delay={260}>
-            <div className="case-stats" style={{
-              display: 'grid',
-              gridTemplateColumns: `repeat(${study.heroStats.length}, 1fr)`,
-              gap: 1, background: 'var(--border)', borderRadius: 14, overflow: 'hidden', border: '1px solid var(--border)',
-            }}>
-              {study.heroStats.map((s, i) => (
-                <div key={i} style={{ padding: '20px 24px', background: 'var(--bg-2)' }}>
-                  <div className="mono" style={{ fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.14em', marginBottom: 8 }}>{s.l.toUpperCase()}</div>
-                  <div style={{ fontSize: 30, fontWeight: 500, fontFamily: 'var(--font-mono)', letterSpacing: '-0.03em' }}>{s.v}</div>
-                </div>
-              ))}
+            <div className="cs-top">
+              <Link href="/portfolio" className="link-arrow cs-back">
+                <svg width="21" height="14" viewBox="0 0 24 16" fill="none" aria-hidden="true">
+                  <path d="M23 8H3M9 2L3 8l6 6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="square" />
+                </svg>
+                All case studies
+              </Link>
+              <span className="meta">{study.eyebrow}</span>
             </div>
           </Reveal>
+          <Reveal>
+            <h1 className="cs-title">{study.title}</h1>
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="cs-lead-row">
+              <p className="lede cs-lead">{study.lead}</p>
+            </div>
+          </Reveal>
+          <Reveal delay={200}>
+            <dl className="cs-stats" style={{ gridTemplateColumns: `repeat(${study.heroStats.length}, minmax(0, 1fr))` }}>
+              {study.heroStats.map((s, i) => (
+                <div key={i} className={`stat-tile cs-stat ${STAT_TONES[i % STAT_TONES.length]}`}>
+                  <dd>{s.v}</dd>
+                  <dt className="meta">{s.l}</dt>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
         </div>
-        <style>{`@media (max-width: 880px) { .case-stats { grid-template-columns: repeat(2, 1fr) !important; } }`}</style>
       </section>
 
       {/* Problem / Solution */}
       <section className="section-tight">
-        <div className="container">
-          <Reveal>
-            <div className="ps-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
-              <div className="card" style={{ padding: 32 }}>
-                <span className="mono" style={{ fontSize: 11, color: 'var(--danger)', letterSpacing: '0.14em' }}>● THE PROBLEM</span>
-                <h3 style={{ margin: '16px 0 16px' }}>What we walked into.</h3>
-                <p style={{ color: 'var(--fg-2)', margin: 0, fontSize: 15, lineHeight: 1.65 }}>{study.problem}</p>
-                <div style={{ marginTop: 28 }}>
-                  <div className="mono" style={{ fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.14em', marginBottom: 12 }}>GOALS WE COMMITTED TO</div>
-                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                    {study.goals.map((g, i) => (
-                      <li key={i} style={{ fontSize: 14, color: 'var(--fg-2)', display: 'flex', gap: 10, lineHeight: 1.5 }}>
-                        <span style={{ flexShrink: 0, marginTop: 7, width: 4, height: 4, borderRadius: '50%', background: 'var(--blue)' }} />
-                        {g}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div className="card" style={{ padding: 32 }}>
-                <span className="mono" style={{ fontSize: 11, color: 'var(--success)', letterSpacing: '0.14em' }}>● THE SOLUTION</span>
-                <h3 style={{ margin: '16px 0 16px' }}>What we shipped.</h3>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
-                  {study.solution.map((s, i) => (
-                    <li key={i} style={{ fontSize: 14.5, color: 'var(--fg-2)', display: 'flex', gap: 12, lineHeight: 1.6 }}>
-                      <span className="mono" style={{ flexShrink: 0, color: '#c4b5fd', fontSize: 12, width: 22 }}>0{i + 1}</span>
-                      {s}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+        <div className="container cs-ps">
+          <Reveal className="cs-col">
+            <span className="meta cs-label"><i style={{ background: 'var(--danger)' }} />The problem</span>
+            <h2 className="cs-h">What we walked into.</h2>
+            <p className="cs-p">{study.problem}</p>
+            <span className="meta" style={{ marginTop: 40 }}>Goals we committed to</span>
+            <ul className="cs-list">
+              {study.goals.map((g, i) => <li key={i}>{g}</li>)}
+            </ul>
           </Reveal>
-          <style>{`@media (max-width: 880px) { .ps-grid { grid-template-columns: 1fr !important; } }`}</style>
+          <Reveal className="cs-col" delay={120}>
+            <span className="meta cs-label"><i style={{ background: 'var(--success)' }} />The solution</span>
+            <h2 className="cs-h">What we shipped.</h2>
+            <ul className="cs-list cs-list-lg">
+              {study.solution.map((s, i) => <li key={i}>{s}</li>)}
+            </ul>
+          </Reveal>
         </div>
       </section>
 
@@ -101,24 +82,15 @@ export function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
             <Reveal>
               <SectionHead eyebrow="Architecture" title="The full topology, at a glance." />
             </Reveal>
-            <Reveal>
-              <div style={{ background: 'var(--bg-2)', border: '1px solid var(--border)', borderRadius: 22, padding: 28, position: 'relative', overflow: 'hidden' }}>
-                <div className="bg-dots" style={{ opacity: 0.4 }} />
-                <div style={{
-                  position: 'absolute', top: 20, left: 28, right: 28,
-                  display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                  fontSize: 11, color: 'var(--fg-3)', fontFamily: 'var(--font-mono)', letterSpacing: '0.12em', zIndex: 1,
-                }}>
-                  <span>UE-PIXEL-STREAM · ARCHITECTURE</span>
-                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--success)', boxShadow: '0 0 6px var(--success)' }} />
-                    LIVE
-                  </span>
-                </div>
-                <div style={{ marginTop: 30, position: 'relative', zIndex: 1 }}>
-                  <PixelStreamingDiagram />
-                </div>
+            <Reveal className="cs-arch">
+              <div className="cs-arch-bar">
+                <span>UE-PIXEL-STREAM · ARCHITECTURE</span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{ width: 7, height: 7, background: '#4ADE80' }} />
+                  LIVE
+                </span>
               </div>
+              <PixelStreamingDiagram />
             </Reveal>
           </div>
         </section>
@@ -130,34 +102,84 @@ export function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
           <Reveal>
             <SectionHead eyebrow="Microservices" title="The services we shipped." />
           </Reveal>
-          <Reveal stagger>
-            <div className="ms-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
-              {study.microservices.map((m, i) => (
-                <div key={i} className="card" style={{ padding: 22 }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
-                    <span className="mono ms-name" style={{ fontSize: 14, fontWeight: 500 }}>{m.n}</span>
-                    <span className="chip ms-chip">{m.lang}</span>
-                  </div>
-                  <p style={{ margin: 0, fontSize: 13, color: 'var(--fg-3)', lineHeight: 1.5 }}>{m.role}</p>
-                </div>
-              ))}
-            </div>
+          <Reveal stagger className="ms-table">
+            {study.microservices.map((m, i) => (
+              <div key={i} className="ms-row">
+                <span className="ms-name">{m.n}</span>
+                <span className="ms-lang">{m.lang}</span>
+                <span className="ms-role">{m.role}</span>
+              </div>
+            ))}
           </Reveal>
-          <style>{`
-            .ms-name { color: #fff; }
-            .ms-chip { color: #c4b5fd; }
-            [data-theme="light"] .ms-name { color: #1e1b4b; }
-            [data-theme="light"] .ms-chip { color: #4f46e5; }
-            @media (max-width: 880px) { .ms-grid { grid-template-columns: 1fr 1fr !important; } }
-            @media (max-width: 600px) { .ms-grid { grid-template-columns: 1fr !important; } }
-          `}</style>
         </div>
       </section>
 
+      <style>{`
+        .cs-hero { padding: 64px 0 40px; }
+        .cs-hero-inner { position: relative; z-index: 1; }
+        .cs-ring { width: 440px; height: 440px; right: -150px; top: 40px; }
+        .cs-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+        .cs-back { color: var(--text-on-dark-muted); }
+        .cs-back:hover { color: #fff; }
+        .cs-back svg { transition: transform 0.35s var(--ease); }
+        .cs-back:hover svg { transform: translateX(-4px); }
+        .cs-title { max-width: 16ch; font-size: clamp(36px, 5.6vw, 84px); font-weight: 600; color: #fff; }
+        .cs-lead-row { margin-top: 28px; max-width: 62ch; }
+        .cs-lead { max-width: none; color: var(--text-on-dark-muted); }
+        .cs-stats { display: grid; gap: 8px; margin: 56px 0 0; }
+        .cs-stat { flex-direction: column-reverse; min-height: 150px; }
+        .cs-stat dd { font-size: clamp(36px, 4.4vw, 68px); }
 
+        .cs-ps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+        .cs-col { display: flex; flex-direction: column; padding: 32px; background: var(--surface); border-radius: var(--radius-card); }
+        .cs-label { gap: 10px; }
+        .cs-label::before { display: none; }
+        .cs-label i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .cs-h { margin: 16px 0 20px; font-size: clamp(28px, 2.8vw, 42px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.1; }
+        .cs-p { font-size: 17px; line-height: 1.65; color: var(--text-muted); }
+        .cs-list { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-direction: column; }
+        .cs-list li {
+          position: relative; padding: 14px 0 14px 22px; border-top: 1px solid var(--rule);
+          font-size: 15px; line-height: 1.55; color: var(--ink-2);
+        }
+        .cs-list li::before { content: ""; position: absolute; left: 0; top: 22px; width: 8px; height: 8px; border-radius: 50%; background: var(--primary); }
+        .cs-list-lg li { font-size: 17px; padding: 18px 0 18px 26px; }
+        .cs-list-lg li::before { top: 27px; }
 
+        .cs-arch { background: var(--ultramarine); padding: 28px; border-radius: var(--radius-block); }
+        [data-theme="dark"] .cs-arch { background: #0A1A5C; }
+        .cs-arch-bar {
+          display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+          font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; color: var(--text-on-dark-muted);
+        }
 
+        .ms-table { display: flex; flex-direction: column; gap: 8px; }
+        .ms-row {
+          display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: baseline;
+          padding: 20px 24px; background: var(--surface); border-radius: 18px;
+          transition: background 0.2s ease;
+        }
+        .ms-row:hover { background: var(--ice); }
+        [data-theme="dark"] .ms-row:hover { background: var(--paper-3); }
+        .ms-name { grid-column: 1 / span 4; font-family: var(--font-mono); font-size: 16px; color: var(--ink); }
+        .ms-lang { grid-column: 5 / span 2; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); }
+        [data-theme="dark"] .ms-lang { color: var(--signal); }
+        .ms-role { grid-column: 7 / span 6; font-size: 15px; color: var(--text-muted); }
 
+        @media (max-width: 880px) {
+          .cs-hero { padding-top: 44px; }
+          .cs-ring { width: 220px; height: 220px; right: -90px; top: -40px; opacity: 0.4; }
+          .cs-stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+          .cs-stat { min-height: 120px; }
+          .cs-ps { grid-template-columns: 1fr; }
+          .cs-col { padding: 24px; }
+          .cs-arch { padding: 16px; overflow-x: auto; }
+          .ms-row { padding: 16px 18px; }
+          .ms-name { grid-column: 1 / span 8; }
+          .ms-lang { grid-column: 9 / span 4; text-align: right; }
+          .ms-role { grid-column: 1 / -1; margin-top: 6px; }
+        }
+      `}</style>
     </div>
   );
 }

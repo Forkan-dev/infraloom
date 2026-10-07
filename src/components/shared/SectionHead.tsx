@@ -8,34 +8,23 @@ interface SectionHeadProps {
   children?: ReactNode;
 }
 
-export function SectionHead({
-  eyebrow,
-  title,
-  body,
-  align = 'center',
-  children,
-}: SectionHeadProps) {
-  const isLeft = align === 'left';
+/**
+ * Editorial section opener: a full-width rule, the eyebrow in the margin column,
+ * the title set large across the main columns, and any action pinned to the right edge.
+ */
+export function SectionHead({ eyebrow, title, body, align = 'left', children }: SectionHeadProps) {
   return (
-    <div
-      className="section-head"
-      style={
-        isLeft
-          ? { textAlign: 'left', marginLeft: 0, alignItems: 'flex-start' }
-          : undefined
-      }
-    >
-      {eyebrow && <span className="eyebrow">{eyebrow}</span>}
-      {title && <h2 className="gradient-text">{title}</h2>}
-      {body && (
-        <p
-          className="lede"
-          style={isLeft ? {} : { margin: '0 auto' }}
-        >
-          {body}
-        </p>
+    <div className={`section-head ${align === 'center' ? 'is-center' : ''}`}>
+      <div className="section-head-index">
+        {eyebrow && <span className="meta">{eyebrow}</span>}
+      </div>
+      {title && (
+        <div className="section-head-title">
+          <h2>{title}</h2>
+        </div>
       )}
-      {children}
+      {children && <div className="section-head-aside">{children}</div>}
+      {body && <p className="lede section-head-body">{body}</p>}
     </div>
   );
 }

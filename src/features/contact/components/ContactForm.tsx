@@ -50,13 +50,12 @@ export function ContactForm() {
         <div style={{ textAlign: 'center', padding: '32px 0' }}>
           <div style={{
             width: 72, height: 72, borderRadius: '50%',
-            background: 'linear-gradient(135deg, rgba(34,197,94,0.15), rgba(59,130,246,0.15))',
-            border: '1px solid rgba(34,197,94,0.4)',
+            background: 'var(--chartreuse)',
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-            marginBottom: 28, boxShadow: '0 0 40px rgba(34,197,94,0.2)',
+            marginBottom: 28,
           }}>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-              <path d="M5 12l4 4L19 6" stroke="#22c55e" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M5 12l4 4L19 6" stroke="#07123F" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
           <h3 style={{ marginBottom: 14, fontSize: 24 }}>Inquiry received.</h3>
@@ -81,9 +80,9 @@ export function ContactForm() {
         <span style={{
           flexShrink: 0,
           display: 'inline-flex', alignItems: 'center',
-          background: 'var(--bg-3)', border: '1px solid var(--border)',
+          background: 'var(--ice)',
           borderRadius: 999, padding: '5px 14px',
-          fontSize: 12, fontFamily: 'var(--font-mono)', color: 'var(--fg-3)', letterSpacing: '0.08em',
+          fontSize: 12, fontFamily: 'var(--font-mono)', color: 'var(--primary)', letterSpacing: '0.08em', fontWeight: 600,
         }}>
           {step + 1} / 3
         </span>
@@ -94,9 +93,7 @@ export function ContactForm() {
         {[0, 1, 2].map(i => (
           <div key={i} style={{
             flex: 1, height: 4, borderRadius: 4,
-            background: i <= step
-              ? 'linear-gradient(90deg, var(--blue), var(--violet))'
-              : 'var(--border)',
+            background: i <= step ? 'var(--primary)' : 'var(--ice)',
             transition: 'background 0.35s var(--ease)',
           }} />
         ))}
@@ -152,20 +149,18 @@ export function ContactForm() {
           </FormField>
           <div style={{
             padding: '14px 18px',
-            background: 'rgba(34,197,94,0.07)',
-            border: '1px solid rgba(34,197,94,0.18)',
-            borderRadius: 10,
+            background: 'var(--ice)',
+            borderRadius: 16,
             display: 'flex', gap: 12, alignItems: 'center',
           }}>
-            <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--success)', flexShrink: 0, boxShadow: '0 0 8px var(--success)' }} />
-            <p style={{ margin: 0, fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.5 }}>
+            <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--primary)', flexShrink: 0 }} />
+            <p style={{ margin: 0, fontSize: 14, color: 'var(--ultramarine)', lineHeight: 1.5 }}>
               Reviewed by a principal engineer — not a salesperson.{' '}
               <span className="cf-time" style={{ fontWeight: 600 }}>Avg. response: 4 hours</span> on weekdays.
             </p>
           </div>
           <style>{`
-            .cf-time { color: #16a34a; }
-            [data-theme="light"] .cf-time { color: #15803d; }
+            .cf-time { color: var(--primary); }
           `}</style>
         </div>
       )}

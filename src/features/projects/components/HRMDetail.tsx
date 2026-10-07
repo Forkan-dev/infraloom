@@ -69,13 +69,13 @@ export function HRMDetail() {
   return (
     <div className="page-enter">
       {/* Hero */}
-      <section style={{ position: 'relative', padding: '180px 0 64px', overflow: 'hidden' }}>
+      <section className="block block-dark on-dark hrm-hero" style={{ padding: '64px 0 48px' }}>
         <div className="bg-grid" />
         <div className="bg-glow violet" style={{ top: -350, right: -180, opacity: 0.45 }} />
         <div className="bg-glow cyan" style={{ top: -80, left: -200, opacity: 0.3 }} />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <Reveal>
-            <Link href="/projects" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--fg-3)', marginBottom: 28 }}>
+            <Link href="/projects" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--text-on-dark-muted)', marginBottom: 28 }}>
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                 <path d="M7 3l-3 3 3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -85,16 +85,16 @@ export function HRMDetail() {
 
           <Reveal delay={60}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
-              <span className="mono" style={{ fontSize: 11, color: '#c4b5fd', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+              <span className="mono" style={{ fontSize: 11, color: 'var(--signal)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
                 SaaS · Enterprise · HRM
               </span>
               <span style={{
                 display: 'inline-flex', alignItems: 'center', gap: 5,
                 padding: '3px 10px', borderRadius: 999,
                 fontSize: 11, fontFamily: 'var(--font-mono)',
-                background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.25)', color: '#4ade80',
+                background: 'var(--primary)', color: '#fff',
               }}>
-                <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 6px #4ade80' }} />
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--chartreuse)' }} />
                 Live
               </span>
             </div>
@@ -119,7 +119,7 @@ export function HRMDetail() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary"
-                style={{ fontSize: 15, padding: '12px 24px' }}
+                style={{ fontSize: 15, padding: '13px 24px' }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" />
@@ -127,7 +127,7 @@ export function HRMDetail() {
                 </svg>
                 Try Live Demo
               </a>
-              <span style={{ fontSize: 13, color: 'var(--fg-3)', fontFamily: 'var(--font-mono)' }}>
+              <span style={{ fontSize: 13, color: 'var(--text-on-dark-muted)', fontFamily: 'var(--font-mono)' }}>
                 No sign-up required · Hosted live
               </span>
             </div>
@@ -137,18 +137,20 @@ export function HRMDetail() {
             <div className="hrm-stats" style={{
               display: 'grid',
               gridTemplateColumns: `repeat(${HERO_STATS.length}, 1fr)`,
-              gap: 1, background: 'var(--border)', borderRadius: 14, overflow: 'hidden',
-              border: '1px solid var(--border)', maxWidth: 700,
+              gap: 8, maxWidth: 760,
             }}>
               {HERO_STATS.map((s, i) => (
-                <div key={i} style={{ padding: '20px 24px', background: 'var(--bg-2)' }}>
-                  <div className="mono" style={{ fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.14em', marginBottom: 8 }}>{s.l.toUpperCase()}</div>
-                  <div style={{ fontSize: 26, fontWeight: 500, fontFamily: 'var(--font-mono)', letterSpacing: '-0.03em' }}>{s.v}</div>
+                <div key={i} className={`stat-tile ${['stat-chartreuse', 'stat-ice', 'stat-primary', 'stat-lilac'][i % 4]}`}>
+                  <div className="mono" style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 8 }}>{s.l.toUpperCase()}</div>
+                  <div className="stat-num" style={{ fontSize: 'clamp(22px, 2.4vw, 32px)' }}>{s.v}</div>
                 </div>
               ))}
             </div>
           </Reveal>
         </div>
+        <style>{`
+          .hrm-hero .bg-grid, .hrm-hero .bg-glow { display: none; }
+        `}</style>
         <style>{`@media (max-width: 700px) { .hrm-stats { grid-template-columns: repeat(2, 1fr) !important; max-width: 100% !important; } }`}</style>
       </section>
 
@@ -188,11 +190,9 @@ export function HRMDetail() {
             <div style={{
               position: 'relative',
               aspectRatio: '16 / 9',
-              borderRadius: 14,
+              borderRadius: 'var(--radius-card)',
               overflow: 'hidden',
-              border: '1px solid var(--border)',
-              background: 'var(--bg-2)',
-              boxShadow: '0 12px 48px rgba(0,0,0,0.5)',
+              background: 'var(--ultramarine)',
             }}>
               <iframe
                 src="https://www.youtube-nocookie.com/embed/o8SBqNY_JZQ?rel=0"
@@ -214,7 +214,7 @@ export function HRMDetail() {
           <div className="overview-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
             <Reveal>
               <div className="card" style={{ padding: 36, height: '100%' }}>
-                <span className="mono" style={{ fontSize: 11, color: '#c4b5fd', letterSpacing: '0.14em' }}>● WHAT IT IS</span>
+                <span className="mono" style={{ fontSize: 11, color: 'var(--primary)', letterSpacing: '0.14em' }}>● WHAT IT IS</span>
                 <h3 style={{ margin: '16px 0 16px' }}>One platform. Every HR workflow.</h3>
                 <p style={{ color: 'var(--fg-2)', margin: '0 0 16px', fontSize: 15, lineHeight: 1.7 }}>
                   HRM is a fully hosted SaaS product designed for multiple companies to run on a single instance — each with complete data isolation and their own branded environment.
@@ -226,7 +226,7 @@ export function HRMDetail() {
             </Reveal>
             <Reveal delay={80}>
               <div className="card" style={{ padding: 36, height: '100%' }}>
-                <span className="mono" style={{ fontSize: 11, color: 'var(--success)', letterSpacing: '0.14em' }}>● PLATFORM STRUCTURE</span>
+                <span className="mono" style={{ fontSize: 11, color: 'var(--primary)', letterSpacing: '0.14em' }}>● PLATFORM STRUCTURE</span>
                 <h3 style={{ margin: '16px 0 20px' }}>Dual-dashboard architecture.</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
                   {[
@@ -238,11 +238,11 @@ export function HRMDetail() {
                       <span className="mono" style={{
                         flexShrink: 0, width: 28, height: 28,
                         display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                        borderRadius: 7, background: 'rgba(139,92,246,0.12)', border: '1px solid rgba(139,92,246,0.25)',
-                        color: '#c4b5fd', fontSize: 11,
+                        borderRadius: '50%', background: 'var(--ice)',
+                        color: 'var(--primary)', fontSize: 11,
                       }}>{`0${i + 1}`}</span>
                       <div>
-                        <div style={{ fontSize: 13, fontWeight: 500, color: '#fff', marginBottom: 4 }}>{item.role}</div>
+                        <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)', marginBottom: 4 }}>{item.role}</div>
                         <div style={{ fontSize: 13, color: 'var(--fg-3)', lineHeight: 1.55 }}>{item.desc}</div>
                       </div>
                     </div>
@@ -309,12 +309,12 @@ export function HRMDetail() {
                 <div className="methods-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }}>
                   {CHECK_IN_METHODS.map((m, i) => (
                     <div key={i} style={{
-                      padding: '14px 16px', borderRadius: 10,
-                      background: 'var(--bg-1)', border: `1px solid ${m.color}22`,
+                      padding: '12px 16px', borderRadius: 999,
+                      background: 'var(--ice)',
                       display: 'flex', alignItems: 'center', gap: 10,
                     }}>
-                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: m.color, flexShrink: 0, boxShadow: `0 0 8px ${m.color}` }} />
-                      <span style={{ fontSize: 13, color: 'var(--fg-2)', fontWeight: 500 }}>{m.name}</span>
+                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--primary)', flexShrink: 0 }} />
+                      <span style={{ fontSize: 13, color: 'var(--ultramarine)', fontWeight: 500 }}>{m.name}</span>
                     </div>
                   ))}
                 </div>
@@ -338,7 +338,7 @@ export function HRMDetail() {
             {MODULES.map((m, i) => (
               <Reveal key={m.t} delay={i * 50}>
                 <div className="card" style={{ padding: 28, height: '100%' }}>
-                  <span style={{ display: 'inline-block', width: 10, height: 10, borderRadius: 3, background: m.c, boxShadow: `0 0 10px ${m.c}` }} />
+                  <span style={{ display: 'inline-block', width: 10, height: 10, borderRadius: '50%', background: 'var(--primary)' }} />
                   <h3 style={{ fontSize: 18, margin: '14px 0 10px' }}>{m.t}</h3>
                   <p style={{ color: 'var(--fg-3)', fontSize: 14, lineHeight: 1.65, margin: 0 }}>{m.d}</p>
                 </div>
@@ -364,11 +364,11 @@ export function HRMDetail() {
                   Most SMEs run HR on spreadsheets and chat messages. HRM replaces that with one hosted product: companies sign up, pick a plan and get their own environment — while the platform owner manages billing and payouts from a single admin.
                 </p>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 1, background: 'var(--border)', borderRadius: 12, overflow: 'hidden', border: '1px solid var(--border)' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                 {PLATFORM.map((p) => (
-                  <div key={p.k} style={{ display: 'flex', gap: 16, padding: '16px 20px', background: 'var(--bg-2)' }}>
-                    <span className="mono" style={{ flexShrink: 0, width: 72, fontSize: 11, color: '#c4b5fd', letterSpacing: '0.12em', paddingTop: 2 }}>{p.k.toUpperCase()}</span>
-                    <span style={{ fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.6 }}>{p.v}</span>
+                  <div key={p.k} style={{ display: 'flex', gap: 16, padding: '16px 20px', background: 'var(--ice)', borderRadius: 16 }}>
+                    <span className="mono" style={{ flexShrink: 0, width: 72, fontSize: 11, color: 'var(--primary)', letterSpacing: '0.12em', paddingTop: 2 }}>{p.k.toUpperCase()}</span>
+                    <span style={{ fontSize: 14, color: 'var(--ultramarine)', lineHeight: 1.6 }}>{p.v}</span>
                   </div>
                 ))}
               </div>

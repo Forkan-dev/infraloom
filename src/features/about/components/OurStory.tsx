@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Reveal } from '@/components/shared/Reveal';
+import { SectionHead } from '@/components/shared/SectionHead';
 
 const LEADERS = [
   { name: 'Syeed Hasin', role: 'Co-founder & CEO', photo: '/members/Syeed-hasin.png' },
@@ -8,70 +9,58 @@ const LEADERS = [
 
 export function OurStory() {
   return (
-    <section className="section-tight">
+    <section className="section">
       <div className="container">
         <Reveal>
-          <div style={{ textAlign: 'center', marginBottom: 56 }}>
-            <h2 style={{ margin: '0 0 14px' }}>The people behind the work</h2>
-            <p style={{ color: 'var(--fg-2)', fontSize: 16, maxWidth: '48ch', margin: '0 auto' }}>
-              No layers of management between you and the people building your system.
-            </p>
-          </div>
+          <SectionHead
+            title="The people behind the work"
+            body="No layers of management between you and the people building your system."
+          />
         </Reveal>
 
         <div className="founders">
-          {LEADERS.map((l, i) => (
-            <Reveal key={l.name} delay={i * 100}>
-              <figure className="founder">
-                <div className="founder-photo">
-                  <Image
-                    src={l.photo}
-                    alt={l.name}
-                    fill
-                    sizes="(max-width: 640px) 100vw, 380px"
-                    style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
-                  />
-                </div>
-                <figcaption className="founder-info">
-                  <div className="founder-name">{l.name}</div>
-                  <div className="founder-role">{l.role}</div>
-                </figcaption>
-              </figure>
-            </Reveal>
+          {LEADERS.map((l) => (
+            <figure key={l.name} className="founder">
+              <Reveal className="reveal-clip founder-photo">
+                <Image
+                  src={l.photo}
+                  alt={l.name}
+                  fill
+                  sizes="(max-width: 880px) 100vw, 520px"
+                  style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
+                />
+              </Reveal>
+              <figcaption className="founder-info">
+                <span className="founder-name">{l.name}</span>
+                <span className="founder-role">{l.role}</span>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>
 
       <style>{`
         .founders {
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 380px));
-          justify-content: center;
-          gap: 28px;
+          display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px;
+          align-items: start;
         }
-        .founder {
-          margin: 0;
-          padding: 10px;
-          border-radius: 22px;
-          border: 1px solid var(--border);
-          background: var(--bg-2);
-          transition: transform 0.35s var(--ease), border-color 0.35s var(--ease);
+        .founder { margin: 0; }
+        .founder:nth-child(1) { grid-column: 3 / span 4; }
+        .founder:nth-child(2) { grid-column: 8 / span 4; margin-top: 120px; }
+        .founder { padding: 12px; background: var(--surface); border-radius: var(--radius-card); }
+        .founder-photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--paper-3); border-radius: 16px; }
+        .founder-photo img { filter: grayscale(1) contrast(1.05); }
+        .founder:hover .founder-photo img { transform: scale(1.03) !important; }
+        .founder-info {
+          display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;
+          padding: 18px 10px 8px;
         }
-        .founder:hover { transform: translateY(-4px); border-color: rgba(139,92,246,0.35); }
-        .founder-photo {
-          position: relative;
-          aspect-ratio: 4 / 5;
-          border-radius: 14px;
-          overflow: hidden;
-          background: var(--bg-3, #111);
-        }
-        .founder-photo img { transition: transform 0.6s var(--ease); }
-        .founder:hover .founder-photo img { transform: scale(1.04); }
-        .founder-info { padding: 18px 10px 10px; }
-        .founder-name { font-size: 19px; font-weight: 600; color: var(--fg-1); letter-spacing: -0.01em; }
-        .founder-role { font-size: 14px; color: var(--fg-3); margin-top: 4px; }
-        @media (max-width: 640px) {
-          .founders { grid-template-columns: minmax(0, 380px); }
+        .founder-name { font-family: var(--font-display); font-size: 24px; font-weight: 600; letter-spacing: -0.03em; color: var(--ink); }
+        .founder-role { font-size: 13px; font-weight: 500; color: var(--primary); background: var(--ice); padding: 4px 12px; border-radius: 999px; }
+        [data-theme="dark"] .founder-role { background: var(--paper-3); color: var(--signal); }
+        @media (max-width: 880px) {
+          .founder:nth-child(1), .founder:nth-child(2) { grid-column: 1 / -1; margin-top: 0; }
+          .founder + .founder { margin-top: 12px; }
         }
       `}</style>
     </section>

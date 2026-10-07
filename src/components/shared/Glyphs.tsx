@@ -1,22 +1,47 @@
-import { ReactNode } from 'react';
+import { ReactNode, SVGProps } from 'react';
+
+/*
+ * Infraloom glyph system.
+ * Drawn on a 24 grid with one 1.4 stroke and square caps, from the same parts as the logo mark:
+ * a ring hub, straight threads, and small square nodes where threads meet.
+ */
+function G(props: SVGProps<SVGSVGElement> & { children: ReactNode }) {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="square"
+      strokeLinejoin="miter"
+      aria-hidden="true"
+      {...props}
+    />
+  );
+}
+
+/** Small filled square used as a thread node. */
+const N = ({ x, y }: { x: number; y: number }) => <rect x={x - 1.5} y={y - 1.5} width="3" height="3" fill="currentColor" stroke="none" />;
 
 export const GlyphMap: Record<string, ReactNode> = {
-  hex: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2 L21 7 V17 L12 22 L3 17 V7 Z" stroke="currentColor" strokeWidth="1.5" /></svg>,
-  triangle: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3 L22 21 L2 21 Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /></svg>,
-  circle: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" /><circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5" /></svg>,
-  square: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.5" /></svg>,
-  diamond: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2 L22 12 L12 22 L2 12 Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /></svg>,
-  cube: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3 L21 8 V17 L12 22 L3 17 V8 Z M12 3 V12 M12 12 L21 8 M12 12 L3 8" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" /></svg>,
-  ring: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" /><circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.5" opacity="0.6" /></svg>,
-  bolt: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M13 3 L4 14 H11 L9 21 L20 9 H13 L15 3 Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" /></svg>,
-  dna: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 4 C 8 8 16 16 19 20 M19 4 C 16 8 8 16 5 20 M7 7 H17 M7 17 H17" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" /></svg>,
-  flow: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="5" cy="5" r="2" stroke="currentColor" strokeWidth="1.4" /><circle cx="19" cy="12" r="2" stroke="currentColor" strokeWidth="1.4" /><circle cx="5" cy="19" r="2" stroke="currentColor" strokeWidth="1.4" /><path d="M7 5 L17 11 M7 19 L17 13" stroke="currentColor" strokeWidth="1.3" /></svg>,
-  layers: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 7 L12 3 L21 7 L12 11 Z M3 12 L12 16 L21 12 M3 17 L12 21 L21 17" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" /></svg>,
-  pulse: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M2 12 H6 L8 5 L12 19 L14 12 H22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>,
-  tree: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="4" r="2" stroke="currentColor" strokeWidth="1.4" /><circle cx="5" cy="20" r="2" stroke="currentColor" strokeWidth="1.4" /><circle cx="12" cy="20" r="2" stroke="currentColor" strokeWidth="1.4" /><circle cx="19" cy="20" r="2" stroke="currentColor" strokeWidth="1.4" /><path d="M12 6 V12 M12 12 H5 V18 M12 12 V18 M12 12 H19 V18" stroke="currentColor" strokeWidth="1.3" /></svg>,
-  shield: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3 L20 6 V13 C20 17 16.5 20 12 21 C7.5 20 4 17 4 13 V6 Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" /></svg>,
-  spiral: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21 C 6 21 4 15 4 12 C 4 8 7 5 11 5 C 14 5 16 7 16 10 C 16 12 14 14 12 14 C 11 14 9 13 9 11" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" /></svg>,
-  grid: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" stroke="currentColor" strokeWidth="1.4" rx="1" /><rect x="14" y="3" width="7" height="7" stroke="currentColor" strokeWidth="1.4" rx="1" /><rect x="3" y="14" width="7" height="7" stroke="currentColor" strokeWidth="1.4" rx="1" /><rect x="14" y="14" width="7" height="7" stroke="currentColor" strokeWidth="1.4" rx="1" /></svg>,
+  hex: <G><path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z" /><path d="M12 2.5v19" /></G>,
+  triangle: <G><path d="M12 3l9 17H3z" /><path d="M7.8 15h8.4M10.2 10.5h3.6" /></G>,
+  circle: <G><circle cx="12" cy="12" r="4" /><path d="M12 2v4M12 18v4M2 12h4M18 12h4" /></G>,
+  square: <G><path d="M3.5 3.5h17v17h-17z" /><path d="M9 3.5v17M15 3.5v17" /></G>,
+  diamond: <G><path d="M12 2.5l9.5 9.5-9.5 9.5L2.5 12z" /><path d="M2.5 12h19" /></G>,
+  cube: <G><path d="M12 2.8l8.4 4.7v9L12 21.2l-8.4-4.7v-9z" /><path d="M3.6 7.5L12 12l8.4-4.5M12 12v9.2" /></G>,
+  ring: <G><circle cx="12" cy="12" r="8.5" /><circle cx="12" cy="12" r="3.5" /><N x={12} y={3.5} /></G>,
+  bolt: <G><path d="M14 2.5L5.5 13.5h6.5L10 21.5l8.5-11H12z" /></G>,
+  dna: <G><path d="M3 7c4.5 0 4.5 10 9 10s4.5-10 9-10" /><path d="M3 17c4.5 0 4.5-10 9-10s4.5 10 9 10" /></G>,
+  flow: <G><path d="M4 5h7v14h9M11 12h9" /><N x={4} y={5} /><N x={20} y={12} /><N x={20} y={19} /></G>,
+  layers: <G><path d="M3 6h18M6 12h15M9 18h12" /><N x={3} y={12} /><N x={6} y={18} /></G>,
+  pulse: <G><path d="M2 13h5V6h5v12h5v-5h5" /></G>,
+  tree: <G><path d="M12 4v6M4.5 20v-6h15v6M12 10v10" /><N x={12} y={4} /><N x={4.5} y={20} /><N x={12} y={20} /><N x={19.5} y={20} /></G>,
+  shield: <G><path d="M12 2.5l8 3v6.8c0 4.6-3.4 7.9-8 9.2-4.6-1.3-8-4.6-8-9.2V5.5z" /><path d="M12 2.5v19" /></G>,
+  spiral: <G><path d="M3 8h18M3 16h18M8 3v18M16 3v18" /></G>,
+  grid: <G><path d="M3.5 3.5h7v7h-7zM13.5 3.5h7v7h-7zM3.5 13.5h7v7h-7zM13.5 13.5h7v7h-7z" /></G>,
 };
 
 export function Glyph({ name }: { name: string }) {

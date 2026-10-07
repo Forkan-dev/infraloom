@@ -83,36 +83,31 @@ function InfinityMark() {
 
 export function Footer() {
   return (
-    <footer style={{ position: 'relative', borderTop: '1px solid var(--border)', marginTop: 80 }}>
-      <div className="bg-grid" style={{ opacity: 0.5 }} />
-      <div className="container" style={{ position: 'relative', padding: '80px 32px 40px' }}>
-        <div
-          style={{ display: 'grid', gridTemplateColumns: '1.4fr 3fr', gap: 60, marginBottom: 80 }}
-          className="footer-top"
-        >
-          <div>
-            <Logo />
-            <p style={{ marginTop: 18, color: 'var(--fg-3)', fontSize: 14, maxWidth: 320, lineHeight: 1.55 }}>
+    <footer className="block foot">
+      <div className="container">
+        <div className="foot-top">
+          <div className="foot-lead">
+            <Logo variant="dark" height={28} />
+            <p className="foot-statement">
               Software engineering for companies building real-time, distributed and AI products.
             </p>
-            <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 8 }}>
-              <span className="mono" style={{ fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-                Headquarters
+          </div>
+
+          <div className="foot-hq">
+            <span className="foot-label">Headquarters</span>
+            <div className="footer-contact">
+              <span className="footer-contact-row">
+                <span className="footer-contact-icon"><PinIcon /></span>
+                {CONTACT.address}
               </span>
-              <div className="footer-contact">
-                <span className="footer-contact-row">
-                  <span className="footer-contact-icon"><PinIcon /></span>
-                  {CONTACT.address}
-                </span>
-                {CONTACT.phones.map((p) => (
-                  <a key={p.tel} href={`tel:${p.tel}`} className="footer-contact-row footer-contact-link">
-                    <span className="footer-contact-icon"><PhoneIcon /></span>
-                    {p.label}
-                  </a>
-                ))}
-              </div>
+              {CONTACT.phones.map((p) => (
+                <a key={p.tel} href={`tel:${p.tel}`} className="footer-contact-row footer-contact-link">
+                  <span className="footer-contact-icon"><PhoneIcon /></span>
+                  {p.label}
+                </a>
+              ))}
             </div>
-            <div style={{ marginTop: 22, display: 'flex', gap: 10 }}>
+            <div className="foot-socials">
               {SOCIALS.map((s) => (
                 <a
                   key={s.label}
@@ -122,52 +117,44 @@ export function Footer() {
                   aria-label={s.label}
                   title={s.label}
                   className="footer-social"
-                  style={{ '--brand': s.color } as React.CSSProperties}
                 >
                   {s.icon}
+                  <span>{s.label}</span>
                 </a>
               ))}
             </div>
           </div>
+        </div>
 
-          <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 32 }}>
-            {GROUPS.map((g, i) => (
-              <div key={i}>
-                <div className="mono" style={{ fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 16 }}>
-                  {g.title}
-                </div>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                  {g.items.map((it, j) => (
-                    <li key={j}>
-                      <Link href={it.href} style={{ fontSize: 14, color: 'var(--fg-2)' }}>
-                        {it.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+        <div className="foot-grid">
+          {GROUPS.map((g, i) => (
+            <div key={i} className="foot-col">
+              <div className="foot-label">
+                {g.title}
               </div>
-            ))}
-          </div>
+              <ul>
+                {g.items.map((it, j) => (
+                  <li key={j}>
+                    <Link href={it.href} className="foot-link">{it.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
         <div className="footer-watermark" aria-hidden="true">
           Infral<InfinityMark />m
         </div>
 
-        <div
-          style={{
-            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-            paddingTop: 24, borderTop: '1px solid var(--border)',
-            fontSize: 12, color: 'var(--fg-3)', flexWrap: 'wrap', gap: 12,
-          }}
-        >
+        <div className="foot-bar">
           <div>© 2026 Infraloom Engineering, Inc. · All systems operational</div>
-          <div style={{ display: 'flex', gap: 20 }}>
-            <a href="#" style={{ color: 'var(--fg-3)' }}>Privacy</a>
-            <a href="#" style={{ color: 'var(--fg-3)' }}>Terms</a>
-            <a href="#" style={{ color: 'var(--fg-3)' }}>SOC 2</a>
-            <span className="mono" style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--success)', boxShadow: '0 0 6px var(--success)' }} />
+          <div className="foot-bar-links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">SOC 2</a>
+            <span className="mono" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--chartreuse)' }} />
               v2026.05.08
             </span>
           </div>
@@ -175,68 +162,95 @@ export function Footer() {
       </div>
 
       <style>{`
-        .footer-social {
-          width: 40px;
-          height: 40px;
-          border-radius: 10px;
-          border: 1px solid var(--border);
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          transition: transform 0.2s, border-color 0.2s, background 0.2s;
+        .foot {
+          --foot-ink: var(--ice);
+          --foot-ink-2: var(--text-on-dark-muted);
+          --foot-ink-3: rgba(195, 209, 255, 0.6);
+          --foot-rule: rgba(195, 209, 255, 0.14);
+          background: #0B0F24; color: var(--foot-ink);
+          padding: 80px 0 32px; margin-top: 72px; margin-bottom: var(--block-inset);
         }
-        .footer-social:hover {
-          transform: translateY(-2px);
-          border-color: color-mix(in srgb, var(--brand) 55%, transparent);
-          background: color-mix(in srgb, var(--brand) 10%, transparent);
+        [data-theme="dark"] .foot { background: #0A1A5C; }
+        .foot-top {
+          display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px;
+          padding-bottom: 72px;
         }
-        .footer-contact { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+        .foot-lead { grid-column: 1 / span 7; }
+        .foot-statement {
+          margin-top: 36px; max-width: 20ch;
+          font-family: var(--font-display); font-size: clamp(26px, 2.8vw, 40px); font-weight: 500;
+          line-height: 1.15; letter-spacing: -0.03em; color: #fff;
+        }
+        .foot-hq { grid-column: 9 / span 4; display: flex; flex-direction: column; gap: 18px; padding-top: 6px; }
+        .foot-label {
+          display: flex; align-items: baseline; gap: 10px;
+          font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+          color: var(--foot-ink-3);
+        }
+        .footer-contact { display: flex; flex-direction: column; gap: 12px; }
         .footer-contact-row {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          font-size: 14px;
-          line-height: 1.4;
-          color: var(--fg-2);
-          width: fit-content;
+          display: inline-flex; align-items: center; gap: 12px;
+          font-size: 15px; line-height: 1.4; color: var(--foot-ink-2); width: fit-content;
         }
         .footer-contact-icon {
-          width: 28px;
-          height: 28px;
-          flex-shrink: 0;
-          border-radius: 8px;
-          border: 1px solid var(--border);
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          color: var(--fg-3);
-          transition: color 0.2s, border-color 0.2s;
+          width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%;
+          background: rgba(123, 155, 255, 0.14);
+          display: inline-flex; align-items: center; justify-content: center;
+          color: var(--signal);
+          transition: color 0.2s ease, background 0.2s ease;
         }
-        .footer-contact-link { font-variant-numeric: tabular-nums; transition: color 0.2s; }
-        .footer-contact-link:hover { color: var(--fg-1); }
-        .footer-contact-link:hover .footer-contact-icon { color: #c4b5fd; border-color: rgba(139,92,246,0.4); }
+        .footer-contact-link { font-variant-numeric: tabular-nums; transition: color 0.3s var(--ease); }
+        .footer-contact-link:hover { color: var(--foot-ink); }
+        .footer-contact-link:hover .footer-contact-icon { color: #fff; background: var(--primary); }
+        .foot-socials { display: flex; gap: 8px; margin-top: 6px; }
+        .footer-social {
+          display: inline-flex; align-items: center; gap: 10px;
+          padding: 8px 16px 8px 8px; border-radius: 999px;
+          background: rgba(123, 155, 255, 0.12);
+          font-size: 13px; font-weight: 500; color: var(--foot-ink);
+          transition: background 0.2s ease, color 0.2s ease;
+        }
+        .footer-social:hover { background: var(--primary); color: #fff; }
+        .foot-grid {
+          display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 24px;
+          border-top: 1px solid var(--foot-rule);
+        }
+        .foot-col { padding: 28px 24px 0 0; }
+        .foot-col ul { list-style: none; padding: 0; margin: 22px 0 0; display: flex; flex-direction: column; gap: 12px; }
+        .foot-link {
+          font-size: 15px; color: var(--signal);
+          background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+          padding-bottom: 2px;
+          transition: color 0.3s var(--ease), background-size 0.45s var(--ease);
+        }
+        .foot-link:hover { color: #fff; background-size: 100% 1px; }
+        /* one highlighted link: Company → Contact */
+        .foot-col:nth-child(2) li:last-child .foot-link { color: var(--chartreuse); }
         .footer-watermark {
-          font-size: clamp(96px, 18vw, 260px);
-          font-weight: 500;
-          letter-spacing: -0.06em;
-          line-height: 0.85;
-          margin-bottom: 40px;
-          user-select: none;
-          color: var(--watermark-ink);
-          /* one fade for the letters and the infinity mark alike */
-          -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 100%);
-          mask-image: linear-gradient(180deg, #000 0%, transparent 100%);
+          margin: 72px 0 24px;
+          font-family: var(--font-display); font-weight: 500;
+          font-size: clamp(88px, 19.5vw, 300px);
+          letter-spacing: -0.065em; line-height: 0.78;
+          color: var(--foot-ink);
+          user-select: none; white-space: nowrap;
         }
-        .footer-watermark svg {
-          /* sized to the x-height so it sits where the "oo" would */
-          height: 0.52em;
-          width: auto;
-          vertical-align: baseline;
-          margin: 0 -0.02em;
+        .footer-watermark svg { height: 0.5em; width: auto; vertical-align: baseline; margin: 0 -0.015em; color: var(--primary); }
+        .foot-bar {
+          display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+          padding-top: 22px; border-top: 1px solid var(--foot-rule);
+          font-size: 12px; color: var(--foot-ink-3);
         }
-        @media (max-width: 880px) {
-          .footer-top { grid-template-columns: 1fr !important; gap: 32px !important; }
-          .footer-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        .foot-bar-links { display: flex; gap: 22px; align-items: center; }
+        .foot-bar-links a { transition: color 0.3s var(--ease); }
+        .foot-bar-links a:hover { color: var(--foot-ink); }
+        @media (max-width: 980px) {
+          .foot { padding-top: 56px; margin-top: 56px; }
+          .foot-lead, .foot-hq { grid-column: 1 / -1; }
+          .foot-hq { margin-top: 48px; }
+          .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+          .foot-col { padding-bottom: 28px; }
+          .footer-watermark { margin-top: 56px; }
         }
       `}</style>
     </footer>

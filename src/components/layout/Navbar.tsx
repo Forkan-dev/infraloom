@@ -7,6 +7,15 @@ import { Logo } from '@/components/shared/Logo';
 import { ThemeToggle } from '@/components/shared/ThemeToggle';
 import { ArrowRight } from '@/components/ui/ArrowRight';
 
+const LINKS = [
+  { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services' },
+  { href: '/process', label: 'Process' },
+  { href: '/projects', label: 'Products' },
+  // { href: '/industries', label: 'Industries' },
+  { href: '/about', label: 'About' },
+];
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -23,50 +32,33 @@ export function Navbar() {
     setMobileOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
   return (
-    <header
-      style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-        padding: '16px 0',
-        transition: 'background 0.3s, border-color 0.3s, backdrop-filter 0.3s',
-        background: scrolled ? 'var(--nav-bg)' : 'transparent',
-        borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
-        backdropFilter: scrolled ? 'saturate(140%) blur(14px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'saturate(140%) blur(14px)' : 'none',
-      }}
-    >
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24 }}>
-        <Link href="/" style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <Logo priority />
+    <header className={`nav ${scrolled ? 'is-scrolled' : ''}`}>
+      <div className="container nav-inner">
+        <Link href="/" className="nav-logo" aria-label="Infraloom home">
+          <Logo priority height={26} />
         </Link>
 
-        <nav className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-          <NavLink href="/" label="Home" />
-          <NavLink href="/services" label="Services" />
-          <NavLink href="/process" label="Process" />
-          <NavLink href="/projects" label="Products" />
-          {/* <NavLink href="/industries" label="Industries" /> */}
-          <NavLink href="/about" label="About" />
+        <nav className="nav-links" aria-label="Primary">
+          {LINKS.map((l) => (
+            <NavLink key={l.href} href={l.href} label={l.label} />
+          ))}
         </nav>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div className="nav-actions">
           <ThemeToggle />
-          <Link href="/contact" className="btn btn-secondary nav-cta-secondary">Contact</Link>
+          <Link href="/contact" className="nav-text-link nav-cta-secondary">Contact</Link>
           <Link href="/contact" className="btn btn-primary nav-cta-primary">
             Book a call <ArrowRight />
           </Link>
-          <button
-            className="nav-burger"
-            onClick={() => setMobileOpen(true)}
-            aria-label="Open menu"
-            style={{
-              display: 'none', width: 36, height: 36, alignItems: 'center', justifyContent: 'center',
-              border: '1px solid var(--border)', borderRadius: 8, color: 'var(--fg)',
-              background: 'transparent', cursor: 'pointer',
-            }}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+          <button className="nav-burger" onClick={() => setMobileOpen(true)} aria-label="Open menu">
+            <svg width="22" height="12" viewBox="0 0 22 12" fill="none" aria-hidden="true">
+              <path d="M0 1h22M8 11h14" stroke="currentColor" strokeWidth="1.4" />
             </svg>
           </button>
         </div>
@@ -75,46 +67,63 @@ export function Navbar() {
       <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
 
       <style>{`
+        .nav {
+          position: fixed; top: var(--block-inset); left: var(--block-inset); right: var(--block-inset); z-index: 100;
+        }
+        .nav .nav-inner {
+          display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 64px;
+          max-width: var(--block-max); padding: 0 10px 0 24px;
+          background: var(--surface); border-radius: var(--radius-pill);
+          transition: background 0.3s var(--ease);
+        }
+        .nav-logo { display: inline-flex; align-items: center; }
+        .nav-links { display: flex; align-items: center; gap: 4px; }
         .nav-link {
-          position: relative; display: inline-flex; align-items: center;
-          padding: 8px 14px; font-size: 14px; font-weight: 500;
-          color: var(--fg-2); border-radius: 8px;
-          transition: color 0.2s, background 0.2s;
+          display: inline-flex; align-items: center;
+          font-size: 14px; font-weight: 500; color: var(--text-muted);
+          padding: 8px 16px; border-radius: var(--radius-pill);
+          transition: color 0.2s ease, background 0.2s ease;
         }
-        .nav-link:hover { color: var(--fg-1); background: var(--nav-link-hover); }
-        .nav-link.active { color: var(--fg-1); }
-        .nav-link.active::after {
-          content: ""; position: absolute; left: 14px; right: 14px; bottom: 2px;
-          height: 1.5px; background: linear-gradient(90deg, var(--blue), var(--violet)); border-radius: 2px;
+        .nav-link:hover { color: var(--text); }
+        .nav-link.active { background: var(--ice); color: var(--primary); }
+        [data-theme="dark"] .nav-link.active { background: var(--paper-3); color: var(--signal); }
+        .nav-actions { display: flex; align-items: center; gap: 12px; }
+        .nav-text-link { font-size: 14px; font-weight: 500; color: var(--text-muted); padding: 8px 6px; transition: color 0.2s ease; }
+        .nav-text-link:hover { color: var(--text); }
+        .nav-cta-primary.btn { padding: 11px 18px; gap: 10px; background: var(--text); color: var(--chartreuse); }
+        .nav-cta-primary.btn:hover { background: var(--ultramarine); }
+        [data-theme="dark"] .nav-cta-primary.btn { background: var(--chartreuse); color: var(--ultramarine); }
+        .nav-burger {
+          display: none; width: 44px; height: 44px; align-items: center; justify-content: center;
+          border: 0; border-radius: 50%; background: var(--ice); color: var(--primary); cursor: pointer; padding: 0;
         }
-        [data-theme="light"] .nav-link:hover { background: rgba(99,102,241,0.07); color: #1e1b4b; }
-        [data-theme="light"] .nav-link { color: #4b5563; }
-        [data-theme="light"] .nav-link.active { color: #3730a3; }
-        [data-theme="light"] .nav-link.active::after {
-          background: linear-gradient(90deg, #2563eb, #7c3aed);
-        }
-        @media (max-width: 980px) {
-          .nav-links { display: none !important; }
-          .nav-cta-secondary { display: none !important; }
-          .nav-burger { display: inline-flex !important; }
-          .nav-cta-primary { display: none !important; }
+        [data-theme="dark"] .nav-burger { background: var(--paper-3); color: var(--signal); }
+        @media (max-width: 1020px) {
+          .nav-links, .nav-cta-secondary, .nav-cta-primary { display: none !important; }
+          .nav-burger { display: inline-flex; }
+          .nav-actions { gap: 4px; }
+          .nav .nav-inner { padding: 0 10px 0 20px; height: 60px; }
         }
       `}</style>
     </header>
   );
 }
 
+function isActive(pathname: string, href: string) {
+  return pathname === href || (href !== '/' && pathname.startsWith(href));
+}
+
 function NavLink({ href, label }: { href: string; label: string }) {
   const pathname = usePathname();
-  const active = pathname === href || (href !== '/' && pathname.startsWith(href));
   return (
-    <Link href={href} className={`nav-link ${active ? 'active' : ''}`}>
+    <Link href={href} className={`nav-link ${isActive(pathname, href) ? 'active' : ''}`}>
       {label}
     </Link>
   );
 }
 
 function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const pathname = usePathname();
   const NAV_LINKS = [
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
@@ -126,45 +135,61 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   ];
 
   return (
-    <div
-      style={{
-        position: 'fixed', inset: 0, zIndex: 200,
-        pointerEvents: open ? 'auto' : 'none',
-        opacity: open ? 1 : 0,
-        transition: 'opacity 0.3s',
-        background: 'rgba(0,0,0,0.6)',
-        backdropFilter: 'blur(8px)',
-      }}
-      onClick={onClose}
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        style={{
-          position: 'absolute', top: 0, right: 0, bottom: 0, width: 'min(360px, 90vw)',
-          background: 'var(--bg-1)', borderLeft: '1px solid var(--border)',
-          transform: open ? 'translateX(0)' : 'translateX(100%)',
-          transition: 'transform 0.3s cubic-bezier(0.32, 0.72, 0, 1)',
-          padding: '20px 20px 40px',
-          display: 'flex', flexDirection: 'column', gap: 8,
-        }}
-      >
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
-          <Logo />
-          <button onClick={onClose} aria-label="Close" style={{ width: 32, height: 32, color: 'var(--fg-2)', background: 'transparent', border: 'none', cursor: 'pointer' }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="1.6" /></svg>
-          </button>
-        </div>
+    <div className={`mnav ${open ? 'is-open' : ''}`} aria-hidden={!open}>
+      <div className="container mnav-top">
+        <Logo height={26} />
+        <button onClick={onClose} aria-label="Close menu" className="nav-burger" style={{ display: 'inline-flex' }}>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M1 1l16 16M17 1L1 17" stroke="currentColor" strokeWidth="1.4" />
+          </svg>
+        </button>
+      </div>
+      <nav className="container mnav-list" aria-label="Mobile">
         {NAV_LINKS.map((l, i) => (
-          <Link key={i} href={l.href} onClick={onClose} style={{ padding: '14px 12px', borderRadius: 10, fontSize: 18, fontWeight: 500, borderBottom: '1px solid var(--border)' }}>
+          <Link
+            key={l.href}
+            href={l.href}
+            onClick={onClose}
+            className={`mnav-link ${isActive(pathname, l.href) ? 'active' : ''}`}
+            style={{ transitionDelay: open ? `${80 + i * 45}ms` : '0ms' }}
+            tabIndex={open ? 0 : -1}
+          >
             {l.label}
           </Link>
         ))}
-        <div style={{ marginTop: 18, display: 'flex', flexDirection: 'column', gap: 10 }}>
-          <Link href="/contact" onClick={onClose} className="btn btn-primary" style={{ justifyContent: 'center' }}>
-            Book a discovery call
-          </Link>
-        </div>
-      </div>
+        <Link href="/contact" onClick={onClose} className="btn btn-primary mnav-cta" tabIndex={open ? 0 : -1}>
+          Book a discovery call <ArrowRight />
+        </Link>
+      </nav>
+
+      <style>{`
+        .mnav {
+          position: fixed; inset: 0; z-index: 200; background: var(--paper);
+          display: flex; flex-direction: column;
+          clip-path: inset(0 0 100% 0);
+          transition: clip-path 0.6s var(--ease);
+          pointer-events: none; overflow-y: auto;
+        }
+        .mnav.is-open { clip-path: inset(0 0 0 0); pointer-events: auto; }
+        .mnav-top {
+          display: flex; justify-content: space-between; align-items: center; height: 60px; flex-shrink: 0;
+          margin: var(--block-inset); padding: 0 10px 0 20px !important;
+          background: var(--surface); border-radius: var(--radius-pill);
+          width: auto;
+        }
+        .mnav-list { display: flex; flex-direction: column; gap: 6px; padding-top: 12px; padding-bottom: 40px; }
+        .mnav-link {
+          display: flex; align-items: baseline; gap: 18px;
+          font-family: var(--font-display); font-size: clamp(30px, 8vw, 44px); font-weight: 600;
+          letter-spacing: -0.03em; line-height: 1.15; color: var(--ink);
+          padding: 14px 22px; background: var(--surface); border-radius: var(--radius-card);
+          opacity: 0; transform: translateY(16px);
+          transition: opacity 0.5s var(--ease), transform 0.5s var(--ease), color 0.2s ease, background 0.2s ease;
+        }
+        .mnav.is-open .mnav-link { opacity: 1; transform: none; }
+        .mnav-link.active { background: var(--primary); color: #fff; }
+        .mnav-cta { margin-top: 20px; align-self: stretch; }
+      `}</style>
     </div>
   );
 }

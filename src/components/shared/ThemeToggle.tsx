@@ -2,39 +2,31 @@
 
 import { useTheme } from '@/providers/ThemeProvider';
 
+/** Two-position switch drawn as a half-filled square: the filled half shows the current edition. */
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
-  const light = theme === 'light';
+  const dark = theme === 'dark';
 
   return (
     <button
       onClick={toggleTheme}
-      aria-label="Toggle theme"
-      style={{
-        width: 32,
-        height: 32,
-        padding: 0,
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        border: '1px solid var(--border)',
-        borderRadius: 8,
-        background: 'transparent',
-        color: 'var(--fg-2)',
-        cursor: 'pointer',
-        transition: 'color 0.2s, border-color 0.2s',
-      }}
+      aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'}
+      title={dark ? 'Light' : 'Dark'}
+      className="theme-toggle"
     >
-      {light ? (
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-          <path d="M21 13 A 9 9 0 1 1 11 3 A 7 7 0 0 0 21 13 Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-        </svg>
-      ) : (
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.6" />
-          <path d="M12 2 V4 M12 20 V22 M2 12 H4 M20 12 H22 M5 5 L6.5 6.5 M17.5 17.5 L19 19 M5 19 L6.5 17.5 M17.5 6.5 L19 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-        </svg>
-      )}
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <rect x="1.5" y="1.5" width="13" height="13" stroke="currentColor" strokeWidth="1.2" />
+        <path d={dark ? 'M8 1.5h6.5v13H8z' : 'M1.5 1.5H8v13H1.5z'} fill="currentColor" />
+      </svg>
+      <style>{`
+        .theme-toggle {
+          width: 36px; height: 36px; padding: 0;
+          display: inline-flex; align-items: center; justify-content: center;
+          border: 0; background: transparent; color: var(--ink-2); cursor: pointer;
+          transition: color 0.3s var(--ease);
+        }
+        .theme-toggle:hover { color: var(--accent); }
+      `}</style>
     </button>
   );
 }

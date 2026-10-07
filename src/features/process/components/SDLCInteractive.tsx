@@ -10,53 +10,66 @@ export function SDLCInteractive() {
   const stage = PROCESS_STAGES[active];
 
   return (
-    <section className="section-tight">
+    <section className="block block-ice sdlc">
       <div className="container">
-        <div className="card" style={{ padding: 32 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20, flexWrap: 'wrap', gap: 12 }}>
-            <span className="mono" style={{ fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.14em' }}>SDLC · ENGAGEMENT FLOW</span>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <button
-                onClick={() => setActive(Math.max(0, active - 1))}
-                className="btn btn-secondary"
-                style={{ padding: '6px 12px', fontSize: 12 }}
-              >← Prev</button>
-              <button
-                onClick={() => setActive(Math.min(7, active + 1))}
-                className="btn btn-secondary"
-                style={{ padding: '6px 12px', fontSize: 12 }}
-              >Next →</button>
-            </div>
+        <div className="sdlc-head">
+          <span className="meta">SDLC · Engagement flow</span>
+          <div className="sdlc-nav">
+            <button onClick={() => setActive(Math.max(0, active - 1))} disabled={active === 0} aria-label="Previous stage" className="sdlc-arrow">
+              <svg width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true"><path d="M19 6H2M7 1L2 6l5 5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="square" /></svg>
+            </button>
+            <button onClick={() => setActive(Math.min(7, active + 1))} disabled={active === 7} aria-label="Next stage" className="sdlc-arrow">
+              <svg width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true"><path d="M1 6h17M13 1l5 5-5 5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="square" /></svg>
+            </button>
           </div>
-          <SDLCFlow active={active} />
-          <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid var(--border)' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr', gap: 32 }} className="sdlc-detail">
-              <div>
-                <div className="mono" style={{ fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.14em', marginBottom: 8 }}>STAGE {stage.n}</div>
-                <h3 style={{ marginBottom: 12 }}>{stage.title}</h3>
-                <p style={{ color: 'var(--fg-2)', fontSize: 14, lineHeight: 1.6, margin: 0 }}>{stage.body}</p>
-              </div>
-              <div>
-                <div className="mono" style={{ fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.14em', marginBottom: 10 }}>OUTPUTS</div>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
-                  {stage.outputs.map((o, i) => (
-                    <li key={i} style={{ fontSize: 13, color: 'var(--fg-2)', display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--blue)', flexShrink: 0 }} />
-                      {o}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <div className="mono" style={{ fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.14em', marginBottom: 10 }}>TOOLS</div>
-                <Tags items={stage.tools} />
-              </div>
-            </div>
+        </div>
+
+        <SDLCFlow active={active} onSelect={setActive} />
+
+        <div className="sdlc-detail" key={active}>
+          <h3 className="sdlc-title">{stage.title}</h3>
+          <p className="sdlc-body">{stage.body}</p>
+          <div className="sdlc-col">
+            <span className="meta">Outputs</span>
+            <ul>
+              {stage.outputs.map((o, i) => <li key={i}>{o}</li>)}
+            </ul>
+          </div>
+          <div className="sdlc-col">
+            <span className="meta">Tools</span>
+            <Tags items={stage.tools} style={{ marginTop: 14 }} />
           </div>
         </div>
       </div>
       <style>{`
-        @media (max-width: 880px) { .sdlc-detail { grid-template-columns: 1fr !important; } }
+        .sdlc { padding: 64px 0; }
+        .sdlc-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .sdlc-nav { display: flex; }
+        .sdlc-arrow {
+          width: 52px; height: 44px; display: inline-flex; align-items: center; justify-content: center;
+          border: 0; border-radius: var(--radius-pill); background: var(--surface); color: var(--primary); cursor: pointer;
+          transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+        }
+        .sdlc-nav { gap: 6px; }
+        .sdlc-arrow:hover:not(:disabled) { background: var(--primary); color: #fff; }
+        .sdlc-arrow:disabled { opacity: 0.3; cursor: default; }
+        .sdlc-detail {
+          display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 24px;
+          margin-top: 48px; padding: 32px; background: var(--surface); border-radius: var(--radius-card);
+          animation: sdlcIn 0.6s var(--ease);
+        }
+        @keyframes sdlcIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+        .sdlc-title { grid-column: 1 / span 4; font-size: clamp(30px, 3.4vw, 48px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.1; color: var(--primary); }
+        .sdlc-body { grid-column: 5 / span 4; font-size: 16px; line-height: 1.6; color: var(--ink-2); }
+        .sdlc-col { grid-column: span 2; }
+        .sdlc-col ul { list-style: none; padding: 0; margin: 14px 0 0; display: flex; flex-direction: column; gap: 8px; }
+        .sdlc-col li { font-size: 14px; color: var(--ink-2); }
+        [data-theme="dark"] .sdlc-title { color: var(--signal); }
+        @media (max-width: 640px) { .sdlc { padding: 44px 0; } .sdlc-detail { padding: 24px; } }
+        @media (max-width: 980px) {
+          .sdlc-title, .sdlc-body { grid-column: 1 / -1; }
+          .sdlc-col { grid-column: span 6; }
+        }
       `}</style>
     </section>
   );

@@ -73,25 +73,8 @@ export function CaseVisualHRM() {
 
 export function CaseVisualPixel() {
   return (
-    <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
-      <div style={{
-        position: 'absolute', inset: 0,
-        background: 'radial-gradient(ellipse at 70% 20%, rgba(139,92,246,0.25), transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(6,182,212,0.2), transparent 60%)',
-      }} />
-      <svg viewBox="0 0 400 320" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
-        <defs>
-          <pattern id="pxGrid" width="22" height="22" patternUnits="userSpaceOnUse">
-            <path d="M 22 0 L 0 0 0 22" stroke="rgba(255,255,255,0.05)" fill="none" />
-          </pattern>
-        </defs>
-        <rect width="400" height="320" fill="url(#pxGrid)" />
-        <circle cx="200" cy="160" r="48" fill="rgba(139,92,246,0.1)" stroke="rgba(139,92,246,0.5)" />
-        <circle cx="200" cy="160" r="48" fill="none" stroke="rgba(139,92,246,0.6)">
-          <animate attributeName="r" values="48;72;48" dur="3s" repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0.6;0;0.6" dur="3s" repeatCount="indefinite" />
-        </circle>
-        <text x="200" y="158" fill="#c4b5fd" fontSize="11" fontFamily="Geist Mono" textAnchor="middle">ORCHESTRATOR</text>
-        <text x="200" y="172" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="Geist Mono" textAnchor="middle">go · grpc · 14k/s</text>
+    <div className="cv-pixel">
+      <svg viewBox="0 0 400 320" aria-hidden="true">
         {Array.from({ length: 12 }).map((_, i) => {
           const a = (i / 12) * Math.PI * 2;
           const r = 120;
@@ -99,15 +82,23 @@ export function CaseVisualPixel() {
           const y = 160 + Math.sin(a) * r;
           return (
             <g key={i}>
-              <line x1="200" y1="160" x2={x} y2={y} stroke="rgba(139,92,246,0.2)" strokeWidth="0.5" />
-              <line x1="200" y1="160" x2={x} y2={y} stroke="#06b6d4" strokeWidth="1" strokeDasharray="2 5"
+              <line x1="200" y1="160" x2={x} y2={y} stroke="rgba(232, 237, 255,0.18)" strokeWidth="1" />
+              <line x1="200" y1="160" x2={x} y2={y} stroke="var(--blue)" strokeWidth="1.5" strokeDasharray="2 6"
                 style={{ animation: 'psFlow 3s linear infinite', animationDelay: `${i * 0.15}s` }} />
-              <rect x={x - 12} y={y - 8} width="24" height="16" rx="3" fill="rgba(15,16,19,0.95)" stroke="rgba(6,182,212,0.5)" />
-              <text x={x} y={y + 3} fill="#67e8f9" fontSize="8" fontFamily="Geist Mono" textAnchor="middle">UE{i + 1}</text>
+              <rect x={x - 14} y={y - 9} width="28" height="18" fill="var(--navy)" stroke="rgba(232, 237, 255,0.45)" />
+              <text x={x} y={y + 3.5} fill="var(--cream)" fontSize="8" fontFamily="var(--font-mono)" textAnchor="middle">UE{i + 1}</text>
             </g>
           );
         })}
+        <circle cx="200" cy="160" r="46" fill="var(--navy)" stroke="var(--blue)" strokeWidth="8" />
+        <text x="200" y="158" fill="var(--cream)" fontSize="9" fontFamily="var(--font-mono)" textAnchor="middle" letterSpacing="1">ORCHESTRATOR</text>
+        <text x="200" y="172" fill="rgba(232, 237, 255,0.55)" fontSize="8" fontFamily="var(--font-mono)" textAnchor="middle">go · grpc · 14k/s</text>
       </svg>
+      <style>{`
+        .cv-pixel { position: absolute; inset: 0; background: var(--navy); display: flex; align-items: center; justify-content: center; }
+        .cv-pixel svg { width: 100%; height: 100%; }
+        @keyframes psFlow { to { stroke-dashoffset: -16; } }
+      `}</style>
     </div>
   );
 }

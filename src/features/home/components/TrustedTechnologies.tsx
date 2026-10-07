@@ -162,17 +162,17 @@ export function TrustedTechnologies() {
       <div className="container">
         <SectionHead title="Tools we work with every day" />
       </div>
-      <div style={{
-        position: 'relative', overflow: 'hidden',
-        maskImage: 'linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)',
-        WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)',
-      }}>
-        <div className="marquee" style={{ display: 'flex', gap: 12, width: 'max-content' }}>
+      <div className="tech-ribbon">
+        <div className="marquee" style={{ gap: 0 }}>
           {doubled.map((t, i) => (
             <TechCell key={i} name={t.name} glyph={t.logo} color={t.color} />
           ))}
         </div>
       </div>
+      <style>{`
+        .tech-ribbon { position: relative; overflow: hidden; padding: 4px 0; }
+        .tech-ribbon:hover .marquee { animation-play-state: paused; }
+      `}</style>
     </section>
   );
 }

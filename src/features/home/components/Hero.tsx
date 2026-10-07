@@ -1,51 +1,31 @@
 import { Reveal } from '@/components/shared/Reveal';
+import { ServiceIcon } from '@/components/shared/ServiceIcon';
+import { GlyphMap } from '@/components/shared/Glyphs';
+import { LoomRing } from '@/components/shared/LoomRing';
 
 const CAPABILITIES = [
   {
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <path d="M8 9l3 3-3 3M13 15h3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-        <rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" strokeWidth="1.6" />
-      </svg>
-    ),
+    icon: <ServiceIcon name="web" />,
     title: 'Custom Software',
     body: 'Product engineering from the first sketch to launch day and beyond.',
   },
   {
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <path d="M3 15a4 4 0 004 4h10a3 3 0 100-6 5 5 0 00-9.9-1A4 4 0 003 15z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-      </svg>
-    ),
+    icon: <ServiceIcon name="cloud" />,
     title: 'Cloud Architecture',
     body: 'Infrastructure on AWS, GCP and Kubernetes that stays up across regions.',
   },
   {
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
+    icon: GlyphMap.pulse,
     title: 'Real-time Streaming',
     body: 'WebSocket, RTMP and WebRTC systems that answer in under 100ms.',
   },
   {
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <path d="M12 3l1.5 4.5H18l-3.75 2.7 1.5 4.5L12 12l-3.75 2.7 1.5-4.5L6 7.5h4.5L12 3z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-        <path d="M5 19h14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-      </svg>
-    ),
+    icon: <ServiceIcon name="ai" />,
     title: 'AI Integration',
     body: 'RAG pipelines, autonomous agents, and local LLM deployments.',
   },
   {
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.6" />
-        <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-      </svg>
-    ),
+    icon: <ServiceIcon name="devops" />,
     title: 'DevOps & Observability',
     body: 'CI/CD, SLOs, Grafana and Prometheus, so every release is a quiet one.',
   },
@@ -53,96 +33,104 @@ const CAPABILITIES = [
 
 export function Hero() {
   return (
-    <section style={{ position: 'relative', paddingTop: 160, paddingBottom: 100, overflow: 'hidden' }}>
-      <div className="bg-grid" />
-      <div className="bg-glow violet" style={{ top: -350, right: -200 }} />
-      <div className="bg-glow blue" style={{ top: -200, left: -300 }} />
+    <section className="hero">
+      <div className="block block-dark on-dark hero-block">
+        <LoomRing className="hero-ring" />
 
-      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr', gap: 60, alignItems: 'center' }}>
-          <div>
-            <Reveal delay={80}>
-              <h1 className="gradient-text" style={{ marginBottom: 28 }}>
-                We build the <span className="serif" style={{ color: '#c4b5fd' }}>software systems</span> businesses run&nbsp;on.
-              </h1>
-            </Reveal>
-            <Reveal delay={160}>
-              <p className="lede" style={{ marginBottom: 36, maxWidth: '52ch' }}>
+        <div className="container hero-inner">
+          <Reveal>
+            <h1 className="hero-title">
+              <span className="line-mask"><span>We build the</span></span>
+              <span className="line-mask"><span className="hero-accent">software systems</span></span>
+              <span className="line-mask"><span>businesses run&nbsp;on.</span></span>
+            </h1>
+          </Reveal>
+
+          <Reveal delay={160}>
+            <div className="hero-foot">
+              <span className="eyebrow hero-label">Core capabilities</span>
+              <p className="lede hero-lede">
                 A small senior team behind backends, real-time products and AI tools
                 that work on day one and still make sense in year three.
               </p>
-            </Reveal>
-          </div>
-
-          <Reveal delay={340}>
-            <div className="caps-card" style={{ padding: '8px 0', borderRadius: 22, overflow: 'hidden' }}>
-              <div className="caps-header" style={{ padding: '16px 20px 12px', borderBottom: '1px solid var(--border)' }}>
-                <span className="mono" style={{ fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.14em' }}>CORE CAPABILITIES</span>
-              </div>
-              {CAPABILITIES.map((cap, i) => (
-                <div
-                  key={i}
-                  className="caps-row"
-                  style={{
-                    display: 'flex', alignItems: 'flex-start', gap: 14,
-                    padding: '14px 20px',
-                    borderBottom: i < CAPABILITIES.length - 1 ? '1px solid var(--border)' : 'none',
-                  }}
-                >
-                  <div className="caps-icon" style={{
-                    flexShrink: 0, width: 36, height: 36,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    borderRadius: 10,
-                  }}>
-                    {cap.icon}
-                  </div>
-                  <div>
-                    <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--fg-1)', marginBottom: 2 }}>{cap.title}</div>
-                    <div style={{ fontSize: 12, color: 'var(--fg-3)', lineHeight: 1.5 }}>{cap.body}</div>
-                  </div>
-                </div>
-              ))}
             </div>
           </Reveal>
         </div>
       </div>
 
+      <Reveal stagger className="inset caps">
+        {CAPABILITIES.map((cap) => (
+          <div key={cap.title} className="cap">
+            <span className="icon-chip cap-icon">{cap.icon}</span>
+            <div className="cap-title">{cap.title}</div>
+            <div className="cap-body">{cap.body}</div>
+          </div>
+        ))}
+      </Reveal>
+
       <style>{`
-        .caps-card {
-          background: linear-gradient(180deg, rgba(20,21,24,0.65) 0%, rgba(13,14,17,0.35) 100%);
-          border: 1px solid var(--border);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
+        .hero { position: relative; }
+        /* only the dark block widens: its edge sits halfway between the container edge and the
+           screen edge, so it is always wider than the container and never full width */
+        .hero .hero-block {
+          margin-left: max(var(--block-inset), calc((100% - var(--container)) / 4));
+          margin-right: max(var(--block-inset), calc((100% - var(--container)) / 4));
+          border-radius: var(--radius-block) var(--radius-block) 0 0;
+          padding: 80px 0 72px;
         }
-        .caps-icon {
-          background: rgba(139,92,246,0.1);
-          border: 1px solid rgba(139,92,246,0.22);
-          color: #c4b5fd;
+        .hero-inner { position: relative; z-index: 1; }
+        .hero-ring { width: 480px; height: 480px; right: -150px; top: 50%; transform: translateY(-50%); }
+        .hero-title {
+          font-size: clamp(40px, 6.4vw, 96px);
+          font-weight: 600;
+          letter-spacing: -0.04em;
+          line-height: 1.1;
+          max-width: 13ch;
+          color: #fff;
         }
-        .caps-row { transition: background 0.18s; }
-
-        [data-theme="light"] .caps-card {
-          background: linear-gradient(160deg, #ffffff 0%, #eff2ff 100%);
-          border: 1px solid rgba(99,102,241,0.18);
-          box-shadow: 0 6px 40px rgba(99,102,241,0.1), 0 1px 6px rgba(0,0,0,0.06);
-          backdrop-filter: none;
-          -webkit-backdrop-filter: none;
+        .line-mask > span.hero-accent {
+          display: inline-block;
+          background: var(--chartreuse); color: var(--ultramarine);
+          border-radius: 12px; padding: 0 0.14em; margin-left: -0.04em;
         }
-        [data-theme="light"] .caps-header {
-          border-bottom-color: rgba(99,102,241,0.12) !important;
+        .hero-foot {
+          display: flex; flex-direction: column; align-items: flex-start; gap: 20px;
+          margin-top: 36px; max-width: 46ch;
         }
-        [data-theme="light"] .caps-row {
-          border-bottom-color: rgba(99,102,241,0.1) !important;
+        .hero-label { order: 0; }
+        .hero-lede { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; color: var(--text-on-dark-muted); max-width: 44ch; }
+        .caps {
+          display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px;
+          margin-top: 12px;
         }
-        [data-theme="light"] .caps-row:hover { background: rgba(99,102,241,0.04); }
-        [data-theme="light"] .caps-icon {
-          background: linear-gradient(135deg, rgba(79,70,229,0.1) 0%, rgba(139,92,246,0.08) 100%);
-          border: 1px solid rgba(79,70,229,0.22);
-          color: #4f46e5;
+        .cap {
+          padding: 22px 22px 26px; display: flex; flex-direction: column;
+          background: var(--surface); border-radius: var(--radius-card);
+          transition: background 0.2s ease, color 0.2s ease;
         }
-
-        @media (max-width: 980px) {
-          .hero-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+        .cap:nth-child(3) { background: var(--lilac); }
+        .cap-icon { margin-bottom: 36px; }
+        .cap-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: var(--text); margin-bottom: 8px; transition: color 0.2s ease; }
+        .cap-body { font-size: 14px; line-height: 1.5; color: var(--text-muted); transition: color 0.2s ease; }
+        .cap:nth-child(3) .cap-title, .cap:nth-child(3) .cap-body { color: var(--lilac-text); }
+        .cap:nth-child(3) .cap-icon { background: #fff; color: var(--lilac-text); }
+        .cap:hover, .cap:nth-child(3):hover { background: var(--primary); }
+        .cap:hover .cap-title { color: #fff; }
+        .cap:hover .cap-body { color: var(--ice); }
+        .cap:hover .cap-icon { background: var(--chartreuse); color: var(--ultramarine); }
+        [data-theme="dark"] .cap:nth-child(3) { background: var(--surface); }
+        [data-theme="dark"] .cap:nth-child(3) .cap-title { color: var(--text); }
+        [data-theme="dark"] .cap:nth-child(3) .cap-body { color: var(--text-muted); }
+        [data-theme="dark"] .cap:nth-child(3) .cap-icon { background: var(--paper-3); color: var(--signal); }
+        @media (max-width: 1100px) {
+          .caps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+          .hero-ring { width: 380px; height: 380px; right: -140px; }
+        }
+        @media (max-width: 760px) {
+          .hero .hero-block { padding: 48px 0 44px; }
+          .hero-ring { width: 240px; height: 240px; right: -96px; top: -40px; transform: none; opacity: 0.4; }
+          .caps { grid-template-columns: 1fr; }
+          .cap-icon { margin-bottom: 18px; }
         }
       `}</style>
     </section>

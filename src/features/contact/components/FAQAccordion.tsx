@@ -14,7 +14,7 @@ const FAQS = [
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div style={{ background: 'var(--bg-2)' }}>
+    <div style={{ background: 'var(--surface)', borderRadius: 18 }}>
       <button
         onClick={() => setOpen(!open)}
         style={{
@@ -26,9 +26,9 @@ function FAQItem({ q, a }: { q: string; a: string }) {
       >
         <span style={{ fontWeight: 500 }}>{q}</span>
         <span style={{
-          width: 22, height: 22, borderRadius: '50%', border: '1px solid var(--border)',
+          width: 28, height: 28, borderRadius: '50%', background: open ? 'var(--primary)' : 'var(--ice)', color: open ? '#fff' : 'var(--primary)',
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-          flexShrink: 0, transition: 'transform 0.3s var(--ease)',
+          flexShrink: 0, transition: 'transform 0.3s var(--ease), background 0.2s ease, color 0.2s ease',
           transform: open ? 'rotate(45deg)' : 'rotate(0)',
         }}>
           <svg width="10" height="10" viewBox="0 0 10 10">
@@ -55,7 +55,7 @@ export function FAQAccordion() {
             </div>
           </Reveal>
           <Reveal stagger>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 1, background: 'var(--border)', border: '1px solid var(--border)', borderRadius: 14, overflow: 'hidden' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {FAQS.map((f, i) => (
                 <FAQItem key={i} q={f.q} a={f.a} />
               ))}

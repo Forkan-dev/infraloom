@@ -11,81 +11,87 @@ export type ServiceIconName =
   | 'devops'
   | 'support';
 
-const s = {
-  fill: 'none',
-  stroke: 'currentColor',
-  strokeWidth: 1.5,
-  strokeLinecap: 'round',
-  strokeLinejoin: 'round',
-} as const;
+/** Thread node: the small filled square shared with the Infraloom glyph system. */
+const N = ({ x, y }: { x: number; y: number }) => <rect x={x - 1.5} y={y - 1.5} width="3" height="3" fill="currentColor" stroke="none" />;
 
+// Same construction as GlyphMap: 24 grid, 1.4 stroke, square caps, straight threads and ring hubs.
 const ICONS: Record<ServiceIconName, ReactNode> = {
   web: (
     <>
-      <rect x="3" y="4" width="18" height="16" rx="2.5" {...s} />
-      <path d="M3 9h18M7 6.5h.01M10 6.5h.01" {...s} />
+      <path d="M2.5 4.5h19v15h-19zM2.5 9h19" />
+      <N x={5.5} y={6.75} />
     </>
   ),
   game: (
     <>
-      <path
-        d="M7.6 7.5h8.8a4.5 4.5 0 0 1 4.4 3.6l.7 3.6a2.6 2.6 0 0 1-4.7 2l-1-1.4H8.2l-1 1.4a2.6 2.6 0 0 1-4.7-2l.7-3.6a4.5 4.5 0 0 1 4.4-3.6Z"
-        {...s}
-      />
-      <path d="M7.2 11v2.2M6.1 12.1h2.2" {...s} />
-      <path d="M15.9 11.6h.01M17.6 13.3h.01" {...s} strokeWidth="2" />
+      <path d="M3 8h18v9H3z" />
+      <path d="M7.5 10.5v4M5.5 12.5h4" />
+      <N x={15.5} y={11} />
+      <N x={18} y={14} />
     </>
   ),
   ai: (
     <>
-      <path d="M12 3.5 13.6 8 18 9.6 13.6 11.2 12 15.7 10.4 11.2 6 9.6 10.4 8Z" {...s} />
-      <path d="M18 15.5l.7 1.9 1.8.7-1.8.7-.7 1.9-.7-1.9-1.8-.7 1.8-.7Z" {...s} opacity="0.6" />
+      <circle cx="12" cy="12" r="3.5" />
+      <path d="M12 2.5v6M12 15.5v6M2.5 12h6M15.5 12h6" />
+      <N x={12} y={2.5} />
+      <N x={21.5} y={12} />
     </>
   ),
   cloud: (
     <>
-      <path d="M7 18.5a4 4 0 0 1-.4-8 5.5 5.5 0 0 1 10.6 1.1A3.7 3.7 0 0 1 17 18.5Z" {...s} />
+      <path d="M2.5 17.5h19M5.5 17.5V12h13v5.5M9 12V7.5h6V12" />
     </>
   ),
   mobile: (
     <>
-      <rect x="7" y="2.5" width="10" height="19" rx="2.5" {...s} />
-      <path d="M10.8 18.5h2.4" {...s} />
+      <path d="M7 2.5h10v19H7zM7 17.5h10" />
+      <N x={12} y={19.5} />
     </>
   ),
   devops: (
     <>
-      <path d="M4 16.5 9 11l3.5 3.5L20 7" {...s} />
-      <path d="M15.5 7H20v4.5" {...s} />
-      <path d="M4 20h16" {...s} opacity="0.4" />
+      <path d="M3 17l6-6 4 4 8-8" />
+      <path d="M15.5 7H21v5.5" />
+      <path d="M3 21h18" opacity="0.45" />
     </>
   ),
   saas: (
     <>
-      <path d="M12 3.2 20.8 8 12 12.8 3.2 8Z" {...s} />
-      <path d="M3.2 12 12 16.8 20.8 12" {...s} opacity="0.6" />
-      <path d="M3.2 16 12 20.8 20.8 16" {...s} opacity="0.35" />
+      <path d="M3 5h18M3 12h18M3 19h18" />
+      <N x={7} y={5} />
+      <N x={12} y={12} />
+      <N x={17} y={19} />
     </>
   ),
   enterprise: (
     <>
-      <path d="M3 20.5h18" {...s} />
-      <path d="M5.5 20.5V5.5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v15" {...s} />
-      <path d="M13.5 10.5h4a1 1 0 0 1 1 1v9" {...s} />
-      <path d="M8.2 8h3M8.2 11.5h3M8.2 15h3" {...s} opacity="0.55" />
+      <path d="M2.5 21h19M5 21V3.5h9V21M14 9.5h5V21" />
+      <path d="M8 7.5h3M8 11.5h3M8 15.5h3" opacity="0.55" />
     </>
   ),
   support: (
     <>
-      <path d="M20 12a8 8 0 0 1-13.4 5.9M4 12a8 8 0 0 1 13.4-5.9" {...s} />
-      <path d="M17.4 2.8v3.5h-3.5M6.6 21.2v-3.5h3.5" {...s} />
+      <circle cx="12" cy="12" r="8.5" />
+      <circle cx="12" cy="12" r="3.5" />
+      <path d="M6 6l3.5 3.5M18 18l-3.5-3.5M18 6l-3.5 3.5M6 18l3.5-3.5" />
     </>
   ),
 };
 
 export function ServiceIcon({ name }: { name: ServiceIconName }) {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="square"
+      aria-hidden="true"
+      focusable="false"
+    >
       {ICONS[name]}
     </svg>
   );

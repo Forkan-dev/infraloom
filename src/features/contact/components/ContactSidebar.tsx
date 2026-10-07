@@ -18,13 +18,7 @@ export function ContactSidebar() {
       <Reveal delay={120}>
         <div className="card" style={{ padding: 28 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 16 }}>
-            <span style={{
-              width: 42, height: 42, borderRadius: 10, flexShrink: 0,
-              background: 'linear-gradient(135deg, rgba(59,130,246,0.15), rgba(139,92,246,0.15))',
-              border: '1px solid rgba(139,92,246,0.28)',
-              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              color: '#818cf8',
-            }}>{GlyphMap.bolt}</span>
+            <span className="icon-chip">{GlyphMap.bolt}</span>
             <div>
               <h4 style={{ margin: 0, fontSize: 16, fontWeight: 600 }}>Discovery call</h4>
               <div style={{
@@ -32,7 +26,7 @@ export function ContactSidebar() {
                 fontSize: 11, fontFamily: 'var(--font-mono)', letterSpacing: '0.1em',
                 color: 'var(--fg-3)',
               }}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 6px #22c55e' }} />
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--primary)' }} />
                 30 MIN · FREE · NO COMMITMENT
               </div>
             </div>
@@ -56,7 +50,7 @@ export function ContactSidebar() {
       <Reveal delay={180}>
         <div className="card" style={{ padding: 28 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 18 }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 8px #22c55e' }} />
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--primary)' }} />
             <span style={{ fontSize: 12, fontFamily: 'var(--font-mono)', letterSpacing: '0.14em', color: 'var(--fg-3)' }}>RESPONSE SLA</span>
           </div>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' }}>
@@ -72,8 +66,8 @@ export function ContactSidebar() {
             ))}
           </ul>
           <style>{`
-            .sla-val { color: #16a34a; }
-            [data-theme="light"] .sla-val { color: #15803d; }
+            .sla-val { color: var(--primary); }
+            [data-theme="dark"] .sla-val { color: var(--signal); }
           `}</style>
         </div>
       </Reveal>
@@ -108,29 +102,30 @@ export function ContactSidebar() {
               gap: 14px;
               padding: 12px 10px;
               margin: 0 -10px;
-              border-radius: 12px;
+              border-radius: 16px;
               color: inherit;
               transition: background 0.2s;
             }
             .dc-row + .dc-row { border-top: 1px solid var(--border); }
-            .dc-link:hover { background: rgba(139,92,246,0.08); }
+            .dc-link:hover { background: var(--ice); }
+            [data-theme="dark"] .dc-link:hover { background: var(--paper-3); }
             .dc-icon {
               width: 40px;
               height: 40px;
               flex-shrink: 0;
-              border-radius: 10px;
-              background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(139,92,246,0.15));
-              border: 1px solid rgba(139,92,246,0.28);
+              border-radius: 50%;
+              background: var(--ice);
               display: inline-flex;
               align-items: center;
               justify-content: center;
-              color: #818cf8;
+              color: var(--primary);
             }
+            [data-theme="dark"] .dc-icon { background: var(--paper-3); color: var(--signal); }
             .dc-label { font-size: 11px; font-family: var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-3); margin-bottom: 3px; }
             .dc-value { font-size: 15px; font-weight: 500; color: var(--fg-1); line-height: 1.4; }
             .dc-num { font-variant-numeric: tabular-nums; }
             .dc-go { margin-left: auto; color: var(--fg-3); opacity: 0; transform: translateX(-4px); transition: opacity 0.2s, transform 0.2s; }
-            .dc-link:hover .dc-go { opacity: 1; transform: none; color: #818cf8; }
+            .dc-link:hover .dc-go { opacity: 1; transform: none; color: var(--primary); }
           `}</style>
         </div>
       </Reveal>

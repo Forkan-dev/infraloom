@@ -2,27 +2,15 @@ export function PixelStreamingDiagram() {
   return (
     <div style={{ position: 'relative', width: '100%' }}>
       <svg viewBox="0 0 1100 620" width="100%" height="auto" style={{ overflow: 'visible' }}>
-        <defs>
-          <linearGradient id="psFlow" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#06B6D4" stopOpacity="0" />
-            <stop offset="50%" stopColor="#8B5CF6" />
-            <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
-          </linearGradient>
-          <pattern id="psDots" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
-            <circle cx="1" cy="1" r="0.8" fill="rgba(255,255,255,0.06)" />
-          </pattern>
-        </defs>
-
-        <rect width="1100" height="620" fill="url(#psDots)" />
 
         <Tier x={20} y={20} w={1060} h={120} label="EDGE / CLIENT" />
         <Tier x={20} y={170} w={1060} h={130} label="CONTROL PLANE" />
         <Tier x={20} y={330} w={1060} h={170} label="STREAM ORCHESTRATION" />
         <Tier x={20} y={530} w={1060} h={70} label="OBSERVABILITY" />
 
-        <PSNode x={60} y={50} w={150} h={60} icon="📱" label="Player Browser" sub="WebRTC client" />
-        <PSNode x={240} y={50} w={150} h={60} icon="🎮" label="Game Lobby" sub="React + Vite" />
-        <PSNode x={420} y={50} w={150} h={60} icon="🛠" label="Admin Console" sub="Vue 3" />
+        <PSNode x={60} y={50} w={150} h={60} icon="▭" label="Player Browser" sub="WebRTC client" />
+        <PSNode x={240} y={50} w={150} h={60} icon="◇" label="Game Lobby" sub="React + Vite" />
+        <PSNode x={420} y={50} w={150} h={60} icon="⊞" label="Admin Console" sub="Vue 3" />
         <PSNode x={600} y={50} w={170} h={60} icon="⏺" label="Studio Upload" sub="multipart · S3 sigv4" />
         <PSNode x={800} y={50} w={240} h={60} icon="≡" label="CDN · Edge Locations" sub="3 regions · 12ms p50" />
 
@@ -72,15 +60,15 @@ export function PixelStreamingDiagram() {
           'M 270 470 C 600 470, 660 470, 700 470',
         ].map((d, i) => (
           <g key={i}>
-            <path d={d} stroke="rgba(255,255,255,0.07)" strokeWidth="1" fill="none" />
-            <path d={d} stroke="url(#psFlow)" strokeWidth="1.4" fill="none" strokeDasharray="3 8"
+            <path d={d} stroke="rgba(232, 237, 255,0.12)" strokeWidth="1" fill="none" />
+            <path d={d} stroke="#1F5BFF" strokeWidth="1.4" fill="none" strokeDasharray="3 8"
               style={{ animation: 'psFlow 4s linear infinite', animationDelay: `${(i % 6) * 0.4}s` }}
             />
           </g>
         ))}
 
         {[385, 585, 785].map((cx, i) => (
-          <circle key={i} cx={cx} cy={470} r="6" fill="#22d3ee" opacity="0.85">
+          <circle key={i} cx={cx} cy={470} r="6" fill="#1F5BFF" opacity="0.85">
             <animate attributeName="r" values="3;14;3" dur="2.4s" begin={`${i * 0.6}s`} repeatCount="indefinite" />
             <animate attributeName="opacity" values="0.9;0;0.9" dur="2.4s" begin={`${i * 0.6}s`} repeatCount="indefinite" />
           </circle>
@@ -95,8 +83,8 @@ interface TierProps { x: number; y: number; w: number; h: number; label: string;
 function Tier({ x, y, w, h, label }: TierProps) {
   return (
     <g>
-      <rect x={x} y={y} width={w} height={h} rx="14" fill="rgba(255,255,255,0.015)" stroke="rgba(255,255,255,0.06)" strokeDasharray="3 4" />
-      <text x={x + 16} y={y + 22} fill="rgba(255,255,255,0.45)" fontSize="10" fontFamily="Geist Mono" style={{ letterSpacing: '0.16em' }}>{label}</text>
+      <rect x={x} y={y} width={w} height={h} rx="16" fill="none" stroke="rgba(232, 237, 255,0.14)" />
+      <text x={x + 16} y={y + 22} fill="rgba(232, 237, 255,0.5)" fontSize="10" fontFamily="var(--font-mono)" style={{ letterSpacing: '0.16em' }}>{label}</text>
     </g>
   );
 }
@@ -107,20 +95,20 @@ interface PSNodeProps {
   violet?: boolean; cyan?: boolean; tiny?: boolean; extra?: string[];
 }
 function PSNode({ x, y, w, h, icon, label, sub, violet, cyan, tiny, extra }: PSNodeProps) {
-  const stroke = violet ? 'rgba(139,92,246,0.5)' : cyan ? 'rgba(6,182,212,0.5)' : 'rgba(255,255,255,0.14)';
-  const fill = violet ? 'rgba(139,92,246,0.08)' : cyan ? 'rgba(6,182,212,0.06)' : 'rgba(20,21,24,0.85)';
+  const stroke = violet || cyan ? '#1F5BFF' : 'rgba(232, 237, 255,0.28)';
+  const fill = violet ? '#1F5BFF' : cyan ? 'rgba(31,91,255,0.18)' : '#0D1A55';
   return (
     <g>
-      <rect x={x} y={y} width={w} height={h} rx="8" fill={fill} stroke={stroke} strokeWidth="1" />
-      <rect x={x + 8} y={y + (h - 22) / 2} width="22" height="22" rx="5" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" />
-      <text x={x + 19} y={y + h / 2 + 4} fill={violet ? '#c4b5fd' : cyan ? '#67e8f9' : '#cbd5e1'} fontSize="11" fontFamily="Geist Mono" textAnchor="middle">{icon}</text>
-      <text x={x + 36} y={y + (tiny ? h / 2 + 4 : h / 2 - 3)} fill="#fff" fontSize={tiny ? 11 : 12.5} fontFamily="Geist" fontWeight="500">{label}</text>
-      {!tiny && <text x={x + 36} y={y + h / 2 + 13} fill="rgba(255,255,255,0.55)" fontSize="10" fontFamily="Geist Mono">{sub}</text>}
-      {tiny && <text x={x + w - 8} y={y + h / 2 + 4} fill="rgba(255,255,255,0.45)" fontSize="9" fontFamily="Geist Mono" textAnchor="end">{sub}</text>}
+      <rect x={x} y={y} width={w} height={h} rx="10" fill={fill} stroke={stroke} strokeWidth="1" />
+      <rect x={x + 8} y={y + (h - 22) / 2} width="22" height="22" fill="none" stroke={violet ? "rgba(255,255,255,0.5)" : "rgba(232, 237, 255,0.22)"} />
+      <text x={x + 19} y={y + h / 2 + 4} fill={violet ? '#FFFFFF' : cyan ? '#9DBEFF' : '#E8EDFF'} fontSize="11" fontFamily="var(--font-mono)" textAnchor="middle">{icon}</text>
+      <text x={x + 36} y={y + (tiny ? h / 2 + 4 : h / 2 - 3)} fill="#E8EDFF" fontSize={tiny ? 11 : 12.5} fontFamily="var(--font-sans)" fontWeight="500">{label}</text>
+      {!tiny && <text x={x + 36} y={y + h / 2 + 13} fill={violet ? "rgba(255,255,255,0.8)" : "rgba(232, 237, 255,0.55)"} fontSize="10" fontFamily="var(--font-mono)">{sub}</text>}
+      {tiny && <text x={x + w - 8} y={y + h / 2 + 4} fill="rgba(232, 237, 255,0.5)" fontSize="9" fontFamily="var(--font-mono)" textAnchor="end">{sub}</text>}
       {extra && extra.map((e, i) => (
         <g key={i}>
-          <rect x={x + 8 + i * 48} y={y + h - 26} width="44" height="18" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" />
-          <text x={x + 30 + i * 48} y={y + h - 13} fill="rgba(255,255,255,0.6)" fontSize="9" fontFamily="Geist Mono" textAnchor="middle">{e}</text>
+          <rect x={x + 8 + i * 48} y={y + h - 26} width="44" height="18" fill="none" stroke="rgba(255,255,255,0.35)" />
+          <text x={x + 30 + i * 48} y={y + h - 13} fill="rgba(255,255,255,0.85)" fontSize="9" fontFamily="var(--font-mono)" textAnchor="middle">{e}</text>
         </g>
       ))}
     </g>
