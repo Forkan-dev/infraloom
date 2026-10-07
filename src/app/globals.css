@@ -30,7 +30,8 @@ html { scroll-behavior: smooth; }
   --radius-pill: 999px;
   --block-inset: 12px;
   --block-max: 1480px;      /* blocks stop growing past this on very wide screens */
-  --nav-offset: 88px;       /* floating nav height + its top inset + gap */
+  --nav-top: 20px;          /* gap above the floating nav */
+  --nav-offset: 96px;       /* nav top gap + nav height + gap below */
 
   /* legacy names, resolved into the palette above */
   --navy: var(--ultramarine);

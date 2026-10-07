@@ -68,7 +68,7 @@ export function Navbar() {
 
       <style>{`
         .nav {
-          position: fixed; top: var(--block-inset); left: var(--block-inset); right: var(--block-inset); z-index: 100;
+          position: fixed; top: var(--nav-top); left: var(--block-inset); right: var(--block-inset); z-index: 100;
         }
         .nav .nav-inner {
           display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 64px;

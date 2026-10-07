@@ -71,8 +71,10 @@ Never white text on those.
 - [x] Wrap the headline and lede in an `--ultramarine` block (a wrapper div only, same order).
       Only the **dark hero background** is wider than the 1320px container, never full width: its
       edge sits halfway between the container edge and the screen edge (min 12px). The text stays in
-      the container. **Rounded top corners, square bottom corners.** The nav pill and the capability
-      cards keep their normal width (12px inset, max 1480px).
+      the container. It starts at the very top of the page, **behind the floating nav** (the nav keeps a
+      20px gap from the top, `--nav-top`). **Square top corners, rounded bottom corners.** The capability cards sit 20px
+      below it and share its exact width (`--hero-side`). The nav pill keeps its normal width
+      (12px inset, max 1480px).
 - [x] Heading white; existing accent span "software systems" becomes the chartreuse marker.
 - [x] Lede `--text-on-dark-muted`; "Core capabilities" label as a primary pill on dark.
 - [x] Replace the warp-thread field with the decorative, `aria-hidden` **loom ring** SVG

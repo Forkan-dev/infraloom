@@ -69,14 +69,18 @@ export function Hero() {
       </Reveal>
 
       <style>{`
-        .hero { position: relative; }
-        /* only the dark block widens: its edge sits halfway between the container edge and the
-           screen edge, so it is always wider than the container and never full width */
+        .hero {
+          position: relative;
+          /* the dark block and the cards below share one width: their edges sit halfway between the
+             container edge and the screen edge, so wider than the container and never full width */
+          --hero-side: max(var(--block-inset), calc((100% - var(--container)) / 4));
+        }
+        .hero .hero-block, .hero .caps { margin-left: var(--hero-side); margin-right: var(--hero-side); }
         .hero .hero-block {
-          margin-left: max(var(--block-inset), calc((100% - var(--container)) / 4));
-          margin-right: max(var(--block-inset), calc((100% - var(--container)) / 4));
-          border-radius: var(--radius-block) var(--radius-block) 0 0;
-          padding: 80px 0 72px;
+          border-radius: 0 0 var(--radius-block) var(--radius-block);
+          /* start at the very top of the page, behind the floating nav */
+          margin-top: calc(-1 * var(--nav-offset));
+          padding: calc(var(--nav-offset) + 80px) 0 72px;
         }
         .hero-inner { position: relative; z-index: 1; }
         .hero-ring { width: 480px; height: 480px; right: -150px; top: 50%; transform: translateY(-50%); }
@@ -101,7 +105,7 @@ export function Hero() {
         .hero-lede { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; color: var(--text-on-dark-muted); max-width: 44ch; }
         .caps {
           display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px;
-          margin-top: 12px;
+          margin-top: 20px;
         }
         .cap {
           padding: 22px 22px 26px; display: flex; flex-direction: column;
@@ -127,8 +131,8 @@ export function Hero() {
           .hero-ring { width: 380px; height: 380px; right: -140px; }
         }
         @media (max-width: 760px) {
-          .hero .hero-block { padding: 48px 0 44px; }
-          .hero-ring { width: 240px; height: 240px; right: -96px; top: -40px; transform: none; opacity: 0.4; }
+          .hero .hero-block { padding: calc(var(--nav-offset) + 40px) 0 44px; }
+          .hero-ring { width: 240px; height: 240px; right: -96px; top: calc(var(--nav-offset) - 20px); transform: none; opacity: 0.4; }
           .caps { grid-template-columns: 1fr; }
           .cap-icon { margin-bottom: 18px; }
         }
