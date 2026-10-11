@@ -3,7 +3,7 @@ import { Reveal } from '@/components/shared/Reveal';
 import { SectionHead } from '@/components/shared/SectionHead';
 import { PixelStreamingDiagram } from '@/components/diagrams/PixelStreamingDiagram';
 import { CASE_STUDIES } from '@/lib/data/portfolio';
-import { LoomRing } from '@/components/shared/LoomRing';
+import { InfinityLoop } from '@/components/shared/InfinityLoop';
 
 const STAT_TONES = ['stat-chartreuse', 'stat-ice', 'stat-primary', 'stat-ice'];
 
@@ -19,7 +19,7 @@ export function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
     <div className="page-enter">
       {/* Hero */}
       <section className="block block-dark on-dark cs-hero">
-        <LoomRing className="cs-ring" />
+        <InfinityLoop className="cs-infinity" />
         <div className="container cs-hero-inner">
           <Reveal>
             <div className="cs-top">
@@ -117,7 +117,7 @@ export function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
       <style>{`
         .cs-hero { padding: 64px 0 40px; }
         .cs-hero-inner { position: relative; z-index: 1; }
-        .cs-ring { width: 440px; height: 440px; right: -150px; top: 40px; }
+        .cs-infinity { right: 3%; top: 96px; width: min(36%, 520px); height: auto; }
         .cs-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
         .cs-back { color: var(--text-on-dark-muted); }
         .cs-back:hover { color: #fff; }
@@ -168,7 +168,7 @@ export function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
 
         @media (max-width: 880px) {
           .cs-hero { padding-top: 44px; }
-          .cs-ring { width: 220px; height: 220px; right: -90px; top: -40px; opacity: 0.4; }
+          .cs-infinity { display: none; }
           .cs-stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
           .cs-stat { min-height: 120px; }
           .cs-ps { grid-template-columns: 1fr; }

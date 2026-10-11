@@ -1,7 +1,6 @@
 import { Reveal } from '@/components/shared/Reveal';
 import { ServiceIcon } from '@/components/shared/ServiceIcon';
 import { GlyphMap } from '@/components/shared/Glyphs';
-import { LoomRing } from '@/components/shared/LoomRing';
 
 const CAPABILITIES = [
   {
@@ -35,23 +34,19 @@ export function Hero() {
   return (
     <section className="hero">
       <div className="block block-dark on-dark hero-block">
-        <LoomRing className="hero-ring" />
-
         <div className="container hero-inner">
           <Reveal>
             <h1 className="hero-title">
-              <span className="line-mask"><span>We build the</span></span>
-              <span className="line-mask"><span className="hero-accent">software systems</span></span>
-              <span className="line-mask"><span>businesses run&nbsp;on.</span></span>
+              <span className="line-mask"><span>Built Around</span></span>
+              <span className="line-mask"><span className="hero-accent">Your Ambition.</span></span>
             </h1>
           </Reveal>
 
           <Reveal delay={160}>
             <div className="hero-foot">
-              <span className="eyebrow hero-label">Core capabilities</span>
               <p className="lede hero-lede">
-                A small senior team behind backends, real-time products and AI tools
-                that work on day one and still make sense in year three.
+                From streamlining everyday operations to unlocking new opportunities, we help businesses move
+                forward with confidence.
               </p>
             </div>
           </Reveal>
@@ -80,29 +75,32 @@ export function Hero() {
           border-radius: 0 0 var(--radius-block) var(--radius-block);
           /* start at the very top of the page, behind the floating nav */
           margin-top: calc(-1 * var(--nav-offset));
-          padding: calc(var(--nav-offset) + 80px) 0 72px;
+          padding: calc(var(--nav-offset) + 88px) 0 96px;
+          min-height: min(760px, 88vh);
+          display: flex; flex-direction: column; justify-content: center;
+          /* the neon infinity artwork (its own navy field + glow) covers the block, infinity on the right */
+          background: var(--ultramarine) url('/logo/infraloom-hero-infinity.svg') right center / cover no-repeat;
         }
-        .hero-inner { position: relative; z-index: 1; }
-        .hero-ring { width: 480px; height: 480px; right: -150px; top: 50%; transform: translateY(-50%); }
+        /* copy in a left column, vertically centred against the artwork */
+        .hero-inner { position: relative; z-index: 1; width: 100%; }
+        .hero-inner > * { max-width: 600px; }
         .hero-title {
-          font-size: clamp(40px, 6.4vw, 96px);
+          font-size: clamp(40px, 5.2vw, 82px);
           font-weight: 600;
           letter-spacing: -0.04em;
-          line-height: 1.1;
-          max-width: 13ch;
+          line-height: 1.08;
           color: #fff;
         }
         .line-mask > span.hero-accent {
-          display: inline-block;
+          display: inline-block; white-space: nowrap;
           background: var(--chartreuse); color: var(--ultramarine);
           border-radius: 12px; padding: 0 0.14em; margin-left: -0.04em;
         }
         .hero-foot {
           display: flex; flex-direction: column; align-items: flex-start; gap: 20px;
-          margin-top: 36px; max-width: 46ch;
+          margin-top: 32px; max-width: 46ch;
         }
-        .hero-label { order: 0; }
-        .hero-lede { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; color: var(--text-on-dark-muted); max-width: 44ch; }
+        .hero-lede { font-size: clamp(17px, 1.35vw, 20px); line-height: 1.55; color: var(--text-on-dark-muted); max-width: 46ch; }
         .caps {
           display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px;
           margin-top: 20px;
@@ -126,11 +124,33 @@ export function Hero() {
         [data-theme="dark"] .cap-body { color: var(--text-muted); }
         @media (max-width: 1100px) {
           .caps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-          .hero-ring { width: 380px; height: 380px; right: -140px; }
+        }
+        /* narrower desktops: position the artwork so the whole infinity sits beside the copy */
+        @media (min-width: 981px) and (max-width: 1279px) {
+          /* artwork at 78% height, anchored right; navy fades hide its top, bottom and left edges */
+          .hero .hero-block {
+            background:
+              linear-gradient(to bottom, var(--ultramarine) 11%, rgba(7, 18, 63, 0) 24%, rgba(7, 18, 63, 0) 76%, var(--ultramarine) 89%),
+              linear-gradient(to right, var(--ultramarine) 20%, rgba(7, 18, 63, 0) 45%),
+              url('/logo/infraloom-hero-infinity.svg') right center / auto 78% no-repeat,
+              var(--ultramarine);
+          }
+          .hero-lede { max-width: 36ch; }
+        }
+        /* no room side by side: scale the artwork so the whole infinity sits centred under the copy */
+        @media (max-width: 980px) {
+          .hero .hero-block {
+            min-height: 0;
+            /* the artwork sits at the bottom; a navy fade over its top edge blends it into the block */
+            background:
+              linear-gradient(to bottom, var(--ultramarine) calc(100% - 96vw), rgba(7, 18, 63, 0) calc(100% - 70vw)),
+              url('/logo/infraloom-hero-infinity.svg') 98% 100% / 180% auto no-repeat,
+              var(--ultramarine);
+            padding-bottom: calc(66vw + 32px);
+          }
         }
         @media (max-width: 760px) {
-          .hero .hero-block { padding: calc(var(--nav-offset) + 40px) 0 44px; }
-          .hero-ring { width: 240px; height: 240px; right: -96px; top: calc(var(--nav-offset) - 20px); transform: none; opacity: 0.4; }
+          .hero .hero-block { padding: calc(var(--nav-offset) + 40px) 0 calc(66vw + 24px); }
           .caps { grid-template-columns: 1fr; }
           .cap-icon { margin-bottom: 18px; }
         }

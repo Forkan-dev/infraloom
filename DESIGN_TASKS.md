@@ -160,6 +160,22 @@ Never white text on those.
       deleted, so the site is always the light edition (a previously saved "dark" choice is ignored).
       The `[data-theme="dark"]` CSS rules are now unused but harmless.
 
+## Step 9d: Infinity hero graphic + new hero copy (requested after review)
+
+- [x] The "loom ring" target graphic is **replaced everywhere** (home, inner-page and case-study heroes)
+      by `InfinityLoop.tsx`: a **geometric infinity** made of two perfect circles (r 100, centres ±140)
+      joined by tangent straight lines crossing at the exact centre. Solid primary stroke, no dots, no
+      looping effects: it **draws itself once** on load (2.2s, ease-in-out). `LoomRing.tsx` deleted.
+- [x] Home hero layout: copy in a left column vertically centred; the infinity is large on the right
+      (~46% of the hero); below 980px it moves under the copy at full width.
+- [x] **Home hero copy changed at the user's request** (content change):
+      title "Built Around **Your Ambition.**" (lime highlight on the second line), description
+      "From streamlining everyday operations to unlocking new opportunities, we help businesses move
+      forward with confidence." The "Core capabilities" pill was removed.
+- [x] Inner-page hero copy sits left again (fixed flex centring) with the infinity on the right.
+- [x] Footer wordmark uses the same geometric infinity in place of "oo": x-height tall, on the
+      baseline, stroke matched to the letter weight, even spacing (no longer overlaps the "l").
+
 ## Step 10: Verify
 
 - [x] Diff visible text (incl. alt / aria-label / href) for every route before vs after: must be identical.

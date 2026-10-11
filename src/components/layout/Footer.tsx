@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Logo } from '@/components/shared/Logo';
 import { CONTACT } from '@/lib/data/contact';
 import { PinIcon, PhoneIcon } from '@/components/shared/ContactIcons';
+import { INFINITY_PATH } from '@/components/shared/InfinityLoop';
 
 const GROUPS = [
   {
@@ -68,14 +69,8 @@ const SOCIALS = [
 
 function InfinityMark() {
   return (
-    <svg viewBox="0 0 100 50" fill="none" focusable="false">
-      <path
-        d="M50 25C42 12 33 4 25 4 13.4 4 4 13.4 4 25s9.4 21 21 21c8 0 17-8 25-21 8-13 17-21 25-21 11.6 0 21 9.4 21 21s-9.4 21-21 21c-8 0-17-8-25-21Z"
-        stroke="currentColor"
-        strokeWidth="8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+    <svg viewBox="-260 -120 520 240" fill="none" focusable="false">
+      <path d={INFINITY_PATH} stroke="currentColor" strokeWidth="40" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -236,7 +231,8 @@ export function Footer() {
           -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.18) 55%, transparent 100%);
           mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.18) 55%, transparent 100%);
         }
-        .footer-watermark svg { height: 0.5em; width: auto; vertical-align: baseline; margin: 0 -0.015em; color: var(--primary); }
+        /* geometric infinity standing in for "oo": x-height tall, sitting on the baseline, with clear space either side */
+        .footer-watermark svg { height: 0.5em; width: auto; vertical-align: -0.01em; margin: 0 0.005em 0 0.07em; color: var(--primary); }
         .foot-bar {
           display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
           position: relative; padding-top: 18px; border-top: 1px solid var(--foot-rule);
