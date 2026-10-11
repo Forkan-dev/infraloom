@@ -166,7 +166,22 @@ Never white text on those.
       by `InfinityLoop.tsx`: a **geometric infinity** made of two perfect circles (r 100, centres ±140)
       joined by tangent straight lines crossing at the exact centre. Solid primary stroke, no dots, no
       looping effects: it **draws itself once** on load (2.2s, ease-in-out). `LoomRing.tsx` deleted.
-- [x] Home hero layout: copy in a left column vertically centred; the infinity is large on the right
+- [x] **Home hero now uses the supplied artwork** `public/logo/infraloom-hero-infinity.svg` (neon
+      infinity on its own navy field) as the block background instead of `InfinityLoop`:
+      ≥1280px cover, anchored right · 981–1279px scaled to 78% height, anchored right, with navy fades on
+      its top/bottom/left edges · ≤980px scaled 180% wide at the bottom, whole infinity centred under the
+      copy, with a navy fade over its top edge. Verified at 375, 1000, 1100, 1200, 1279 and 1440px.
+- [x] **Animated**: the artwork is now rendered inline by `HeroInfinityArt.tsx` (same layers, ids
+      prefixed `hia-`) instead of a CSS background, with the same fitting rules per breakpoint and the edge
+      fades moved to a `::after` overlay. Animation: (1) ignite once — all neon layers draw along the
+      infinity together (2.6s ease-in-out), echo rings fade in after; (2) ambient — only a slow breathing
+      of the outer glow (the travelling light was removed on request). Static under reduced motion.
+- [x] **Same neon artwork on every hero**: `PageHero` (Services, Products, About, Contact, Portfolio,
+      Industries) covers its block with `HeroInfinityArt`, infinity on the right, copy column narrowed to
+      540px (460px below 1280px); ≤980px the whole infinity sits centred under the copy. The tall
+      case-study hero places the art top-right at 60% width with masked left/bottom fades (hidden ≤880px).
+      The old drawn `InfinityLoop` component is removed; only its geometric path remains, for the footer.
+- [x] (Earlier) Home hero layout: copy in a left column vertically centred; the infinity is large on the right
       (~46% of the hero); below 980px it moves under the copy at full width.
 - [x] **Home hero copy changed at the user's request** (content change):
       title "Built Around **Your Ambition.**" (lime highlight on the second line), description
@@ -175,6 +190,18 @@ Never white text on those.
 - [x] Inner-page hero copy sits left again (fixed flex centring) with the infinity on the right.
 - [x] Footer wordmark uses the same geometric infinity in place of "oo": x-height tall, on the
       baseline, stroke matched to the letter weight, even spacing (no longer overlaps the "l").
+
+## Step 9e: Tech logos + centred section titles (requested after review)
+
+- [x] "Tools we work with every day" now uses the **official brand marks** from Simple Icons v16.35
+      (Laravel, Go, Node.js, React, Vue.js, Flutter, Kotlin, NestJS, RabbitMQ, Kong, Docker, Kubernetes,
+      Fluent Bit, PostgreSQL, Redis, PHP), each in its **official brand colour** (`TechCell` now applies
+      the `color` prop it used to ignore). Pills are larger: 72px tall, 30px logos, 21px names.
+- [x] **Card icons bold and larger**: icon chips 48→58px, icons 22→28px, line weight 1.4→2.2 (CSS on
+      `.icon-chip svg`, so the shared icon components are unchanged). Contact sidebar office/phone icons
+      match (46px chip, 22px icon, 2.2 line).
+- [x] **Section titles are centred site-wide** (`.section-head`: eyebrow, title, intro and any link
+      stacked and centred). The About page's people section keeps its left-aligned split layout.
 
 ## Step 10: Verify
 

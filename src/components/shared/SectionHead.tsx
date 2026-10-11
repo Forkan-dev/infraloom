@@ -9,8 +9,7 @@ interface SectionHeadProps {
 }
 
 /**
- * Editorial section opener: a full-width rule, the eyebrow in the margin column,
- * the title set large across the main columns, and any action pinned to the right edge.
+ * Section opener: eyebrow, title, intro and any action, stacked and centred (see .section-head in globals.css).
  */
 export function SectionHead({ eyebrow, title, body, align = 'left', children }: SectionHeadProps) {
   return (

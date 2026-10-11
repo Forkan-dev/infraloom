@@ -110,8 +110,8 @@ export function ContactSidebar() {
             .dc-link:hover { background: var(--ice); }
             [data-theme="dark"] .dc-link:hover { background: var(--paper-3); }
             .dc-icon {
-              width: 40px;
-              height: 40px;
+              width: 46px;
+              height: 46px;
               flex-shrink: 0;
               border-radius: 50%;
               background: var(--ultramarine);
@@ -120,6 +120,8 @@ export function ContactSidebar() {
               justify-content: center;
               color: var(--chartreuse);
             }
+            .dc-icon svg { width: 22px; height: 22px; }
+            .dc-icon svg, .dc-icon svg * { stroke-width: 2.2; }
             .dc-label { font-size: 11px; font-family: var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-3); margin-bottom: 3px; }
             .dc-value { font-size: 15px; font-weight: 500; color: var(--fg-1); line-height: 1.4; }
             .dc-num { font-variant-numeric: tabular-nums; }

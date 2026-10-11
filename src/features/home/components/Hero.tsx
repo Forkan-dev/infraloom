@@ -1,6 +1,7 @@
 import { Reveal } from '@/components/shared/Reveal';
 import { ServiceIcon } from '@/components/shared/ServiceIcon';
 import { GlyphMap } from '@/components/shared/Glyphs';
+import { HeroInfinityArt } from '@/components/shared/HeroInfinityArt';
 
 const CAPABILITIES = [
   {
@@ -34,6 +35,7 @@ export function Hero() {
   return (
     <section className="hero">
       <div className="block block-dark on-dark hero-block">
+        <HeroInfinityArt className="hero-art" />
         <div className="container hero-inner">
           <Reveal>
             <h1 className="hero-title">
@@ -78,11 +80,14 @@ export function Hero() {
           padding: calc(var(--nav-offset) + 88px) 0 96px;
           min-height: min(760px, 88vh);
           display: flex; flex-direction: column; justify-content: center;
-          /* the neon infinity artwork (its own navy field + glow) covers the block, infinity on the right */
-          background: var(--ultramarine) url('/logo/infraloom-hero-infinity.svg') right center / cover no-repeat;
+          background: var(--ultramarine);
         }
+        /* the animated neon infinity artwork covers the block, infinity on the right */
+        .hero-art { inset: 0; width: 100%; height: 100%; z-index: 0; }
+        /* edge fades (used on narrower screens) sit above the artwork, below the copy */
+        .hero .hero-block::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; }
         /* copy in a left column, vertically centred against the artwork */
-        .hero-inner { position: relative; z-index: 1; width: 100%; }
+        .hero-inner { position: relative; z-index: 2; width: 100%; }
         .hero-inner > * { max-width: 600px; }
         .hero-title {
           font-size: clamp(40px, 5.2vw, 82px);
@@ -128,12 +133,11 @@ export function Hero() {
         /* narrower desktops: position the artwork so the whole infinity sits beside the copy */
         @media (min-width: 981px) and (max-width: 1279px) {
           /* artwork at 78% height, anchored right; navy fades hide its top, bottom and left edges */
-          .hero .hero-block {
+          .hero-art { inset: auto; right: 0; top: 11%; height: 78%; width: auto; aspect-ratio: 16 / 9; }
+          .hero .hero-block::after {
             background:
               linear-gradient(to bottom, var(--ultramarine) 11%, rgba(7, 18, 63, 0) 24%, rgba(7, 18, 63, 0) 76%, var(--ultramarine) 89%),
-              linear-gradient(to right, var(--ultramarine) 20%, rgba(7, 18, 63, 0) 45%),
-              url('/logo/infraloom-hero-infinity.svg') right center / auto 78% no-repeat,
-              var(--ultramarine);
+              linear-gradient(to right, var(--ultramarine) 20%, rgba(7, 18, 63, 0) 45%);
           }
           .hero-lede { max-width: 36ch; }
         }
@@ -141,12 +145,12 @@ export function Hero() {
         @media (max-width: 980px) {
           .hero .hero-block {
             min-height: 0;
-            /* the artwork sits at the bottom; a navy fade over its top edge blends it into the block */
-            background:
-              linear-gradient(to bottom, var(--ultramarine) calc(100% - 96vw), rgba(7, 18, 63, 0) calc(100% - 70vw)),
-              url('/logo/infraloom-hero-infinity.svg') 98% 100% / 180% auto no-repeat,
-              var(--ultramarine);
             padding-bottom: calc(66vw + 32px);
+          }
+          /* the artwork sits at the bottom, 180% wide; a navy fade over its top edge blends it into the block */
+          .hero-art { inset: auto; bottom: 0; left: -78.4%; width: 180%; height: auto; aspect-ratio: 16 / 9; }
+          .hero .hero-block::after {
+            background: linear-gradient(to bottom, var(--ultramarine) calc(100% - 96vw), rgba(7, 18, 63, 0) calc(100% - 70vw));
           }
         }
         @media (max-width: 760px) {

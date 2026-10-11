@@ -47,7 +47,9 @@ export function OurStory() {
           align-items: start;
         }
         .people-head { grid-column: 1 / span 4; padding-top: 8px; }
-        .people .section-head { display: flex; flex-direction: column; gap: 20px; margin-bottom: 0; }
+        /* this split layout keeps its heading left-aligned */
+        .people .section-head { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; margin-bottom: 0; text-align: left; }
+        .people .section-head-title h2, .people .section-head-body { margin: 0; }
         .people .section-head-title h2 { max-width: 12ch; font-size: clamp(32px, 3.4vw, 48px); }
         .people .section-head-body { max-width: 30ch; }
         .founders {
