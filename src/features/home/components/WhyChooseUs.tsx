@@ -45,11 +45,14 @@ export function WhyChooseUs() {
           font-weight: 500;
           line-height: 1.25;
           letter-spacing: -0.02em;
-          color: var(--text);
+          color: var(--ultramarine);
           text-wrap: balance;
           transition: color 0.2s ease;
         }
-        .why-item:hover { background: var(--primary); }
+        .why-item:nth-child(2) { background: var(--lime-soft); }
+        [data-theme="dark"] .why-item:nth-child(2) { background: var(--surface); }
+        [data-theme="dark"] .why-title { color: var(--text); }
+        .why-item:hover, .why-item:nth-child(2):hover { background: var(--primary); }
         .why-item:hover .why-title { color: #fff; }
         .why-item:hover .why-icon { background: var(--chartreuse); color: var(--ultramarine); }
         @media (max-width: 980px) { .why-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

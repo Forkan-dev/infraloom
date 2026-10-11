@@ -27,14 +27,14 @@ periwinkle feature block, dark rounded footer.
 | `--periwinkle` | `#C3D1FF` | feature sections |
 | `--ice` | `#E8EDFF` | soft tints, icon chips, active nav |
 | `--chartreuse` | `#D7FF3F` | main CTA, highlights, key stats (max 1–2 per screen) |
-| `--lilac` / `--lilac-text` | `#D9CCFF` / `#2A1D5E` | card variety |
+| `--lime-soft` | `#F3FFCC` | icon card background (replaced lilac) |
 | `--text` / `--text-muted` | `#0B0F24` / `#5C6178` | |
 | `--text-on-dark-muted` | `#C3D1FF` | |
 | `--background` / `--surface` | `#F4F5FA` / `#FFFFFF` | page / cards |
 | `--border-on-dark` | `#2D3E80` | |
 | `--radius-card` / `--radius-block` / `--radius-pill` | `22px` / `24px` / `999px` | |
 
-Contrast rule: on chartreuse, ice and periwinkle use ultramarine text; on lilac use `--lilac-text`.
+Contrast rule: on chartreuse, light lime, ice and periwinkle use ultramarine text.
 Never white text on those.
 
 ---
@@ -81,7 +81,7 @@ Never white text on those.
       (thick primary outer ring, thinner signal inner ring, chartreuse centre dot, dashed primary
       crosshair), partly clipped by the block edge.
 - [x] Capability cards: white, ice icon chip with primary icon; hover = primary bg, white title,
-      ice body, chartreuse chip with ultramarine icon (200ms). One lilac card for variety.
+      ice body, chartreuse chip with ultramarine icon (200ms). (Superseded by Step 9b: light lime cards.)
 
 ## Step 4: Shared loom ring (`src/components/shared/LoomRing.tsx`)
 
@@ -115,8 +115,14 @@ Never white text on those.
 
 ## Step 8: About and contact
 
-- [x] `MissionCard.tsx`: the page's single extra ultramarine block, inset and rounded.
-- [x] `OurStory.tsx`: rounded photos, no rule.
+- [x] `MissionCard.tsx`: **light ice block** (no longer a second dark block straight under the dark hero).
+      Two-column statement: eyebrow + big dark blue statement on the left (7 cols), loom mark and the
+      explanation in a narrow right column (4 cols), bottom-aligned. Stacks on mobile.
+- [x] `OurStory.tsx`: "The people behind the work" is a **white rounded block**. The two founder cards
+      sit side by side, **top-aligned and the same size** (no stagger). Editorial split: heading + intro
+      on the left (4 cols), founder cards on the right (7 cols); stacks on tablet/mobile. Cards use the off-white page tone with
+      a rounded photo (grayscale, colour on hover), dark blue name, and the role as a dark blue pill
+      with lime text on its own line.
 - [x] `ContactForm.tsx`, `ChipPicker.tsx`, `ContactSidebar.tsx`, `FAQAccordion.tsx`: remove
       gradients/glows, ice icon chips, pill option chips, rounded white cards.
 
@@ -125,6 +131,34 @@ Never white text on those.
 - [x] Rounded `--text` block inset 12px from the page edges.
 - [x] Links `--signal`; one highlighted link (Company → Contact) in `--chartreuse`.
 - [x] Contact icons and social links as pills; cream → ice.
+- [x] Smaller overall (less padding, smaller statement and link text, tighter lists). The big
+      "Infraloom" wordmark is smaller and **fades out toward the bottom** (CSS mask), sinking into the
+      bottom bar.
+
+## Step 9b: Lime cards, no purple (requested after review)
+
+- [x] **Purple/lilac removed everywhere** (tokens `--lilac` / `--lilac-text` and `.stat-lilac` deleted;
+      the 4th stat tile on case-study and HRM heroes is now ice).
+- [x] New tokens `--lime-soft: #F3FFCC` (card background) and `--ultramarine-muted: #3D4775` (body text).
+- [x] `.icon-chip` everywhere: **dark blue circle with a lime icon**. On a blue hover card it flips to
+      lime circle + dark blue icon.
+- [x] Icon cards are **white with dark blue text**, and **exactly one card per group is light lime**:
+      home capabilities → card 3 (Real-time Streaming) · Why Infraloom → card 2 · services → first card.
+      Hover is still the solid blue card.
+- [x] Contact sidebar office/phone icons use the same dark blue + lime chip.
+- Cards without icons (case studies, products, process, workflow, contact form) stay white.
+- Note: this replaces the original spec's lilac card variety and "chartreuse max 1–2 per screen" rule.
+
+## Step 9c: Structural changes (explicitly requested, beyond design-only)
+
+- [x] **Process removed entirely**: the `/process` route, its components (`features/process/*`,
+      `SDLCFlow`, `LiveMetrics`), `lib/data/process.ts` and the `ProcessStage` type are deleted. The
+      "Process" link is gone from the desktop nav, the mobile menu and the footer.
+- [x] **Contact moved into the nav menu** as a normal link (with the ice active state); the separate
+      "Contact" text link next to the CTA is removed. "Book a call" stays.
+- [x] **Dark-mode toggle removed**: `ThemeToggle`, `ThemeProvider` and the pre-paint theme script are
+      deleted, so the site is always the light edition (a previously saved "dark" choice is ignored).
+      The `[data-theme="dark"]` CSS rules are now unused but harmless.
 
 ## Step 10: Verify
 

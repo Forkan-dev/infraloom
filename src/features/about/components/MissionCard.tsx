@@ -1,17 +1,17 @@
 import { Reveal } from '@/components/shared/Reveal';
 
-/** Mission set as a full-bleed navy plate: the statement runs large, the explanation sits in the right half. */
+/** Mission as a light ice block: the statement runs large on the left, the explanation sits in a narrow right column. */
 export function MissionCard() {
   return (
-    <section className="block block-dark on-dark mission">
-      <div className="container">
-        <Reveal>
+    <section className="block block-ice mission">
+      <div className="container mission-grid">
+        <Reveal className="mission-lead">
           <span className="eyebrow mission-eyebrow">Mission</span>
           <h2 className="mission-title">
             We build software that companies bet their next decade on.
           </h2>
         </Reveal>
-        <Reveal delay={120}>
+        <Reveal delay={120} className="mission-side">
           <div className="mission-foot">
             <svg className="mission-mark" viewBox="0 0 120 60" fill="none" aria-hidden="true">
               {[4, 24, 44, 64, 84, 104].map((x) => (
@@ -28,22 +28,32 @@ export function MissionCard() {
         </Reveal>
       </div>
       <style>{`
-        .mission { padding: 88px 0 80px; margin-top: 12px; }
+        .mission { padding: 96px 0; margin-top: 12px; }
+        .mission-grid {
+          display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 40px;
+          align-items: end;
+        }
+        .mission-lead { grid-column: 1 / span 7; }
+        .mission-side { grid-column: 9 / span 4; }
+        .mission .mission-eyebrow { background: var(--surface); color: var(--primary); }
         .mission-title {
-          margin-top: 28px; max-width: 18ch; color: #fff;
-          font-size: clamp(34px, 4.8vw, 68px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.1;
+          margin-top: 24px; max-width: 17ch; color: var(--ultramarine);
+          font-size: clamp(32px, 4.2vw, 60px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.1;
         }
-        .mission-foot {
-          display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px;
-          margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--border-on-dark);
+        .mission-foot { display: flex; flex-direction: column; gap: 24px; }
+        .mission-mark { width: 96px; color: rgba(7, 18, 63, 0.22); }
+        .mission-body { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.65; color: var(--ultramarine-muted); }
+        [data-theme="dark"] .mission-title { color: var(--text); }
+        [data-theme="dark"] .mission-body { color: var(--text-muted); }
+        [data-theme="dark"] .mission-mark { color: var(--rule-strong); }
+        [data-theme="dark"] .mission .mission-eyebrow { background: var(--paper-3); color: var(--signal); }
+        @media (max-width: 980px) {
+          .mission-lead { grid-column: 1 / span 12; }
+          .mission-side { grid-column: 1 / span 8; }
         }
-        .mission-mark { grid-column: 1 / span 2; width: 120px; color: var(--border-on-dark); }
-        .mission-mark path:last-child { stroke: var(--chartreuse); }
-        .mission-body { grid-column: 7 / span 6; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.55; color: var(--text-on-dark-muted); }
-        @media (max-width: 880px) {
-          .mission { padding: 56px 0 48px; }
-          .mission-foot { margin-top: 48px; row-gap: 28px; }
-          .mission-mark, .mission-body { grid-column: 1 / -1; }
+        @media (max-width: 640px) {
+          .mission { padding: 56px 0; }
+          .mission-side { grid-column: 1 / -1; }
         }
       `}</style>
     </section>

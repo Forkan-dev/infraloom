@@ -50,21 +50,25 @@ export default function ServicesPage() {
         .svc-title {
           grid-column: 2 / span 4;
           font-size: clamp(24px, 2.4vw, 34px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.12;
-          padding-top: 6px; color: var(--text);
+          padding-top: 6px; color: var(--ultramarine);
           transition: color 0.2s ease;
         }
-        .svc-body { grid-column: 6 / span 4; font-size: 16px; line-height: 1.6; color: var(--text-muted); padding-top: 8px; transition: color 0.2s ease; }
+        .svc-body { grid-column: 6 / span 4; font-size: 16px; line-height: 1.6; color: var(--ultramarine-muted); padding-top: 8px; transition: color 0.2s ease; }
         .svc-deliverables {
           grid-column: 10 / span 3; list-style: none; padding: 8px 0 0; margin: 0;
           display: flex; flex-direction: column; gap: 10px;
         }
         .svc-deliverables li {
           display: flex; align-items: center; gap: 10px;
-          font-size: 13px; font-weight: 500; color: var(--ink-2);
+          font-size: 13px; font-weight: 500; color: var(--ultramarine);
           transition: color 0.2s ease;
         }
-        .svc-deliverables li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--primary); flex-shrink: 0; transition: background 0.2s ease; }
-        .svc:hover { background: var(--primary); }
+        .svc-deliverables li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ultramarine); flex-shrink: 0; transition: background 0.2s ease; }
+        .svc:first-child { background: var(--lime-soft); }
+        [data-theme="dark"] .svc:first-child { background: var(--surface); }
+        [data-theme="dark"] .svc-title { color: var(--text); }
+        [data-theme="dark"] .svc-body, [data-theme="dark"] .svc-deliverables li { color: var(--text-muted); }
+        .svc:hover, .svc:first-child:hover { background: var(--primary); }
         .svc:hover .svc-title { color: #fff; }
         .svc:hover .svc-body, .svc:hover .svc-deliverables li { color: var(--ice); }
         .svc:hover .svc-deliverables li::before { background: var(--chartreuse); }

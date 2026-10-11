@@ -5,7 +5,7 @@ import { PixelStreamingDiagram } from '@/components/diagrams/PixelStreamingDiagr
 import { CASE_STUDIES } from '@/lib/data/portfolio';
 import { LoomRing } from '@/components/shared/LoomRing';
 
-const STAT_TONES = ['stat-chartreuse', 'stat-ice', 'stat-primary', 'stat-lilac'];
+const STAT_TONES = ['stat-chartreuse', 'stat-ice', 'stat-primary', 'stat-ice'];
 
 interface CaseStudyDetailProps {
   slug: string;

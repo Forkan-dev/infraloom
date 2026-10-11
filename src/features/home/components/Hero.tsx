@@ -107,25 +107,23 @@ export function Hero() {
           display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px;
           margin-top: 20px;
         }
+        /* white cards with dark blue text and a dark blue chip (lime icon); one light lime accent card */
         .cap {
           padding: 22px 22px 26px; display: flex; flex-direction: column;
           background: var(--surface); border-radius: var(--radius-card);
           transition: background 0.2s ease, color 0.2s ease;
         }
-        .cap:nth-child(3) { background: var(--lilac); }
         .cap-icon { margin-bottom: 36px; }
-        .cap-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: var(--text); margin-bottom: 8px; transition: color 0.2s ease; }
-        .cap-body { font-size: 14px; line-height: 1.5; color: var(--text-muted); transition: color 0.2s ease; }
-        .cap:nth-child(3) .cap-title, .cap:nth-child(3) .cap-body { color: var(--lilac-text); }
-        .cap:nth-child(3) .cap-icon { background: #fff; color: var(--lilac-text); }
+        .cap-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: var(--ultramarine); margin-bottom: 8px; transition: color 0.2s ease; }
+        .cap-body { font-size: 14px; line-height: 1.5; color: var(--ultramarine-muted); transition: color 0.2s ease; }
+        .cap:nth-child(3) { background: var(--lime-soft); }
         .cap:hover, .cap:nth-child(3):hover { background: var(--primary); }
         .cap:hover .cap-title { color: #fff; }
         .cap:hover .cap-body { color: var(--ice); }
         .cap:hover .cap-icon { background: var(--chartreuse); color: var(--ultramarine); }
         [data-theme="dark"] .cap:nth-child(3) { background: var(--surface); }
-        [data-theme="dark"] .cap:nth-child(3) .cap-title { color: var(--text); }
-        [data-theme="dark"] .cap:nth-child(3) .cap-body { color: var(--text-muted); }
-        [data-theme="dark"] .cap:nth-child(3) .cap-icon { background: var(--paper-3); color: var(--signal); }
+        [data-theme="dark"] .cap-title { color: var(--text); }
+        [data-theme="dark"] .cap-body { color: var(--text-muted); }
         @media (max-width: 1100px) {
           .caps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
           .hero-ring { width: 380px; height: 380px; right: -140px; }

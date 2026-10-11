@@ -4,16 +4,15 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Logo } from '@/components/shared/Logo';
-import { ThemeToggle } from '@/components/shared/ThemeToggle';
 import { ArrowRight } from '@/components/ui/ArrowRight';
 
 const LINKS = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
-  { href: '/process', label: 'Process' },
   { href: '/projects', label: 'Products' },
   // { href: '/industries', label: 'Industries' },
   { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export function Navbar() {
@@ -51,8 +50,6 @@ export function Navbar() {
         </nav>
 
         <div className="nav-actions">
-          <ThemeToggle />
-          <Link href="/contact" className="nav-text-link nav-cta-secondary">Contact</Link>
           <Link href="/contact" className="btn btn-primary nav-cta-primary">
             Book a call <ArrowRight />
           </Link>
@@ -88,8 +85,6 @@ export function Navbar() {
         .nav-link.active { background: var(--ice); color: var(--primary); }
         [data-theme="dark"] .nav-link.active { background: var(--paper-3); color: var(--signal); }
         .nav-actions { display: flex; align-items: center; gap: 12px; }
-        .nav-text-link { font-size: 14px; font-weight: 500; color: var(--text-muted); padding: 8px 6px; transition: color 0.2s ease; }
-        .nav-text-link:hover { color: var(--text); }
         .nav-cta-primary.btn { padding: 11px 18px; gap: 10px; background: var(--text); color: var(--chartreuse); }
         .nav-cta-primary.btn:hover { background: var(--ultramarine); }
         [data-theme="dark"] .nav-cta-primary.btn { background: var(--chartreuse); color: var(--ultramarine); }
@@ -99,7 +94,7 @@ export function Navbar() {
         }
         [data-theme="dark"] .nav-burger { background: var(--paper-3); color: var(--signal); }
         @media (max-width: 1020px) {
-          .nav-links, .nav-cta-secondary, .nav-cta-primary { display: none !important; }
+          .nav-links, .nav-cta-primary { display: none !important; }
           .nav-burger { display: inline-flex; }
           .nav-actions { gap: 4px; }
           .nav .nav-inner { padding: 0 10px 0 20px; height: 60px; }
@@ -127,7 +122,6 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   const NAV_LINKS = [
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
-    { href: '/process', label: 'Process' },
     { href: '/projects', label: 'Products' },
     { href: '/industries', label: 'Industries' },
     { href: '/about', label: 'About' },

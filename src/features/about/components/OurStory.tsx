@@ -9,9 +9,9 @@ const LEADERS = [
 
 export function OurStory() {
   return (
-    <section className="section">
-      <div className="container">
-        <Reveal>
+    <section className="block people">
+      <div className="container people-grid">
+        <Reveal className="people-head">
           <SectionHead
             title="The people behind the work"
             body="No layers of management between you and the people building your system."
@@ -26,7 +26,7 @@ export function OurStory() {
                   src={l.photo}
                   alt={l.name}
                   fill
-                  sizes="(max-width: 880px) 100vw, 520px"
+                  sizes="(max-width: 640px) 100vw, 420px"
                   style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
                 />
               </Reveal>
@@ -40,27 +40,48 @@ export function OurStory() {
       </div>
 
       <style>{`
-        .founders {
-          display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px;
+        /* white block, editorial split: heading on the left, founders on the right */
+        .people { padding: 96px 0; margin-top: 12px; background: var(--surface); }
+        .people-grid {
+          display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 40px;
           align-items: start;
         }
-        .founder { margin: 0; }
-        .founder:nth-child(1) { grid-column: 3 / span 4; }
-        .founder:nth-child(2) { grid-column: 8 / span 4; margin-top: 120px; }
-        .founder { padding: 12px; background: var(--surface); border-radius: var(--radius-card); }
-        .founder-photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--paper-3); border-radius: 16px; }
-        .founder-photo img { filter: grayscale(1) contrast(1.05); }
-        .founder:hover .founder-photo img { transform: scale(1.03) !important; }
-        .founder-info {
-          display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;
-          padding: 18px 10px 8px;
+        .people-head { grid-column: 1 / span 4; padding-top: 8px; }
+        .people .section-head { display: flex; flex-direction: column; gap: 20px; margin-bottom: 0; }
+        .people .section-head-title h2 { max-width: 12ch; font-size: clamp(32px, 3.4vw, 48px); }
+        .people .section-head-body { max-width: 30ch; }
+        .founders {
+          grid-column: 6 / span 7;
+          display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;
+          align-items: stretch;
         }
-        .founder-name { font-family: var(--font-display); font-size: 24px; font-weight: 600; letter-spacing: -0.03em; color: var(--ink); }
-        .founder-role { font-size: 13px; font-weight: 500; color: var(--primary); background: var(--ice); padding: 4px 12px; border-radius: 999px; }
-        [data-theme="dark"] .founder-role { background: var(--paper-3); color: var(--signal); }
-        @media (max-width: 880px) {
-          .founder:nth-child(1), .founder:nth-child(2) { grid-column: 1 / -1; margin-top: 0; }
-          .founder + .founder { margin-top: 12px; }
+        .founder {
+          margin: 0; padding: 12px; display: flex; flex-direction: column;
+          background: var(--background); border-radius: var(--radius-card);
+          transition: background 0.2s ease;
+        }
+        .founder-photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--ice); border-radius: 16px; }
+        .founder-photo img { filter: grayscale(1) contrast(1.05); transition: filter 0.4s ease, transform 1.2s var(--ease) !important; }
+        .founder:hover .founder-photo img { filter: grayscale(0); transform: scale(1.03) !important; }
+        .founder-info {
+          display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
+          padding: 18px 10px 10px;
+        }
+        .founder-name { font-family: var(--font-display); font-size: 24px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: var(--ultramarine); }
+        .founder-role {
+          font-size: 13px; font-weight: 600; line-height: 1.3;
+          color: var(--chartreuse); background: var(--ultramarine);
+          padding: 6px 12px; border-radius: var(--radius-pill);
+        }
+        [data-theme="dark"] .founder-name { color: var(--text); }
+        @media (max-width: 980px) {
+          .people-head { grid-column: 1 / -1; padding-top: 0; }
+          .people .section-head-title h2 { max-width: 18ch; }
+          .founders { grid-column: 1 / -1; }
+        }
+        @media (max-width: 640px) {
+          .people { padding: 56px 0; }
+          .founders { grid-template-columns: 1fr; }
         }
       `}</style>
     </section>

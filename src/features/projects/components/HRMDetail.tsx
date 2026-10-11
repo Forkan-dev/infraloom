@@ -140,7 +140,7 @@ export function HRMDetail() {
               gap: 8, maxWidth: 760,
             }}>
               {HERO_STATS.map((s, i) => (
-                <div key={i} className={`stat-tile ${['stat-chartreuse', 'stat-ice', 'stat-primary', 'stat-lilac'][i % 4]}`}>
+                <div key={i} className={`stat-tile ${['stat-chartreuse', 'stat-ice', 'stat-primary', 'stat-ice'][i % 4]}`}>
                   <div className="mono" style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 8 }}>{s.l.toUpperCase()}</div>
                   <div className="stat-num" style={{ fontSize: 'clamp(22px, 2.4vw, 32px)' }}>{s.v}</div>
                 </div>

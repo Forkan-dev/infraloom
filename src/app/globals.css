@@ -17,8 +17,8 @@ html { scroll-behavior: smooth; }
   --periwinkle: #C3D1FF;    /* feature sections */
   --ice: #E8EDFF;           /* soft tints, icon chips, active nav */
   --chartreuse: #D7FF3F;    /* main CTA, highlights, key stats */
-  --lilac: #D9CCFF;         /* card variety */
-  --lilac-text: #2A1D5E;
+  --lime-soft: #F3FFCC;     /* light lime card background */
+  --ultramarine-muted: #3D4775;  /* body text on light lime cards */
   --text: #0B0F24;
   --text-muted: #5C6178;
   --text-on-dark-muted: #C3D1FF;
@@ -229,15 +229,14 @@ p { margin: 0; color: var(--ink-2); text-wrap: pretty; }
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
 
-/* round icon chip: ice + primary, flips to chartreuse + ultramarine inside an active card */
+/* round icon chip: dark blue circle with a lime icon (flips to lime + dark blue on a blue hover card) */
 .icon-chip {
   width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%;
   display: inline-flex; align-items: center; justify-content: center;
-  background: var(--ice); color: var(--primary);
+  background: var(--ultramarine); color: var(--chartreuse);
   transition: background 0.2s ease, color 0.2s ease;
 }
 .icon-chip svg { width: 22px; height: 22px; }
-[data-theme="dark"] .icon-chip { background: var(--paper-3); color: var(--signal); }
 
 /* stat tiles: oversized number in one of three colourways */
 .stat-tile {
@@ -257,8 +256,6 @@ p { margin: 0; color: var(--ink-2); text-wrap: pretty; }
 .stat-dark dd, .stat-dark .stat-num { color: var(--chartreuse); }
 .stat-primary { background: var(--primary); color: var(--ice); }
 .stat-primary dd, .stat-primary .stat-num { color: #fff; }
-.stat-lilac { background: var(--lilac); color: var(--lilac-text); }
-.stat-lilac dd, .stat-lilac .stat-num { color: var(--lilac-text); }
 
 .rule { height: 1px; background: var(--rule); border: 0; margin: 0; }
 .rule-strong { height: 1px; background: var(--rule-strong); border: 0; margin: 0; }

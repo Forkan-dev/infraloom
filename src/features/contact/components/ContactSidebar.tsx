@@ -114,13 +114,12 @@ export function ContactSidebar() {
               height: 40px;
               flex-shrink: 0;
               border-radius: 50%;
-              background: var(--ice);
+              background: var(--ultramarine);
               display: inline-flex;
               align-items: center;
               justify-content: center;
-              color: var(--primary);
+              color: var(--chartreuse);
             }
-            [data-theme="dark"] .dc-icon { background: var(--paper-3); color: var(--signal); }
             .dc-label { font-size: 11px; font-family: var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-3); margin-bottom: 3px; }
             .dc-value { font-size: 15px; font-weight: 500; color: var(--fg-1); line-height: 1.4; }
             .dc-num { font-variant-numeric: tabular-nums; }

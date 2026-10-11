@@ -69,14 +69,6 @@ export interface Industry {
   kpis: Stat[];
 }
 
-export interface ProcessStage {
-  n: string;
-  title: string;
-  body: string;
-  outputs: string[];
-  tools: string[];
-}
-
 export interface NavItem {
   label: string;
   to: string;
