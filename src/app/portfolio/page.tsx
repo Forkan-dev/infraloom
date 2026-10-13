@@ -11,7 +11,6 @@ export default function PortfolioPage() {
   return (
     <>
       <PageHero
-        eyebrow="Selected work"
         title="Systems we're proud to be on call for."
         body="Every engagement is a production system, not a demo. Here's what we shipped."
       />

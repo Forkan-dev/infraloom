@@ -13,7 +13,6 @@ export default function ServicesPage() {
   return (
     <div className="page-enter">
       <PageHero
-        eyebrow="Services"
         title="What we build for you."
         body="From a first prototype to a system serving millions, we cover the full stack. Pick one service or the whole set."
       />

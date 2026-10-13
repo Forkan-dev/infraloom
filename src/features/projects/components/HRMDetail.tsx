@@ -69,13 +69,13 @@ export function HRMDetail() {
   return (
     <div className="page-enter">
       {/* Hero */}
-      <section className="block block-dark on-dark hrm-hero" style={{ padding: '64px 0 48px' }}>
+      <section className="hrm-hero" style={{ padding: '56px 0 24px' }}>
         <div className="bg-grid" />
         <div className="bg-glow violet" style={{ top: -350, right: -180, opacity: 0.45 }} />
         <div className="bg-glow cyan" style={{ top: -80, left: -200, opacity: 0.3 }} />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <Reveal>
-            <Link href="/projects" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--text-on-dark-muted)', marginBottom: 28 }}>
+            <Link href="/projects" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--fg-3)', marginBottom: 28 }}>
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                 <path d="M7 3l-3 3 3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -85,7 +85,7 @@ export function HRMDetail() {
 
           <Reveal delay={60}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
-              <span className="mono" style={{ fontSize: 11, color: 'var(--signal)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+              <span className="mono" style={{ fontSize: 11, color: 'var(--primary)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
                 SaaS · Enterprise · HRM
               </span>
               <span style={{
@@ -127,7 +127,7 @@ export function HRMDetail() {
                 </svg>
                 Try Live Demo
               </a>
-              <span style={{ fontSize: 13, color: 'var(--text-on-dark-muted)', fontFamily: 'var(--font-mono)' }}>
+              <span style={{ fontSize: 13, color: 'var(--fg-3)', fontFamily: 'var(--font-mono)' }}>
                 No sign-up required · Hosted live
               </span>
             </div>
@@ -137,12 +137,12 @@ export function HRMDetail() {
             <div className="hrm-stats" style={{
               display: 'grid',
               gridTemplateColumns: `repeat(${HERO_STATS.length}, 1fr)`,
-              gap: 8, maxWidth: 760,
+              gap: 8, maxWidth: 900,
             }}>
               {HERO_STATS.map((s, i) => (
-                <div key={i} className={`stat-tile ${['stat-chartreuse', 'stat-ice', 'stat-primary', 'stat-ice'][i % 4]}`}>
+                <div key={i} className={`stat-tile ${['stat-chartreuse', 'stat-ice', 'stat-primary', 'stat-dark'][i % 4]}`}>
                   <div className="mono" style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 8 }}>{s.l.toUpperCase()}</div>
-                  <div className="stat-num" style={{ fontSize: 'clamp(22px, 2.4vw, 32px)' }}>{s.v}</div>
+                  <div className="stat-num" style={{ fontSize: 'clamp(20px, 2vw, 28px)' }}>{s.v}</div>
                 </div>
               ))}
             </div>
@@ -159,8 +159,7 @@ export function HRMDetail() {
         <div className="container">
           <Reveal>
             <div style={{ marginBottom: 24 }}>
-              <span className="eyebrow" style={{ marginBottom: 12 }}>Screenshots</span>
-              <h2 style={{ marginTop: 16, marginBottom: 0 }}>Built for real teams.</h2>
+              <h2 style={{ marginTop: 0, marginBottom: 0 }}>Built for real teams.</h2>
             </div>
           </Reveal>
           <Reveal delay={80}>
@@ -179,8 +178,7 @@ export function HRMDetail() {
         <div className="container">
           <Reveal>
             <div style={{ marginBottom: 24 }}>
-              <span className="eyebrow" style={{ marginBottom: 12 }}>Walkthrough</span>
-              <h2 style={{ marginTop: 16, marginBottom: 12 }}>See HRM in action.</h2>
+              <h2 style={{ marginTop: 0, marginBottom: 12 }}>See HRM in action.</h2>
               <p style={{ color: 'var(--fg-2)', fontSize: 15, maxWidth: '58ch', margin: 0 }}>
                 A full walkthrough of the platform — company and branch dashboards, attendance, leave, payroll and the employee portal.
               </p>
@@ -261,8 +259,7 @@ export function HRMDetail() {
           <Reveal>
             <div className="mobile-head" style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 32, alignItems: 'end', marginBottom: 40 }}>
               <div>
-                <span className="eyebrow" style={{ marginBottom: 12 }}>Mobile App</span>
-                <h2 style={{ marginTop: 16, marginBottom: 12 }}>The whole workday, in your pocket.</h2>
+                <h2 style={{ marginTop: 0, marginBottom: 12 }}>The whole workday, in your pocket.</h2>
                 <p style={{ color: 'var(--fg-2)', fontSize: 15, maxWidth: '54ch', margin: 0 }}>
                   Android and iOS apps run on a dedicated REST API. Employees check in with one tap — by face, selfie, QR code or geofence — see their shift and breaks at a glance, and managers approve requests on the go. If the connection drops, check-ins queue on the device and sync when it comes back.
                 </p>
@@ -301,8 +298,7 @@ export function HRMDetail() {
             <div className="card" style={{ padding: 40, overflow: 'hidden', position: 'relative' }}>
               <div className="bg-dots" style={{ opacity: 0.3 }} />
               <div style={{ position: 'relative', zIndex: 1 }}>
-                <span className="eyebrow" style={{ marginBottom: 12 }}>Attendance System</span>
-                <h3 style={{ marginTop: 16, marginBottom: 12 }}>8 ways to check in. One unified log.</h3>
+                <h3 style={{ marginTop: 0, marginBottom: 12 }}>8 ways to check in. One unified log.</h3>
                 <p style={{ color: 'var(--fg-2)', fontSize: 15, maxWidth: '52ch', marginBottom: 32 }}>
                   Every check-in — regardless of method — captures a timestamp, GPS coordinates, and a live photo, stored with full audit history.
                 </p>
@@ -330,8 +326,7 @@ export function HRMDetail() {
         <div className="container">
           <Reveal>
             <div style={{ marginBottom: 24 }}>
-              <span className="eyebrow" style={{ marginBottom: 12 }}>Core Modules</span>
-              <h2 style={{ marginTop: 16, marginBottom: 0 }}>From check-in to payslip.</h2>
+              <h2 style={{ marginTop: 0, marginBottom: 0 }}>From check-in to payslip.</h2>
             </div>
           </Reveal>
           <div className="modules-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
@@ -358,8 +353,7 @@ export function HRMDetail() {
           <Reveal>
             <div className="card platform-grid" style={{ padding: 40, display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: 40 }}>
               <div>
-                <span className="eyebrow" style={{ marginBottom: 12 }}>SaaS &amp; Security</span>
-                <h3 style={{ marginTop: 16, marginBottom: 12 }}>Sell it to many companies. Keep every one isolated.</h3>
+                <h3 style={{ marginTop: 0, marginBottom: 12 }}>Sell it to many companies. Keep every one isolated.</h3>
                 <p style={{ color: 'var(--fg-2)', fontSize: 15, lineHeight: 1.7, margin: 0 }}>
                   Most SMEs run HR on spreadsheets and chat messages. HRM replaces that with one hosted product: companies sign up, pick a plan and get their own environment — while the platform owner manages billing and payouts from a single admin.
                 </p>
@@ -383,8 +377,7 @@ export function HRMDetail() {
         <div className="container">
           <Reveal>
             <div className="card" style={{ padding: 36, textAlign: 'center' }}>
-              <span className="eyebrow" style={{ marginBottom: 12 }}>Tech Stack</span>
-              <h3 style={{ marginTop: 16, marginBottom: 24 }}>Built on proven, production-grade tools.</h3>
+              <h3 style={{ marginTop: 0, marginBottom: 24 }}>Built on proven, production-grade tools.</h3>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center' }}>
                 {TECH.map((t, i) => (
                   <span key={i} className="chip" style={{ fontSize: 13, padding: '7px 16px' }}>{t}</span>

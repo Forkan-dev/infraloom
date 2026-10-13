@@ -5,15 +5,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Logo } from '@/components/shared/Logo';
 import { ArrowRight } from '@/components/ui/ArrowRight';
+import { NAV_LINKS as LINKS } from '@/lib/data/nav';
 
-const LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/services', label: 'Services' },
-  { href: '/projects', label: 'Products' },
-  // { href: '/industries', label: 'Industries' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
-];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);

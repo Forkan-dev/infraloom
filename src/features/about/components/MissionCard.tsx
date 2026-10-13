@@ -6,7 +6,6 @@ export function MissionCard() {
     <section className="block block-ice mission">
       <div className="container mission-grid">
         <Reveal className="mission-lead">
-          <span className="eyebrow mission-eyebrow">Mission</span>
           <h2 className="mission-title">
             We build software that companies bet their next decade on.
           </h2>
@@ -28,16 +27,15 @@ export function MissionCard() {
         </Reveal>
       </div>
       <style>{`
-        .mission { padding: 96px 0; margin-top: 12px; }
+        .mission { padding: 96px 0; margin-top: 56px; }
         .mission-grid {
           display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 40px;
           align-items: end;
         }
         .mission-lead { grid-column: 1 / span 7; }
         .mission-side { grid-column: 9 / span 4; }
-        .mission .mission-eyebrow { background: var(--surface); color: var(--primary); }
         .mission-title {
-          margin-top: 24px; max-width: 17ch; color: var(--ultramarine);
+          max-width: 17ch; color: var(--ultramarine);
           font-size: clamp(32px, 4.2vw, 60px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.1;
         }
         .mission-foot { display: flex; flex-direction: column; gap: 24px; }
@@ -46,13 +44,12 @@ export function MissionCard() {
         [data-theme="dark"] .mission-title { color: var(--text); }
         [data-theme="dark"] .mission-body { color: var(--text-muted); }
         [data-theme="dark"] .mission-mark { color: var(--rule-strong); }
-        [data-theme="dark"] .mission .mission-eyebrow { background: var(--paper-3); color: var(--signal); }
         @media (max-width: 980px) {
           .mission-lead { grid-column: 1 / span 12; }
           .mission-side { grid-column: 1 / span 8; }
         }
         @media (max-width: 640px) {
-          .mission { padding: 56px 0; }
+          .mission { padding: 56px 0; margin-top: 36px; }
           .mission-side { grid-column: 1 / -1; }
         }
       `}</style>

@@ -203,6 +203,61 @@ Never white text on those.
 - [x] **Section titles are centred site-wide** (`.section-head`: eyebrow, title, intro and any link
       stacked and centred). The About page's people section keeps its left-aligned split layout.
 
+## Step 9f: Inner-page headers without the hero block (requested after review)
+
+- [x] **Only the home page keeps the dark hero with the neon infinity.** The repeated dark hero blocks on
+      other pages are gone (this supersedes Step 9d's "same artwork on every hero").
+- [x] `PageHero` (Services, Products, About, Contact, Portfolio, Industries) is now a **light, centred page
+      header** on the page background: eyebrow pill, dark blue title, muted intro, centred actions. It
+      matches the centred section titles. The unused `LoomMark` was removed.
+- [x] Case-study and HRM headers are the same light treatment, left-aligned (they carry a back link and
+      meta row); their stat tiles use chartreuse / ice / blue / dark tiles that read on a light background.
+- [x] About: the Mission block now sits 56px below the header. HRM: stat row widened so "Multi-tenant" fits.
+
+## Step 9g: Simplified contact page (requested, content change)
+
+- [x] Removed the Contact page sidebar entirely: "Discovery call", "Response SLA" and "Visit or call"
+      cards (`ContactSidebar.tsx` deleted).
+- [x] The form is one simple card titled **"Contact Us"** with only: Your name (required), Work email
+      (required), Company (optional), Tell us about your project. Role, project type, budget, timeline,
+      the 3-step progress and the review note are removed (`ChipPicker.tsx` deleted). The form is
+      centred at 760px; the "Inquiry received" confirmation is unchanged.
+
+## Step 9h: FAQ heading + founders redesign (requested after review)
+
+- [x] Contact FAQ: eyebrow + title **centred on top**, questions below in a centred 820px column
+      (was a side-by-side split).
+- [x] About "The people behind the work" (supersedes the earlier split layout): white block, **centred
+      heading** like every other section, two large portraits (max 940px) side by side. Each name sits on
+      a **white panel floating over the bottom of the photo** (name + dark blue/lime role pill). Hover:
+      photo turns from grayscale to colour with a slight zoom, the panel turns solid blue with a white name
+      and the role pill flips to lime/dark. Stacks on phones.
+
+## Step 9i: Eyebrow pills removed (requested, content change)
+
+- [x] Removed every eyebrow label pill site-wide: page headers ("Services", "Contact", "Selected work",
+      "Industries" — `PageHero` no longer takes an `eyebrow` prop), the Contact "FAQ" pill, About's
+      "Mission" pill, and the HRM section pills (Screenshots, Walkthrough, Mobile App, Attendance System,
+      Core Modules, SaaS & Security, Tech Stack). Headings below them lost the leftover top gap.
+- Kept: the small plain-text labels on case-study sections ("Architecture", "Microservices"), the HRM
+  "Live" badge, tech/stack tags and the founders' role pills — these are not label pills.
+
+## Step 9j: Footer statement (requested, content change)
+
+- [x] Footer line "Software engineering for companies building real-time, distributed and AI products."
+      replaced by **"Built Around Your Ambition."** on one line under the logo (30–46px, weight 600),
+      "Your Ambition." in chartreuse to echo the home hero. Wraps only on phones (≤640px).
+- [x] Under it, small soft-blue text (15px): "From streamlining everyday operations to unlocking new
+      opportunities, we help businesses move forward with confidence." 
+
+## Step 9k: Footer links = nav links (requested, content change)
+
+- [x] Footer link columns (Services list, Company, Resources: Case Studies, Architecture library,
+      Status & SLAs, Security…) replaced by one row with **exactly the navbar pages**: Home · Services ·
+      Products · About · Contact (Contact highlighted in chartreuse). Both read from the new shared
+      `src/lib/data/nav.ts`, so they stay in sync.
+- [x] Dead bottom-bar links (Privacy, Terms, SOC 2 — all `href="#"`) removed; copyright and version kept.
+
 ## Step 10: Verify
 
 - [x] Diff visible text (incl. alt / aria-label / href) for every route before vs after: must be identical.

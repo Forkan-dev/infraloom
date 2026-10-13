@@ -3,38 +3,7 @@ import { Logo } from '@/components/shared/Logo';
 import { CONTACT } from '@/lib/data/contact';
 import { PinIcon, PhoneIcon } from '@/components/shared/ContactIcons';
 import { INFINITY_PATH } from '@/components/shared/InfinityLoop';
-
-const GROUPS = [
-  {
-    title: 'Services',
-    items: [
-      { label: 'Web Applications', href: '/services' },
-      { label: 'Game Streaming', href: '/services' },
-      { label: 'SaaS Platforms', href: '/services' },
-      { label: 'AI & Automation', href: '/services' },
-      { label: 'Cloud Infrastructure', href: '/services' },
-      { label: 'DevOps & CI/CD', href: '/services' },
-    ],
-  },
-  {
-    title: 'Company',
-    items: [
-      { label: 'About', href: '/about' },
-      // { label: 'Industries', href: '/industries' },
-      { label: 'Case Studies', href: '/portfolio' },
-      { label: 'Contact', href: '/contact' },
-    ],
-  },
-  {
-    title: 'Resources',
-    items: [
-      // { label: 'Engineering blog', href: '/about' },
-      { label: 'Architecture library', href: '/portfolio' },
-      { label: 'Status & SLAs', href: '/contact' },
-      { label: 'Security', href: '/about' },
-    ],
-  },
-];
+import { NAV_LINKS } from '@/lib/data/nav';
 
 const SOCIALS = [
   {
@@ -83,7 +52,11 @@ export function Footer() {
           <div className="foot-lead">
             <Logo variant="dark" height={28} />
             <p className="foot-statement">
-              Software engineering for companies building real-time, distributed and AI products.
+              Built Around <span className="foot-statement-accent">Your Ambition.</span>
+            </p>
+            <p className="foot-tagline">
+              From streamlining everyday operations to unlocking new opportunities, we help businesses move
+              forward with confidence.
             </p>
           </div>
 
@@ -120,22 +93,12 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="foot-grid">
-          {GROUPS.map((g, i) => (
-            <div key={i} className="foot-col">
-              <div className="foot-label">
-                {g.title}
-              </div>
-              <ul>
-                {g.items.map((it, j) => (
-                  <li key={j}>
-                    <Link href={it.href} className="foot-link">{it.label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        {/* the same pages as the navbar */}
+        <nav className="foot-nav" aria-label="Footer">
+          {NAV_LINKS.map((l) => (
+            <Link key={l.href} href={l.href} className="foot-link">{l.label}</Link>
           ))}
-        </div>
+        </nav>
 
         <div className="footer-watermark" aria-hidden="true">
           Infral<InfinityMark />m
@@ -144,9 +107,6 @@ export function Footer() {
         <div className="foot-bar">
           <div>© 2026 Infraloom Engineering, Inc. · All systems operational</div>
           <div className="foot-bar-links">
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-            <a href="#">SOC 2</a>
             <span className="mono" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
               <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--chartreuse)' }} />
               v2026.05.08
@@ -169,12 +129,15 @@ export function Footer() {
           display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px;
           padding-bottom: 44px;
         }
-        .foot-lead { grid-column: 1 / span 7; }
+        /* logo + signature line, sized to balance the headquarters column */
+        .foot-lead { grid-column: 1 / span 7; display: flex; flex-direction: column; gap: 40px; }
         .foot-statement {
-          margin-top: 24px; max-width: 22ch;
-          font-family: var(--font-display); font-size: clamp(22px, 2.1vw, 30px); font-weight: 500;
-          line-height: 1.15; letter-spacing: -0.03em; color: #fff;
+          font-family: var(--font-display); font-size: clamp(30px, 3.2vw, 46px); font-weight: 600;
+          line-height: 1.1; letter-spacing: -0.035em; color: #fff; white-space: nowrap;
         }
+        @media (max-width: 640px) { .foot-statement { white-space: normal; } }
+        .foot-statement-accent { color: var(--chartreuse); }
+        .foot-tagline { margin-top: -24px; max-width: 46ch; font-size: 15px; line-height: 1.6; color: var(--foot-ink-2); }
         .foot-hq { grid-column: 9 / span 4; display: flex; flex-direction: column; gap: 14px; padding-top: 6px; }
         .foot-label {
           display: flex; align-items: baseline; gap: 10px;
@@ -205,21 +168,19 @@ export function Footer() {
           transition: background 0.2s ease, color 0.2s ease;
         }
         .footer-social:hover { background: var(--primary); color: #fff; }
-        .foot-grid {
-          display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 24px;
-          border-top: 1px solid var(--foot-rule);
+        .foot-nav {
+          display: flex; flex-wrap: wrap; gap: 12px 36px;
+          padding-top: 28px; border-top: 1px solid var(--foot-rule);
         }
-        .foot-col { padding: 24px 24px 0 0; }
-        .foot-col ul { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-direction: column; gap: 10px; }
         .foot-link {
-          font-size: 14px; color: var(--signal);
+          font-size: 15px; font-weight: 500; color: var(--signal);
           background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
           padding-bottom: 2px;
           transition: color 0.3s var(--ease), background-size 0.45s var(--ease);
         }
         .foot-link:hover { color: #fff; background-size: 100% 1px; }
-        /* one highlighted link: Company → Contact */
-        .foot-col:nth-child(2) li:last-child .foot-link { color: var(--chartreuse); }
+        /* one highlighted link: Contact */
+        .foot-nav .foot-link:last-child { color: var(--chartreuse); }
         /* big wordmark, faded so it sinks into the bottom edge */
         .footer-watermark {
           margin: 40px 0 -0.12em;
@@ -239,15 +200,10 @@ export function Footer() {
           font-size: 12px; color: var(--foot-ink-3);
         }
         .foot-bar-links { display: flex; gap: 22px; align-items: center; }
-        .foot-bar-links a { transition: color 0.3s var(--ease); }
-        .foot-bar-links a:hover { color: var(--foot-ink); }
         @media (max-width: 980px) {
           .foot { padding-top: 44px; margin-top: 56px; }
           .foot-lead, .foot-hq { grid-column: 1 / -1; }
           .foot-hq { margin-top: 32px; }
-          .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
-          .foot-col { padding-bottom: 20px; }
           .footer-watermark { margin-top: 28px; }
         }
       `}</style>

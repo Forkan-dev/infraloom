@@ -7,11 +7,15 @@ const LEADERS = [
   { name: 'Forkan Alam', role: 'Co-founder & Engineering Manager', photo: '/members/Forkan.png' },
 ];
 
+/**
+ * Founders: a centred heading over two large portraits. Each name sits on a white panel floating over the
+ * bottom of the photo; on hover the photo turns to colour and the panel turns solid blue.
+ */
 export function OurStory() {
   return (
     <section className="block people">
-      <div className="container people-grid">
-        <Reveal className="people-head">
+      <div className="container">
+        <Reveal>
           <SectionHead
             title="The people behind the work"
             body="No layers of management between you and the people building your system."
@@ -26,8 +30,8 @@ export function OurStory() {
                   src={l.photo}
                   alt={l.name}
                   fill
-                  sizes="(max-width: 640px) 100vw, 420px"
-                  style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
+                  sizes="(max-width: 640px) 100vw, 460px"
+                  style={{ objectFit: 'cover', objectPosition: 'center 25%' }}
                 />
               </Reveal>
               <figcaption className="founder-info">
@@ -40,50 +44,42 @@ export function OurStory() {
       </div>
 
       <style>{`
-        /* white block, editorial split: heading on the left, founders on the right */
         .people { padding: 96px 0; margin-top: 12px; background: var(--surface); }
-        .people-grid {
-          display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 40px;
-          align-items: start;
-        }
-        .people-head { grid-column: 1 / span 4; padding-top: 8px; }
-        /* this split layout keeps its heading left-aligned */
-        .people .section-head { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; margin-bottom: 0; text-align: left; }
-        .people .section-head-title h2, .people .section-head-body { margin: 0; }
-        .people .section-head-title h2 { max-width: 12ch; font-size: clamp(32px, 3.4vw, 48px); }
-        .people .section-head-body { max-width: 30ch; }
         .founders {
-          grid-column: 6 / span 7;
-          display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;
-          align-items: stretch;
+          display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;
+          max-width: 940px; margin: 0 auto;
         }
-        .founder {
-          margin: 0; padding: 12px; display: flex; flex-direction: column;
-          background: var(--background); border-radius: var(--radius-card);
-          transition: background 0.2s ease;
+        .founder { position: relative; margin: 0; }
+        .founder-photo {
+          position: relative; aspect-ratio: 4 / 5; overflow: hidden;
+          border-radius: var(--radius-card); background: var(--ice);
         }
-        .founder-photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--ice); border-radius: 16px; }
-        .founder-photo img { filter: grayscale(1) contrast(1.05); transition: filter 0.4s ease, transform 1.2s var(--ease) !important; }
-        .founder:hover .founder-photo img { filter: grayscale(0); transform: scale(1.03) !important; }
+        .founder-photo img { filter: grayscale(1) contrast(1.05); transition: filter 0.5s ease, transform 1.2s var(--ease) !important; }
+        .founder:hover .founder-photo img { filter: grayscale(0); transform: scale(1.04) !important; }
+        /* name panel floating over the bottom of the portrait */
         .founder-info {
+          position: absolute; left: 14px; right: 14px; bottom: 14px; z-index: 1;
           display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
-          padding: 18px 10px 10px;
+          padding: 18px 20px; border-radius: 16px; background: var(--surface);
+          transition: background 0.25s ease;
         }
-        .founder-name { font-family: var(--font-display); font-size: 24px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: var(--ultramarine); }
+        .founder-name {
+          font-family: var(--font-display); font-size: 24px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15;
+          color: var(--ultramarine); transition: color 0.25s ease;
+        }
         .founder-role {
           font-size: 13px; font-weight: 600; line-height: 1.3;
           color: var(--chartreuse); background: var(--ultramarine);
           padding: 6px 12px; border-radius: var(--radius-pill);
+          transition: background 0.25s ease, color 0.25s ease;
         }
-        [data-theme="dark"] .founder-name { color: var(--text); }
-        @media (max-width: 980px) {
-          .people-head { grid-column: 1 / -1; padding-top: 0; }
-          .people .section-head-title h2 { max-width: 18ch; }
-          .founders { grid-column: 1 / -1; }
-        }
+        .founder:hover .founder-info { background: var(--primary); }
+        .founder:hover .founder-name { color: #fff; }
+        .founder:hover .founder-role { background: var(--chartreuse); color: var(--ultramarine); }
         @media (max-width: 640px) {
           .people { padding: 56px 0; }
-          .founders { grid-template-columns: 1fr; }
+          .founders { grid-template-columns: 1fr; gap: 16px; }
+          .founder-name { font-size: 22px; }
         }
       `}</style>
     </section>

@@ -3,9 +3,8 @@ import { Reveal } from '@/components/shared/Reveal';
 import { SectionHead } from '@/components/shared/SectionHead';
 import { PixelStreamingDiagram } from '@/components/diagrams/PixelStreamingDiagram';
 import { CASE_STUDIES } from '@/lib/data/portfolio';
-import { HeroInfinityArt } from '@/components/shared/HeroInfinityArt';
 
-const STAT_TONES = ['stat-chartreuse', 'stat-ice', 'stat-primary', 'stat-ice'];
+const STAT_TONES = ['stat-chartreuse', 'stat-ice', 'stat-primary', 'stat-dark'];
 
 interface CaseStudyDetailProps {
   slug: string;
@@ -18,8 +17,7 @@ export function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
   return (
     <div className="page-enter">
       {/* Hero */}
-      <section className="block block-dark on-dark cs-hero">
-        <HeroInfinityArt className="cs-art" />
+      <section className="cs-hero">
         <div className="container cs-hero-inner">
           <Reveal>
             <div className="cs-top">
@@ -115,26 +113,16 @@ export function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
       </section>
 
       <style>{`
-        .cs-hero { padding: 64px 0 40px; }
-        .cs-hero { background: var(--ultramarine); }
-        .cs-hero-inner { position: relative; z-index: 2; }
-        /* same neon artwork as the other heroes; this hero is tall, so the art sits top-right beside the
-           headline (60% wide) and its left and bottom edges fade into the navy */
-        .cs-art {
-          top: 0; right: 0; width: 60%; height: auto; aspect-ratio: 16 / 9; z-index: 0;
-          -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 35%), linear-gradient(to bottom, #000 65%, transparent 100%);
-          -webkit-mask-composite: source-in;
-          mask-image: linear-gradient(to right, transparent 0%, #000 35%), linear-gradient(to bottom, #000 65%, transparent 100%);
-          mask-composite: intersect;
-        }
+        /* light header on the page background (only the home page has the dark infinity hero) */
+        .cs-hero { padding: 56px 0 24px; }
         .cs-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
-        .cs-back { color: var(--text-on-dark-muted); }
-        .cs-back:hover { color: #fff; }
+        .cs-back { color: var(--text-muted); }
+        .cs-back:hover { color: var(--primary); }
         .cs-back svg { transition: transform 0.35s var(--ease); }
         .cs-back:hover svg { transform: translateX(-4px); }
-        .cs-title { max-width: 13ch; font-size: clamp(36px, 5.6vw, 84px); font-weight: 600; color: #fff; }
+        .cs-title { max-width: 16ch; font-size: clamp(36px, 5.2vw, 76px); font-weight: 600; color: var(--ultramarine); text-wrap: balance; }
         .cs-lead-row { margin-top: 28px; max-width: 62ch; }
-        .cs-lead { max-width: none; color: var(--text-on-dark-muted); }
+        .cs-lead { max-width: none; color: var(--text-muted); }
         .cs-stats { display: grid; gap: 8px; margin: 56px 0 0; }
         .cs-stat { flex-direction: column-reverse; min-height: 150px; }
         .cs-stat dd { font-size: clamp(36px, 4.4vw, 68px); }
@@ -177,7 +165,6 @@ export function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
 
         @media (max-width: 880px) {
           .cs-hero { padding-top: 44px; }
-          .cs-art { display: none; }
           .cs-stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
           .cs-stat { min-height: 120px; }
           .cs-ps { grid-template-columns: 1fr; }

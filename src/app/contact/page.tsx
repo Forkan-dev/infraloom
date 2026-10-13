@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { PageHero } from '@/components/layout/PageHero';
 import { ContactForm } from '@/features/contact/components/ContactForm';
-import { ContactSidebar } from '@/features/contact/components/ContactSidebar';
 import { FAQAccordion } from '@/features/contact/components/FAQAccordion';
 import { Reveal } from '@/components/shared/Reveal';
 
@@ -14,21 +13,16 @@ export default function ContactPage() {
   return (
     <div className="page-enter">
       <PageHero
-        eyebrow="Contact"
         title="Tell us about the system you're trying to build."
         body="We respond to every qualified inquiry within one business day. Discovery calls are 30 minutes, free, and scoped to your problem — no sales script."
       />
 
       <section className="section-tight">
         <div className="container">
-          <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 24, alignItems: 'start' }}>
-            <Reveal>
-              <ContactForm />
-            </Reveal>
-            <ContactSidebar />
-          </div>
+          <Reveal style={{ maxWidth: 760, margin: '0 auto' }}>
+            <ContactForm />
+          </Reveal>
         </div>
-        <style>{`@media (max-width: 980px) { .contact-grid { grid-template-columns: 1fr !important; } }`}</style>
       </section>
 
       <FAQAccordion />

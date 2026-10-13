@@ -47,23 +47,23 @@ export function FAQAccordion() {
   return (
     <section className="section-tight">
       <div className="container">
-        <div className="faq-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 32, alignItems: 'start' }}>
-          <Reveal>
-            <div>
-              <span className="eyebrow">FAQ</span>
-              <h2 className="gradient-text" style={{ marginTop: 16 }}>Things prospective clients ask.</h2>
-            </div>
-          </Reveal>
-          <Reveal stagger>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {FAQS.map((f, i) => (
-                <FAQItem key={i} q={f.q} a={f.a} />
-              ))}
-            </div>
-          </Reveal>
-        </div>
+        {/* heading centred on top, questions below in a centred column */}
+        <Reveal>
+          <div className="faq-head">
+            <h2 className="gradient-text faq-title">Things prospective clients ask.</h2>
+          </div>
+        </Reveal>
+        <Reveal stagger className="faq-list">
+          {FAQS.map((f, i) => (
+            <FAQItem key={i} q={f.q} a={f.a} />
+          ))}
+        </Reveal>
       </div>
-      <style>{`@media (max-width: 880px) { .faq-grid { grid-template-columns: 1fr !important; } }`}</style>
+      <style>{`
+        .faq-head { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; margin-bottom: 40px; }
+        .faq-title { max-width: 20ch; text-wrap: balance; }
+        .faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 820px; margin: 0 auto; }
+      `}</style>
     </section>
   );
 }
