@@ -12,7 +12,7 @@ export default function ProjectsPage() {
     <div className="page-enter">
       <PageHero
         title="Products we built and shipped."
-        body="Enterprise-grade SaaS platforms designed, built, and operated by our team — from architecture to production."
+        body="Enterprise-grade SaaS platforms designed, built, and operated by our team from architecture to production."
       />
       <ProjectsGrid />
     </div>

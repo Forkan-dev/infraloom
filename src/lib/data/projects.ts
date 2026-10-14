@@ -56,7 +56,8 @@ export const PROJECTS_LIST: ProjectItem[] = [
       'A multi-tenant SaaS HRM platform allowing multiple companies on a single hosted instance — each with full data isolation, branded environments, and a smart attendance system supporting 8 check-in methods.',
     coverImage: '/projects/hrm/image.png',
     status: 'Live',
-    demoUrl: 'https://hrm-v2.infraloom.co/',
+    demoUrl: 'https://hrm.infraloom.co/',
+    detailHref: 'https://hrm.infraloom.co/',
     stats: [
       { l: 'Check-in methods', v: '8' },
       { l: 'API endpoints', v: '80+' },

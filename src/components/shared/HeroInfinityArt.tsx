@@ -1,7 +1,6 @@
 /**
  * The home hero artwork (public/logo/infraloom-hero-infinity.svg) rendered inline so its layers can animate.
  *  1. Ignite, once: every neon layer draws along the infinity together; the echo rings fade in after.
- *  2. Ambient: the outer glow breathes slowly.
  * Static (fully drawn) under prefers-reduced-motion. Sized and positioned by the parent via className.
  */
 export function HeroInfinityArt({ className = '' }: { className?: string }) {
@@ -71,14 +70,10 @@ export function HeroInfinityArt({ className = '' }: { className?: string }) {
           stroke-dasharray: 1000; stroke-dashoffset: 1000;
           animation: hiaDraw 2.6s cubic-bezier(0.65, 0, 0.35, 1) 0.2s forwards;
         }
-        .hia-breathe {
-          opacity: 0.45;
-          animation: hiaDraw 2.6s cubic-bezier(0.65, 0, 0.35, 1) 0.2s forwards, hiaBreathe 5s ease-in-out 2.8s infinite;
-        }
+        .hia-breathe { opacity: 0.45; }
         .hia-echo { opacity: 0; animation: hiaFade 1.6s ease 2.2s forwards; }
         @keyframes hiaDraw { to { stroke-dashoffset: 0; } }
         @keyframes hiaFade { to { opacity: 1; } }
-        @keyframes hiaBreathe { 0%, 100% { opacity: 0.45; } 50% { opacity: 0.68; } }
         @media (prefers-reduced-motion: reduce) {
           .hia-draw, .hia-breathe { animation: none; stroke-dashoffset: 0; }
           .hia-echo { animation: none; opacity: 1; }

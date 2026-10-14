@@ -36,7 +36,7 @@ const CASES: {
     title: 'Human resource management platform',
     body: 'Replaced 6 internal tools with one role-aware HRM platform covering payroll, attendance and analytics.',
     tech: ['Next.js', 'NestJS', 'Postgres', 'Redis'],
-    href: '/projects/hrm',
+    href: 'https://hrm.infraloom.co/',
     visual: (
       <Image
         src="/projects/hrm/image.png"
@@ -78,7 +78,12 @@ export function CaseStudiesPreview() {
 
         <div className="cases">
           {CASES.map((c, i) => (
-            <Link key={c.href} href={c.href} className={`case ${i % 2 ? 'is-flip' : ''}`}>
+            <Link
+              key={c.href}
+              href={c.href}
+              className={`case ${i % 2 ? 'is-flip' : ''}`}
+              {...(c.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            >
               <Reveal className="reveal-clip case-media">
                 {c.visual ?? <CasePlate title={c.title} />}
               </Reveal>

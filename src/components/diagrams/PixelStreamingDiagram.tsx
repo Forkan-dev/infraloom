@@ -61,9 +61,7 @@ export function PixelStreamingDiagram() {
         ].map((d, i) => (
           <g key={i}>
             <path d={d} stroke="rgba(232, 237, 255,0.12)" strokeWidth="1" fill="none" />
-            <path d={d} stroke="#1F5BFF" strokeWidth="1.4" fill="none" strokeDasharray="3 8"
-              style={{ animation: 'psFlow 4s linear infinite', animationDelay: `${(i % 6) * 0.4}s` }}
-            />
+            <path d={d} stroke="#1F5BFF" strokeWidth="1.4" fill="none" strokeDasharray="3 8" />
           </g>
         ))}
 
@@ -74,7 +72,6 @@ export function PixelStreamingDiagram() {
           </circle>
         ))}
       </svg>
-      <style>{`@keyframes psFlow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -55; } }`}</style>
     </div>
   );
 }

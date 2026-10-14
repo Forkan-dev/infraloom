@@ -83,8 +83,7 @@ export function CaseVisualPixel() {
           return (
             <g key={i}>
               <line x1="200" y1="160" x2={x} y2={y} stroke="rgba(232, 237, 255,0.18)" strokeWidth="1" />
-              <line x1="200" y1="160" x2={x} y2={y} stroke="var(--blue)" strokeWidth="1.5" strokeDasharray="2 6"
-                style={{ animation: 'psFlow 3s linear infinite', animationDelay: `${i * 0.15}s` }} />
+              <line x1="200" y1="160" x2={x} y2={y} stroke="var(--blue)" strokeWidth="1.5" strokeDasharray="2 6" />
               <rect x={x - 14} y={y - 9} width="28" height="18" fill="var(--navy)" stroke="rgba(232, 237, 255,0.45)" />
               <text x={x} y={y + 3.5} fill="var(--cream)" fontSize="8" fontFamily="var(--font-mono)" textAnchor="middle">UE{i + 1}</text>
             </g>
@@ -97,7 +96,6 @@ export function CaseVisualPixel() {
       <style>{`
         .cv-pixel { position: absolute; inset: 0; background: var(--navy); display: flex; align-items: center; justify-content: center; }
         .cv-pixel svg { width: 100%; height: 100%; }
-        @keyframes psFlow { to { stroke-dashoffset: -16; } }
       `}</style>
     </div>
   );

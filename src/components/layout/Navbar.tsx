@@ -71,10 +71,18 @@ export function Navbar() {
         .nav-link {
           display: inline-flex; align-items: center;
           font-size: 14px; font-weight: 500; color: var(--text-muted);
-          padding: 8px 16px; border-radius: var(--radius-pill);
-          transition: color 0.2s ease, background 0.2s ease;
+          position: relative; padding: 8px 16px; border-radius: var(--radius-pill); cursor: pointer;
+          transition: color 0.3s var(--ease), background 0.2s ease;
+        }
+        /* hover: same as the footer links, a thin underline that grows in from the left */
+        .nav-link::after {
+          content: ""; position: absolute; left: 16px; right: 16px; bottom: 6px; height: 1px;
+          background: currentColor; transform: scaleX(0); transform-origin: left;
+          transition: transform 0.45s var(--ease);
         }
         .nav-link:hover { color: var(--text); }
+        .nav-link:hover::after { transform: scaleX(1); }
+        .nav-link.active:hover { color: var(--primary); }
         .nav-link.active { background: var(--ice); color: var(--primary); }
         [data-theme="dark"] .nav-link.active { background: var(--paper-3); color: var(--signal); }
         .nav-actions { display: flex; align-items: center; gap: 12px; }
